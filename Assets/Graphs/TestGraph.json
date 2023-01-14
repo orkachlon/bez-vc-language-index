@@ -1,0 +1,111 @@
+﻿{
+  "1": [
+    {
+      "name": "Semitic",
+      "years": "",
+      "ancestor": "None",
+      "parents": [],
+      "extinctParents": [],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "influences": []
+    }],
+  "2": [
+    {
+      "name": "West Semitic",
+      "years": "",
+      "ancestor": "Semitic",
+      "parents": [],
+      "extinctParents": [],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "influences": [
+        "East Semitic"
+      ]
+    },
+    {
+      "name": "East Semitic",
+      "years": "",
+      "ancestor": "Semitic",
+      "parents": [],
+      "extinctParents": [],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "influences": [
+        "West Semitic",
+        "North Central Semitic"
+      ]
+    }],
+  "3": [
+    {
+      "name": "South Semitic",
+      "years": "",
+      "ancestor": "West Semitic",
+      "parents": [],
+      "extinctParents": [],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "influences": [
+        "North Central Semitic",
+        "Central Semitic",
+        "Ethiopic"
+      ]
+    },
+    {
+      "name": "North Central Semitic",
+      "years": "",
+      "ancestor": "West Semitic",
+      "parents": [],
+      "extinctParents": [],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "influences": [
+        "South Semitic",
+        "East Semitic"
+      ]
+    },
+    {
+      "name": "Eblaite",
+      "years": "",
+      "ancestor": "East Semitic",
+      "parents": [],
+      "extinctParents": [],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "influences": [
+        "Akkadian",
+        "North West Semitic",
+        "Amorite"
+      ]
+    },
+    {
+      "name": "Akkadian",
+      "years": "",
+      "ancestor": "East Semitic",
+      "parents": [],
+      "extinctParents": [],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "influences": [
+        "Eblaite",
+        "Central Semitic",
+        "Old Arabic",
+        "Old Aramaic"
+      ]
+    }],
+  "4": [
+    {
+      "name": "Old South Arabian",
+      "years": "",
+      "ancestor": "South Semitic",
+      "parents": [],
+      "extinctParents": [],
+      "pathToMap": "",
+        "pathToAlphabet": "",
+      "influences": [
+        "Eastern South Semitic",
+        "Ethiopic",
+        "Central Semitic"
+      ]
+    }]
+}
