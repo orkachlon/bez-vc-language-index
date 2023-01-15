@@ -1,0 +1,180 @@
+﻿{
+  "1": [
+    {
+      "name": "Semitic",
+      "years": "",
+      "descendants": {
+        "West Semitic": "Replace",
+        "East Semitic": "Replace"
+      },
+      "influences": [],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    }],
+  "2": [
+    {
+      "name": "West Semitic",
+      "years": "",
+      "descendants": {
+        "South Semitic": "Replace",
+        "North Central Semitic": "Replace"
+      },
+      "influences": [
+        "East Semitic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "East Semitic",
+      "years": "",
+      "descendants": {
+        "Eblaite": "Replace",
+        "Akkadian": "Replace"
+      },
+      "influences": [
+        "West Semitic",
+        "North Central Semitic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    }],
+  "3": [
+    {
+      "name": "South Semitic",
+      "years": "",
+      "descendants": {
+        "Old South Arabian": "Replace",
+        "Eastern South Semitic": "Replace",
+        "Ethiopic": "Add"
+      },
+      "influences": [
+        "North Central Semitic",
+        "Ethiopic",
+        "Central Semitic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "North Central Semitic",
+      "years": "",
+      "descendants": {
+        "Central Semitic": "Replace",
+        "North West Semitic": "Replace"
+      },
+      "influences": [
+        "South Semitic",
+        "East Semitic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Eblaite",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Akkadian",
+        "North West Semitic",
+        "Amorite"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Akkadian",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Eblaite",
+        "Central Semitic",
+        "Old Arabic",
+        "Old Aramaic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    }],
+  "4": [
+    {
+      "name": "Old South Arabian",
+      "years": "",
+      "descendants": {
+        "Sabaean": "Replace"
+      },
+      "influences": [
+        "Eastern South Semitic",
+        "Ethiopic",
+        "Central Semitic"
+      ],
+      "pathToMap": "",
+        "pathToAlphabet": ""
+    },
+    {
+      "name": "Eastern South Semitic",
+      "years": "",
+      "descendants": {
+        "Mehri-Socotri": "Replace"
+      },
+      "influences": [
+        "Old South Arabian",
+        "Central Semitic",
+        "Old Arabic",
+        "Sabaean"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "North West Semitic",
+      "years": "",
+      "descendants": {
+        "Canaanite": "Replace",
+        "Amorite": "Replace"
+      },
+      "influences": [
+        "Eblaite",
+        "Central Semitic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Central Semitic",
+      "years": "",
+      "descendants": {
+        "Old Arabic": "Replace"
+      },
+      "influences": [
+        "South Semitic",
+        "Akkadian",
+        "Old South Arabian",
+        "Eastern South Semitic",
+        "North West Semitic",
+        "Sabaean",
+        "Canaanite",
+        "Amorite",
+        "Minaean",
+        "Old Aramaic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Ethiopic",
+      "years": "",
+      "descendants": {
+        "North Ethiopic": "Replace",
+        "South Ethiopic": "Replace"
+      },
+      "influences": [
+        "South Semitic",
+        "Old South Arabian"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    }],
+  "6": [
+    
+  ]
+}
