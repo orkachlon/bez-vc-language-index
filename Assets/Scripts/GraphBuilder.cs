@@ -108,7 +108,7 @@ public class GraphBuilder : MonoBehaviour {
             return;
         }
         foreach (var (treeLevel, langList) in langNodeDict) {
-            var level = int.Parse(treeLevel);
+            var level = langNodeDict.Count - int.Parse(treeLevel) + 1;
             var levelContainer = new GameObject(treeLevel) {
                 transform = { position = Vector3.zero }
             };

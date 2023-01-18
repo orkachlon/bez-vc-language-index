@@ -433,6 +433,78 @@
       ],
       "pathToMap": "",
       "pathToAlphabet": ""
+    },
+    {
+      "name": "Moabite",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Old Arabic",
+        "Biblical Hebrew"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Edomite",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Old Arabic",
+        "Biblical Hebrew"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Ammonite",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Old Arabic",
+        "Biblical Hebrew"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Phoenician",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Biblical Hebrew"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Biblical Hebrew",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Phoenician",
+        "Ammonite",
+        "Edomite",
+        "Moabite",
+        "Old Aramaic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Old Aramaic",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Akkadian",
+        "Central Semitic",
+        "Canaanite",
+        "Old Arabic",
+        "Biblical Hebrew",
+        "Mishnaic Hebrew"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
     }
   ]
 }
