@@ -89,7 +89,14 @@ public class GraphBuilder : MonoBehaviour {
             print($"couldn't find {childName} under {nextLevelContainer.name}");
             return;
         }
-        var lineRenderer = childLangTransform.gameObject.AddComponent<LineRenderer>();
+
+        var lineRendererGO = new GameObject($"{parentLangTransform.name}->{childName}");
+        lineRendererGO.transform.parent = childLangTransform;
+        var lineRenderer = lineRendererGO.gameObject.AddComponent<LineRenderer>();
+        if (lineRenderer == null) {
+            print($"LineRenderer is null on {childLangTransform.name}!");
+            return;
+        }
         lineRenderer.widthMultiplier = 0.1f;
         lineRenderer.material = childType.GetMaterial();
         lineRenderer.SetPosition(0, parentLangTransform.position);

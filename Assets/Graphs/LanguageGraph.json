@@ -174,7 +174,265 @@
       "pathToMap": "",
       "pathToAlphabet": ""
     }],
+  "5": [
+    {
+      "name": "Sabaean",
+      "years": "",
+      "descendants": {
+        "Himyaritic": "Add",
+        "Hadramatic": "Add",
+        "Minaean": "Add"
+      },
+      "influences": [
+        "Eastern South Semitic",
+        "Central Semitic",
+        "Himyaritic",
+        "Hadramatic",
+        "Minaean",
+        "Old Arabic",
+        "Qatabanic",
+        "Mehri-Socotri",
+        "Mehri",
+        "Arabic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Mehri-Socotri",
+      "years": "",
+      "descendants": {
+        "Shehri": "Replace",
+        "Mehri": "Replace",
+        "Socotri": "Replace"
+      },
+      "influences": [
+        "Sabaean",
+        "Old Arabic",
+        "Hadramatic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "North Ethiopic",
+      "years": "",
+      "descendants": {
+        "Ge'ez": "Replace"
+      },
+      "influences": [
+        "South Ethiopic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "South Ethiopic",
+      "years": "",
+      "descendants": {
+        "Amharic": "Replace",
+        "Harari-Gurage": "Replace"
+      },
+      "influences": [
+        "North Ethiopic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Old Arabic",
+      "years": "",
+      "descendants": {
+        "Arabic": "Replace"
+      },
+      "influences": [
+        "Akkadian",
+        "Eastern South Semitic",
+        "Sabaean",
+        "Mehri-Socotri",
+        "Old Aramaic",
+        "Minaean",
+        "Mehri",
+        "Socotri",
+        "Moabite",
+        "Edomite",
+        "Ammonite",
+        "Mishnaic Hebrew"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Canaanite",
+      "years": "",
+      "descendants": {
+        "Moabite": "Replace",
+        "Edomite": "Replace",
+        "Ammonite": "Replace",
+        "Phoenician": "Replace",
+        "Biblical Hebrew": "Replace"
+      },
+      "influences": [
+        "Central Semitic",
+        "Amorite",
+        "Old Aramaic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Amorite",
+      "years": "",
+      "descendants": {
+        "Old Aramaic": "Replace"
+      },
+      "influences": [
+        "Eblaite",
+        "Central Semitic",
+        "Canaanite"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    }],
   "6": [
-    
+    {
+      "name": "Himyaritic",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Sabaean",
+        "Hadramatic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Hadramatic",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Sabaean",
+        "Mehri-Socotri",
+        "Himyaritic",
+        "Qatabanic",
+        "Mehri"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Minaean",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Central Semitic",
+        "Sabaean",
+        "Old Arabic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Shehri",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Mehri",
+        "Socotri",
+        "Arabic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Mehri",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Sabaean",
+        "Old Arabic",
+        "Hadramatic",
+        "Shehri",
+        "Socotri",
+        "Arabic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Socotri",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Old Arabic",
+        "Mehri",
+        "Shehri",
+        "Arabic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Ge'ez",
+      "years": "",
+      "descendants": {
+        "Tigrinya": "Replace"
+      },
+      "influences": [
+        "Amharic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Amharic",
+      "years": "",
+      "descendants": {},
+      "influences": [
+        "Ge'ez",
+        "Harari-Gurage",
+        "Tigrinya",
+        "Gurage",
+        "Harari"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Harari-Gurage",
+      "years": "",
+      "descendants": {
+        "Gurage": "Replace",
+        "Harari": "Replace"
+      },
+      "influences": [
+        "Amharic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    {
+      "name": "Arabic",
+      "years": "",
+      "descendants": {
+        "Maltese": "Add",
+        "Hebrew": "Add"
+      },
+      "influences": [
+        "Sabaean",
+        "Socotri",
+        "Mehri",
+        "Shehri",
+        "Tigrinya",
+        "Harari",
+        "Mandaic",
+        "Middle Aramaic",
+        "Maltese",
+        "Neo Aramaic",
+        "Modern Hebrew"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    }
   ]
 }
