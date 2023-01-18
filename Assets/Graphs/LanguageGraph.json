@@ -1,21 +1,23 @@
-﻿{
-  "1": [
-    {
+﻿[
+  {
+    "Semitic": {
       "name": "Semitic",
       "years": "",
-      "descendants": {
+      "children": {
         "West Semitic": "Replace",
         "East Semitic": "Replace"
       },
       "influences": [],
       "pathToMap": "",
-      "pathToAlphabet": ""
-    }],
-  "2": [
-    {
+      "pathToAlphabet": "",
+      "gameObject": null
+    }
+  },
+  {
+    "West Semitic": {
       "name": "West Semitic",
       "years": "",
-      "descendants": {
+      "children": {
         "South Semitic": "Replace",
         "North Central Semitic": "Replace"
       },
@@ -23,12 +25,13 @@
         "East Semitic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "East Semitic": {
       "name": "East Semitic",
       "years": "",
-      "descendants": {
+      "children": {
         "Eblaite": "Replace",
         "Akkadian": "Replace"
       },
@@ -37,13 +40,15 @@
         "North Central Semitic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
-    }],
-  "3": [
-    {
+      "pathToAlphabet": "",
+      "gameObject": null
+    }
+  },
+  {
+    "South Semitic": {
       "name": "South Semitic",
       "years": "",
-      "descendants": {
+      "children": {
         "Old South Arabian": "Replace",
         "Eastern South Semitic": "Replace",
         "Ethiopic": "Add"
@@ -54,12 +59,13 @@
         "Central Semitic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "North Central Semitic": {
       "name": "North Central Semitic",
       "years": "",
-      "descendants": {
+      "children": {
         "Central Semitic": "Replace",
         "North West Semitic": "Replace"
       },
@@ -68,24 +74,28 @@
         "East Semitic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Eblaite": {
       "name": "Eblaite",
       "years": "",
-      "descendants": {},
+      "children": {
+      },
       "influences": [
         "Akkadian",
         "North West Semitic",
         "Amorite"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Akkadian": {
       "name": "Akkadian",
       "years": "",
-      "descendants": {},
+      "children": {
+      },
       "influences": [
         "Eblaite",
         "Central Semitic",
@@ -93,13 +103,15 @@
         "Old Aramaic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
-    }],
-  "4": [
-    {
+      "pathToAlphabet": "",
+      "gameObject": null
+    }
+  },
+  {
+    "Old South Arabian": {
       "name": "Old South Arabian",
       "years": "",
-      "descendants": {
+      "children": {
         "Sabaean": "Replace"
       },
       "influences": [
@@ -108,12 +120,13 @@
         "Central Semitic"
       ],
       "pathToMap": "",
-        "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Eastern South Semitic": {
       "name": "Eastern South Semitic",
       "years": "",
-      "descendants": {
+      "children": {
         "Mehri-Socotri": "Replace"
       },
       "influences": [
@@ -123,12 +136,13 @@
         "Sabaean"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "North West Semitic": {
       "name": "North West Semitic",
       "years": "",
-      "descendants": {
+      "children": {
         "Canaanite": "Replace",
         "Amorite": "Replace"
       },
@@ -137,12 +151,13 @@
         "Central Semitic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Central Semitic": {
       "name": "Central Semitic",
       "years": "",
-      "descendants": {
+      "children": {
         "Old Arabic": "Replace"
       },
       "influences": [
@@ -158,27 +173,30 @@
         "Old Aramaic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
-      "name": "Ethiopic",
-      "years": "",
-      "descendants": {
-        "North Ethiopic": "Replace",
-        "South Ethiopic": "Replace"
-      },
-      "influences": [
-        "South Semitic",
-        "Old South Arabian"
-      ],
-      "pathToMap": "",
-      "pathToAlphabet": ""
-    }],
-  "5": [
-    {
+    "Ethiopic": {
+    "name": "Ethiopic",
+    "years": "",
+    "children": {
+      "North Ethiopic": "Replace",
+      "South Ethiopic": "Replace"
+    },
+    "influences": [
+      "South Semitic",
+      "Old South Arabian"
+    ],
+    "pathToMap": "",
+    "pathToAlphabet": "",
+      "gameObject": null
+  }
+  },
+  {
+    "Sabaean": {
       "name": "Sabaean",
       "years": "",
-      "descendants": {
+      "children": {
         "Himyaritic": "Add",
         "Hadramatic": "Add",
         "Minaean": "Add"
@@ -196,12 +214,13 @@
         "Arabic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Mehri-Socotri": {
       "name": "Mehri-Socotri",
       "years": "",
-      "descendants": {
+      "children": {
         "Shehri": "Replace",
         "Mehri": "Replace",
         "Socotri": "Replace"
@@ -212,24 +231,26 @@
         "Hadramatic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "North Ethiopic": {
       "name": "North Ethiopic",
       "years": "",
-      "descendants": {
+      "children": {
         "Ge'ez": "Replace"
       },
       "influences": [
         "South Ethiopic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "South Ethiopic": {
       "name": "South Ethiopic",
       "years": "",
-      "descendants": {
+      "children": {
         "Amharic": "Replace",
         "Harari-Gurage": "Replace"
       },
@@ -237,12 +258,13 @@
         "North Ethiopic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Old Arabic": {
       "name": "Old Arabic",
       "years": "",
-      "descendants": {
+      "children": {
         "Arabic": "Replace"
       },
       "influences": [
@@ -260,12 +282,13 @@
         "Mishnaic Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Canaanite": {
       "name": "Canaanite",
       "years": "",
-      "descendants": {
+      "children": {
         "Moabite": "Replace",
         "Edomite": "Replace",
         "Ammonite": "Replace",
@@ -278,12 +301,13 @@
         "Old Aramaic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Amorite": {
       "name": "Amorite",
       "years": "",
-      "descendants": {
+      "children": {
         "Old Aramaic": "Replace"
       },
       "influences": [
@@ -292,24 +316,29 @@
         "Canaanite"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
-    }],
-  "6": [
-    {
+      "pathToAlphabet": "",
+      "gameObject": null
+    }
+  },
+  {
+    "Himyaritic": {
       "name": "Himyaritic",
       "years": "",
-      "descendants": {},
+      "children": {},
       "influences": [
         "Sabaean",
         "Hadramatic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Hadramatic": {
       "name": "Hadramatic",
       "years": "",
-      "descendants": {},
+      "children": {
+        "Qatabanic": "Add"
+      },
       "influences": [
         "Sabaean",
         "Mehri-Socotri",
@@ -318,36 +347,39 @@
         "Mehri"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Minaean": {
       "name": "Minaean",
       "years": "",
-      "descendants": {},
+      "children": {},
       "influences": [
         "Central Semitic",
         "Sabaean",
         "Old Arabic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Shehri": {
       "name": "Shehri",
       "years": "",
-      "descendants": {},
+      "children": {},
       "influences": [
         "Mehri",
         "Socotri",
         "Arabic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Mehri": {
       "name": "Mehri",
       "years": "",
-      "descendants": {},
+      "children": {},
       "influences": [
         "Sabaean",
         "Old Arabic",
@@ -357,12 +389,13 @@
         "Arabic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Socotri": {
       "name": "Socotri",
       "years": "",
-      "descendants": {},
+      "children": {},
       "influences": [
         "Old Arabic",
         "Mehri",
@@ -370,24 +403,26 @@
         "Arabic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Ge'ez": {
       "name": "Ge'ez",
       "years": "",
-      "descendants": {
+      "children": {
         "Tigrinya": "Replace"
       },
       "influences": [
         "Amharic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Amharic": {
       "name": "Amharic",
       "years": "",
-      "descendants": {},
+      "children": {},
       "influences": [
         "Ge'ez",
         "Harari-Gurage",
@@ -396,12 +431,13 @@
         "Harari"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Harari-Gurage": {
       "name": "Harari-Gurage",
       "years": "",
-      "descendants": {
+      "children": {
         "Gurage": "Replace",
         "Harari": "Replace"
       },
@@ -409,14 +445,15 @@
         "Amharic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Arabic": {
       "name": "Arabic",
       "years": "",
-      "descendants": {
+      "children": {
         "Maltese": "Add",
-        "Hebrew": "Add"
+        "Modern Hebrew": "Add"
       },
       "influences": [
         "Sabaean",
@@ -432,55 +469,63 @@
         "Modern Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Moabite": {
       "name": "Moabite",
       "years": "",
-      "descendants": {},
+      "children": {},
       "influences": [
         "Old Arabic",
         "Biblical Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Edomite": {
       "name": "Edomite",
       "years": "",
-      "descendants": {},
+      "children": {},
       "influences": [
         "Old Arabic",
         "Biblical Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Ammonite": {
       "name": "Ammonite",
       "years": "",
-      "descendants": {},
+      "children": {},
       "influences": [
         "Old Arabic",
         "Biblical Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Phoenician": {
       "name": "Phoenician",
       "years": "",
-      "descendants": {},
+      "children": {},
       "influences": [
         "Biblical Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Biblical Hebrew": {
       "name": "Biblical Hebrew",
       "years": "",
-      "descendants": {},
+      "children": {
+        "Mishnaic Hebrew": "Replace",
+        "Modern Hebrew": "Revive"
+      },
       "influences": [
         "Phoenician",
         "Ammonite",
@@ -489,12 +534,15 @@
         "Old Aramaic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     },
-    {
+    "Old Aramaic": {
       "name": "Old Aramaic",
       "years": "",
-      "descendants": {},
+      "children": {
+        "Mandaic": "Replace"
+      },
       "influences": [
         "Akkadian",
         "Central Semitic",
@@ -504,7 +552,157 @@
         "Mishnaic Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": ""
+      "pathToAlphabet": "",
+      "gameObject": null
     }
-  ]
-}
+    },
+  {
+    "Qatabanic": {
+      "name": "Qatabanic",
+      "years": "",
+      "children": {},
+      "influences": [
+        "Sabaean",
+        "Hadramatic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "gameObject": null
+    },
+    "Tigrinya": {
+      "name": "Tigrinya",
+      "years": "",
+      "children": {
+        "Tigre": "Add"
+      },
+      "influences": [
+        "Tigre",
+        "Arabic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "gameObject": null
+    },
+    "Gurage": {
+      "name": "Gurage",
+      "years": "",
+      "children": {},
+      "influences": [
+        "Amharic",
+        "Harari"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "gameObject": null
+    },
+    "Harari": {
+      "name": "Harari",
+      "years": "",
+      "children": {},
+      "influences": [
+        "Amharic",
+        "Arabic",
+        "Gurage"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "gameObject": null
+    },
+    "Maltese": {
+      "name": "Maltese",
+      "years": "",
+      "children": {},
+      "influences": [
+        "Arabic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "gameObject": null
+    },
+    "Mishnaic Hebrew": {
+      "name": "Mishnaic Hebrew",
+      "years": "",
+      "children": {
+        "Modern Hebrew": "Revive"
+      },
+      "influences": [
+        "Old Arabic",
+        "Old Aramaic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "gameObject": null
+    },
+    "Mandaic": {
+      "name": "Mandaic",
+      "years": "",
+      "children": {},
+      "influences": [
+        "Arabic",
+        "Middle Aramaic",
+        "Neo Aramaic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "gameObject": null
+    },
+    "Middle Aramaic": {
+      "name": "Middle Aramaic",
+      "years": "",
+      "children": {
+        "Neo Aramaic": "Replace"
+      },
+      "influences": [
+        "Arabic",
+        "Mandaic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "gameObject": null
+    }
+    },
+  {
+    "Tigre": {
+      "name": "Tigre",
+      "years": "",
+      "children": {},
+      "influences": [
+        "Tigrinya",
+        "Arabic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "gameObject": null
+    },
+    "Neo Aramaic": {
+      "name": "Neo Aramaic",
+      "years": "",
+      "children": {
+        "Modern Hebrew": "Add"
+      },
+      "influences": [
+        "Arabic",
+        "Mandaic",
+        "Modern Hebrew"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "gameObject": null
+    }
+  },
+  {
+    "Modern Hebrew": {
+      "name": "Modern Hebrew",
+      "years": "",
+      "children": {},
+      "influences": [
+        "Arabic",
+        "Neo Aramaic",
+        "Yiddish"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": "",
+      "gameObject": null
+    }
+  }
+]

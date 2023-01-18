@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using UnityEngine;
 
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class GraphBuilder : MonoBehaviour {
     private const string PathToGraphJson = "./Assets/Graphs/LanguageGraph.json";
     [SerializeField]
@@ -14,21 +15,64 @@ public class GraphBuilder : MonoBehaviour {
     private float radiusFactor = 1f;
 
     private GameObject _nodesContainer;
+    private List<Dictionary<string, LanguageNode>> _languagesByLevels;
 
     [Serializable]
-    private class LanguageData {
+    private class LanguageNode {
+        private const float LineRendererWidthMultiplier = 0.1f;
         public string name;
         public string years;
-        public Dictionary<string, DescendantType> Descendants;
+        public Dictionary<string, EChildType> Children;
         public List<string> influences;
         public string pathToMap;
         public string pathToAlphabet;
+        public GameObject gameObject;
+
+        public void ConnectToParent(LanguageNode parent, EChildType childType) {
+            var lineRendererGO = new GameObject($"{parent.name}->{name}");
+            lineRendererGO.transform.parent = gameObject.transform;
+            var lineRenderer = lineRendererGO.gameObject.AddComponent<LineRenderer>();
+            if (lineRenderer == null) {
+                print($"LineRenderer is null on {name}!");
+                return;
+            }
+            lineRenderer.widthMultiplier = LineRendererWidthMultiplier;
+            lineRenderer.material = childType.GetMaterial();
+            if (EChildType.Revive.Equals(childType)) {
+                lineRenderer.sharedMaterial.mainTextureScale = new Vector2(1f / lineRenderer.widthMultiplier, 1f);
+            }
+            else {
+                lineRenderer.sharedMaterial.mainTextureScale = new Vector2(1f, 1f);
+            }
+            lineRenderer.textureMode = LineTextureMode.Tile;
+            lineRenderer.SetPosition(0, parent.gameObject.transform.position);
+            lineRenderer.SetPosition(1, gameObject.transform.position);
+        }
 
         public override string ToString() {
-            return $"Name: {name},\n" +
-                   $"Years: {years},\n" +
-                   $"Descendants: [{string.Join(", ", Descendants)}],\n" +
-                   $"Influences: [{string.Join(", ", influences)}]";
+            return $"\tName: {name},\n" +
+                   $"\tYears: {years},\n" +
+                   $"\tChildren: [{string.Join(", ", Children)}],\n" +
+                   $"\tInfluences: [{string.Join(", ", influences)}]\n";
+        }
+    }
+
+
+    private void Update() {
+        if (!Application.isPlaying) {
+            return;
+        }
+        if (_languagesByLevels == null) {
+            return;
+        }
+        foreach (var languagesInLevel in _languagesByLevels) {
+            foreach (var (_, langNode) in languagesInLevel) {
+                foreach (Transform childLangNode in langNode.gameObject.transform) {
+                    var lineRenderer = childLangNode.GetComponent<LineRenderer>();
+                    lineRenderer.SetPosition(0, langNode.gameObject.transform.position);
+                    lineRenderer.SetPosition(1, childLangNode.position);
+                }
+            }
         }
     }
 
@@ -48,72 +92,61 @@ public class GraphBuilder : MonoBehaviour {
         }
 
         // create objects from json
-        var langNodeDict = JsonConvert.DeserializeObject<Dictionary<string, List<LanguageData>>>(jsonText);
-        if (langNodeDict == null) {
+        _languagesByLevels = JsonConvert.DeserializeObject<List<Dictionary<string, LanguageNode>>>(jsonText);
+        if (_languagesByLevels == null) {
             return;
         }
-        PrintLanguageDict(langNodeDict);
-
+        PrintLanguageDict();
+        
         // instantiate and place nodes in space
-        PlaceNodes(langNodeDict);
-        ConnectEdges(langNodeDict);
+        PlaceNodes();
+        ConnectEdges();
+
+        // make the object rotatable
+        _nodesContainer.AddComponent<ObjectRotator>();
     }
 
-    private void ConnectEdges(Dictionary<string, List<LanguageData>> langNodeDict) {
-        foreach (var (treeLevel, langList) in langNodeDict) {
-            ConnectLanguagesInLevel(treeLevel, langList);
+    private void ConnectEdges() {
+        for (var i = 0; i < _languagesByLevels.Count; i++) {
+            foreach (var (_, langNode) in _languagesByLevels[i]) {
+                ConnectLanguageToChildren(langNode, i + 1);
+            }
+        }
+    }
+    
+    private void ConnectLanguageToChildren(LanguageNode parentLanguage, int childMinLevel) {
+        foreach (var (childName, childType) in parentLanguage.Children) {
+            FindLanguage(childName)
+                ?.ConnectToParent(parentLanguage, childType);
         }
     }
 
-    private void ConnectLanguagesInLevel(string treeLevel, List<LanguageData> langList) {
-        var levelContainer = _nodesContainer.transform.Find(treeLevel);
-        var nextLevelContainer = _nodesContainer.transform.Find((int.Parse(treeLevel) + 1).ToString());
-        if (nextLevelContainer == null) {
+    private LanguageNode FindLanguage(string langName, int fromLevel = 0) {
+        if (fromLevel > _languagesByLevels.Count) {
+            print($"{fromLevel} is higher than tree height ({_languagesByLevels.Count})!");
+            return null;
+        }
+        for (var treeLevel = fromLevel; treeLevel < _languagesByLevels.Count; treeLevel++) {
+            if (_languagesByLevels[treeLevel].ContainsKey(langName)) {
+                return _languagesByLevels[treeLevel][langName];
+            }
+        }
+        print($"language {langName} was not found in tree from level {fromLevel}");
+        return null;
+    }
+    
+    private void PlaceNodes() {
+        if (_languagesByLevels == null) {
             return;
         }
-        foreach (var parentLanguage in langList) {
-            ConnectParentToChildren(levelContainer, parentLanguage, nextLevelContainer);
-        }
-    }
-
-    private static void ConnectParentToChildren(Transform levelContainer, LanguageData parentLanguage, Transform nextLevelContainer) {
-        var parentLangTransform = levelContainer.Find(parentLanguage.name);
-        foreach (var (childName, childType) in parentLanguage.Descendants) {
-            ConnectParentAndChild(parentLangTransform, nextLevelContainer, childName, childType);
-        }
-    }
-
-    private static void ConnectParentAndChild(Transform parentLangTransform, Transform nextLevelContainer, string childName, DescendantType childType) {
-        var childLangTransform = nextLevelContainer.Find(childName);
-        if (childLangTransform == null) {
-            print($"couldn't find {childName} under {nextLevelContainer.name}");
-            return;
-        }
-
-        var lineRendererGO = new GameObject($"{parentLangTransform.name}->{childName}");
-        lineRendererGO.transform.parent = childLangTransform;
-        var lineRenderer = lineRendererGO.gameObject.AddComponent<LineRenderer>();
-        if (lineRenderer == null) {
-            print($"LineRenderer is null on {childLangTransform.name}!");
-            return;
-        }
-        lineRenderer.widthMultiplier = 0.1f;
-        lineRenderer.material = childType.GetMaterial();
-        lineRenderer.SetPosition(0, parentLangTransform.position);
-        lineRenderer.SetPosition(1, childLangTransform.position);
-    }
-
-    private void PlaceNodes(Dictionary<string, List<LanguageData>> langNodeDict) {
-        if (langNodeDict == null) {
-            return;
-        }
-        foreach (var (treeLevel, langList) in langNodeDict) {
-            var level = langNodeDict.Count - int.Parse(treeLevel) + 1;
-            var levelContainer = new GameObject(treeLevel) {
+        for (var i = 0; i < _languagesByLevels.Count; i++) {
+            var level = _languagesByLevels.Count - i + 1;
+            var levelContainer = new GameObject((i + 1).ToString()) {
                 transform = { position = Vector3.zero }
             };
-            for (var i = 0; i < langList.Count; i++) {
-                var langSphere = PlaceNode(level, langList.Count, i, langList[i]);
+            var siblingIndex = 0;
+            foreach (var (langName, langData) in _languagesByLevels[i]) {
+                var langSphere = PlaceNode(level, _languagesByLevels[i].Count, siblingIndex++, langData);
                 if (langSphere == null) {
                     continue;
                 }
@@ -123,14 +156,14 @@ public class GraphBuilder : MonoBehaviour {
         }
     }
 
-    private static void PrintLanguageDict(Dictionary<string, List<LanguageData>> langNodeDict) {
-        if (langNodeDict == null) {
+    private void PrintLanguageDict() {
+        if (_languagesByLevels == null) {
             return;
         }
 
         var description = "";
-        foreach (var (treeLevel, langList) in langNodeDict) {
-            description += $"{treeLevel}\n{string.Join("\n", langList)}\n\n";
+        for (var i = 0; i < _languagesByLevels.Count; i++) {
+            description += $"{i + 1}\n{string.Join("\n", _languagesByLevels[i].Values)}\n\n";
         }
         print(description);
     }
@@ -146,38 +179,24 @@ public class GraphBuilder : MonoBehaviour {
         return jsonText is {Length: 0} ? null : jsonText;
     }
 
-    private GameObject PlaceNode(int level, int numOfSiblings, int siblingIndex, LanguageData langData) {
-        if (numOfSiblings == 0 || siblingIndex < 0 || siblingIndex >= numOfSiblings || level < 1 || langData == null) {
+    private GameObject PlaceNode(int level, int numOfSiblings, int siblingIndex, LanguageNode langNode) {
+        if (numOfSiblings == 0 || siblingIndex < 0 || siblingIndex >= numOfSiblings || level < 1 || langNode == null) {
             return null;
         }
         
-        var radius = (numOfSiblings - 1) * radiusFactor;
+        var radius = RadiusScalingFunction(numOfSiblings - 1) * radiusFactor;
         var angle = Mathf.PI * 2 * siblingIndex / numOfSiblings;
         var x = radius * Mathf.Cos(angle);
         var y = (level - 1) * heightFactor;
         var z = radius * Mathf.Sin(angle);
         var nodeSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        nodeSphere.name = langData.name;
+        nodeSphere.name = langNode.name;
         nodeSphere.transform.position = new Vector3(x, y, z);
+        langNode.gameObject = nodeSphere;
         return nodeSphere;
     }
-}
 
-internal enum DescendantType {
-    Replace,
-    Add,
-    Revive
-}
-
-internal static class DescendantTypeExtensions {
-
-    private static readonly Material ReplaceMaterial = Resources.Load<Material>("ReplaceChildTypeMaterial");
-    public static Material GetMaterial(this DescendantType type) {
-        return type switch {
-            DescendantType.Replace => ReplaceMaterial,
-            DescendantType.Add => ReplaceMaterial,
-            DescendantType.Revive => ReplaceMaterial,
-            _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
-        };
+    private float RadiusScalingFunction(float value) {
+        return 1 - 1 / (1 + value);
     }
 }
