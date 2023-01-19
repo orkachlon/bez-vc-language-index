@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectRotator : MonoBehaviour
-{
+public class ObjectRotator : MonoBehaviour {
     private float _sensitivity;
     private Vector3 _mouseReference;
     private Vector3 _mouseOffset;
