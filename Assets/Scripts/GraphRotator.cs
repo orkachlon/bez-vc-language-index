@@ -10,7 +10,9 @@ public class GraphRotator : MonoBehaviour {
     private Vector3 _rotation;
     private bool _isRotating;
     private bool _isZoomed = false;
-    
+    [SerializeField]
+    private float rotationDuration = .5f;
+
     // Start is called before the first frame update
     void Start() {
         _sensitivity = 0.4f;
@@ -71,6 +73,7 @@ public class GraphRotator : MonoBehaviour {
     }
 
     private void RotateTowards(LanguageNode langNode) {
+        print($"clicked {langNode.GetName()}");
         var mainCam = Camera.main;
         if (mainCam is null) {
             throw new Exception("Main Camera can't be null!");
@@ -78,7 +81,7 @@ public class GraphRotator : MonoBehaviour {
         // graph center on camera height
         var mainCamPos = mainCam.transform.position;
         var langNodePos = langNode.transform.position;
-        // we only rotate on x so
+        // we only rotate around y so
         // zero out all y values to not mess with the rotation angle
         var graphCenter = new Vector3(mainCamPos.x ,0, 0);
         var graphToNode = langNodePos - graphCenter;
@@ -86,17 +89,15 @@ public class GraphRotator : MonoBehaviour {
         var graphToCam = mainCamPos - graphCenter;
         graphToCam.y = 0;
         var angleToRotate = Vector3.SignedAngle(graphToNode, graphToCam, Vector3.up);
-        transform.Rotate(Vector3.up, angleToRotate);
-        // var fwd = Quaternion.Euler(0, angleToRotate, 0) * Vector3.forward;
-        // Vector4 right = Vector3.Cross(Vector3.up, fwd);
-        // fwd = Vector3.Cross(right, Vector3.up);
- 
-        // var endRotation = Quaternion.LookRotation(fwd, Vector3.up);
-        // var endRotation = Quaternion.LookRotation(graphToCam, Vector3.up);
-        // var endRotation = Quaternion.FromToRotation(graphToNode, graphToCam);
-        // var eulerRotation = new Vector3(0, angleToRotate, 0);
-        // var endRotation = Quaternion.Euler(eulerRotation);
-        // StartCoroutine(LerpGraphRotation(endRotation, 3f));
+
+        // get angle between V3fwd and transform.fwd
+        var fwdOffset = Vector3.SignedAngle(Vector3.forward, transform.forward, Vector3.up);
+        // add angle between graphToNode and graphToCam
+        var endAngle = angleToRotate + fwdOffset;
+
+        var eulerRotation = new Vector3(0, endAngle, 0);
+        var endRotation = Quaternion.Euler(eulerRotation);
+        StartCoroutine(LerpGraphRotation(endRotation, rotationDuration));
 
         // mainCam.transform.position = langNode.transform.position + Vector3.back * 5;
         // var nodeRadius = graphToNode.magnitude;
@@ -105,14 +106,35 @@ public class GraphRotator : MonoBehaviour {
     }
 
     private IEnumerator LerpGraphRotation(Quaternion endRotation, float duration) {
+        // rotate without animation
+        // transform.Rotate(Vector3.up, angleToRotate);
         var time = 0f;
+        var startRotation = transform.rotation;
         while (time < duration) {
             // lerp graph rotation
-            transform.rotation = Quaternion.Lerp(transform.rotation, endRotation, time / duration);
+            var t = time / duration;
+            t = t * t * (3f - 2f * t); // ease animation
+            transform.rotation = Quaternion.Lerp(startRotation, endRotation, t);
             // increment
             time += Time.deltaTime;
             yield return null;
         }
+
+        transform.rotation = endRotation;
+    }
+    
+    private IEnumerator LerpGraphRotation(Vector3 endLookDirection, float duration) {
+        var time = 0f;
+        // Vector3.Lerp(transform.forward, Quaternion.)
+        while (time < duration) {
+            // lerp graph rotation
+            // transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, time / duration);
+            // increment
+            time += Time.deltaTime;
+            yield return null;
+        }
+    
+        // transform.rotation = endRotation;
     }
 
     private IEnumerator MoveCamera(Camera lerpCam, Vector3 cameraEndPos, float duration) {

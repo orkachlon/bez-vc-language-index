@@ -22,6 +22,10 @@ public class GraphBuilder : MonoBehaviour {
     private List<Dictionary<string, LanguageNode>> _langNodesByLevels;
 
     private void Start() {
+        // BuildGraph();
+    }
+
+    private void Awake() {
         BuildGraph();
     }
 
