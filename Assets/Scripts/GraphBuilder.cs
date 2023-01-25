@@ -15,10 +15,11 @@ public class GraphBuilder : MonoBehaviour {
     private float radiusFactor = 1f;
     [SerializeField]
     private bool isGraphBuilt = false;
+    [SerializeField] [NotNull] private LanguageNode languageNodePrefab;
     
-    [SerializeField]
-    private GameObject nodesContainer;
-    private List<Dictionary<string, LanguageNode>> _languagesByLevels;
+    private GameObject _nodesContainer;
+    private List<Dictionary<string, LanguageData>> _langDataByLevels;
+    private List<Dictionary<string, LanguageNode>> _langNodesByLevels;
 
     private void Start() {
         BuildGraph();
@@ -37,14 +38,13 @@ public class GraphBuilder : MonoBehaviour {
             return;
         }
 
-        for (var level = 0; level < _languagesByLevels.Count; level++) {
-            foreach (var (_, langNode) in _languagesByLevels[level]) {
-                foreach (var (childName, _) in langNode.Children) {
-                    var child = FindLanguage(childName, level + 1);
-                    foreach (Transform connection in child.gameObject.transform) {
-                        var lineRenderer = connection.GetComponent<LineRenderer>();
-                        lineRenderer.SetPosition(0, langNode.gameObject.transform.position);
-                        lineRenderer.SetPosition(1, child.gameObject.transform.position);
+        for (var level = 0; level < _langNodesByLevels.Count; level++) {
+            foreach (var (_, parentNode) in _langNodesByLevels[level]) {
+                foreach (var (childName, _) in parentNode.GetChildren()) {
+                    var childNode = FindLanguage(childName, level + 1);
+                    foreach (var connection in childNode.gameObject.GetComponentsInChildren<LineRenderer>()) {
+                        connection.SetPosition(0, parentNode.transform.position);
+                        connection.SetPosition(1, childNode.transform.position);
                     }
                 }
             }
@@ -52,7 +52,7 @@ public class GraphBuilder : MonoBehaviour {
     }
 
     public void BuildGraph() {
-        InitNodeContainer();
+        InitNodeContainers();
         CreateDictFromJson();
         // for debugging json
         PrintLanguageDict();
@@ -60,7 +60,7 @@ public class GraphBuilder : MonoBehaviour {
         PlaceNodes();
         ConnectEdges();
         // make the object rotatable
-        nodesContainer.AddComponent<ObjectRotator>();
+        _nodesContainer.AddComponent<GraphRotator>();
         isGraphBuilt = true;
     }
 
@@ -71,51 +71,57 @@ public class GraphBuilder : MonoBehaviour {
         }
 
         // create objects from json
-        _languagesByLevels = JsonConvert.DeserializeObject<List<Dictionary<string, LanguageNode>>>(jsonText);
-        if (_languagesByLevels == null) {
+        _langDataByLevels = JsonConvert.DeserializeObject<List<Dictionary<string, LanguageData>>>(jsonText);
+        if (_langDataByLevels == null) {
             throw new JsonSerializationException("Couldn't create dictionary from json text!");
         }
     }
 
-    private void InitNodeContainer() {
-        var wasDestroyed = DestroyGameObject(nodesContainer);
+    private void InitNodeContainers() {
+        var wasDestroyed = DestroyGameObject(_nodesContainer);
         if (!wasDestroyed) {
             var container = GameObject.FindWithTag("NodeContainer");
             wasDestroyed = DestroyGameObject(container);
         }
 
-        if (wasDestroyed || nodesContainer is null) {
+        if (wasDestroyed || _nodesContainer is null) {
             isGraphBuilt = false;
-            nodesContainer = new GameObject("NodeContainer") {
+            _nodesContainer = new GameObject("NodeContainer") {
                 transform = {position = Vector3.zero},
                 tag = "NodeContainer"
             };
         }
+
+        _langNodesByLevels ??= new List<Dictionary<string, LanguageNode>>();
+
+        if (_langNodesByLevels.Count != 0) {
+            _langNodesByLevels.Clear();
+        }
     }
 
     private void ConnectEdges() {
-        for (var level = 0; level < _languagesByLevels.Count; level++) {
-            foreach (var (_, langNode) in _languagesByLevels[level]) {
+        for (var level = 0; level < _langNodesByLevels.Count; level++) {
+            foreach (var (_, langNode) in _langNodesByLevels[level]) {
                 ConnectLanguageToChildren(langNode, level + 1);
             }
         }
     }
 
     private void ConnectLanguageToChildren(LanguageNode parentLanguage, int childMinLevel) {
-        foreach (var (childName, childType) in parentLanguage.Children) {
-            FindLanguage(childName, childMinLevel)
-                ?.ConnectToParent(parentLanguage, childType);
+        foreach (var (childName, _) in parentLanguage.GetChildren()) {
+            var childLangNode = FindLanguage(childName, childMinLevel);
+            childLangNode.ConnectToParent(parentLanguage, parentLanguage.GetChildType(childName));
         }
     }
 
     private LanguageNode FindLanguage(string langName, int fromLevel = 0) {
-        if (fromLevel > _languagesByLevels.Count) {
-            print($"{fromLevel} is higher than tree height ({_languagesByLevels.Count})!");
+        if (fromLevel > _langNodesByLevels.Count) {
+            print($"{fromLevel} is higher than tree height ({_langDataByLevels.Count})!");
             return null;
         }
-        for (var treeLevel = fromLevel; treeLevel < _languagesByLevels.Count; treeLevel++) {
-            if (_languagesByLevels[treeLevel].ContainsKey(langName)) {
-                return _languagesByLevels[treeLevel][langName];
+        for (var level = fromLevel; level < _langNodesByLevels.Count; level++) {
+            if (_langNodesByLevels[level].ContainsKey(langName)) {
+                return _langNodesByLevels[level][langName];
             }
         }
         print($"language {langName} was not found in tree from level {fromLevel}");
@@ -123,53 +129,67 @@ public class GraphBuilder : MonoBehaviour {
     }
 
     private void PlaceNodes() {
-        if (_languagesByLevels == null) {
-            return;
+        if (_langDataByLevels == null) {
+            throw new ArgumentException("_langDataByLevels is null! Make sure json was read correctly.");
         }
-        for (var i = 0; i < _languagesByLevels.Count; i++) {
-            var level = _languagesByLevels.Count - i + 1;
-            var levelContainer = new GameObject((i + 1).ToString()) {
+        if (_langNodesByLevels.Count > 0) {
+            throw new ArgumentException("_langNodeByLevels is supposed to be empty before placing nodes!");
+        }
+        for (var level = 0; level < _langDataByLevels.Count; level++) {
+            // create new level dictionary
+            _langNodesByLevels.Add(new Dictionary<string, LanguageNode>());
+            var levelContainer = new GameObject((level + 1).ToString()) {
                 transform = { position = Vector3.zero }
             };
             var siblingIndex = 0;
-            foreach (var (langName, langData) in _languagesByLevels[i]) {
-                var langSphere = PlaceNode(level, _languagesByLevels[i].Count, siblingIndex++, langData);
-                if (langSphere is null) {
+            foreach (var (langName, langData) in _langDataByLevels[level]) {
+                var langNode = PlaceNode(level, siblingIndex++, langData);
+                if (langNode is null) {
                     continue;
                 }
-                langSphere.transform.parent = levelContainer.transform;
+                // organize hierarchy in scene
+                langNode.transform.parent = levelContainer.transform;
+                // add langNode to level dictionary
+                _langNodesByLevels[level][langName] = langNode;
             }
-            levelContainer.transform.parent = nodesContainer.transform;
+            // organize hierarchy in scene
+            levelContainer.transform.parent = _nodesContainer.transform;
         }
     }
 
     private void PrintLanguageDict() {
-        if (_languagesByLevels is null) {
+        if (_langDataByLevels is null) {
             return;
         }
 
         var description = "";
-        for (var i = 0; i < _languagesByLevels.Count; i++) {
-            description += $"{i + 1}\n{string.Join("\n", _languagesByLevels[i].Values)}\n\n";
+        for (var i = 0; i < _langDataByLevels.Count; i++) {
+            description += $"{i + 1}\n{string.Join("\n", _langDataByLevels[i].Values)}\n\n";
         }
         print(description);
     }
 
-    private GameObject PlaceNode(int level, int numOfSiblings, int siblingIndex, LanguageNode langNode) {
-        if (numOfSiblings == 0 || siblingIndex < 0 || siblingIndex >= numOfSiblings || level < 1 || langNode is null) {
+    private LanguageNode PlaceNode(int level, int siblingIndex, LanguageData langData) {
+        
+        var numOfSiblings = _langDataByLevels[level].Count;
+        if (numOfSiblings == 0 || siblingIndex < 0 || siblingIndex >= numOfSiblings || level < 0 || langData is null) {
             return null;
         }
-        
         var radius = RadiusScalingFunction(numOfSiblings - 1) * radiusFactor;
         var angle = Mathf.PI * 2 * siblingIndex / numOfSiblings;
         var x = radius * Mathf.Cos(angle);
-        var y = (level - 1) * heightFactor;
+        var y = (_langDataByLevels.Count - level) * heightFactor;
         var z = radius * Mathf.Sin(angle);
-        var nodeSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        nodeSphere.name = langNode.name;
-        nodeSphere.transform.position = new Vector3(x, y, z);
-        langNode.gameObject = nodeSphere;
-        return nodeSphere;
+        var langNode = Instantiate(languageNodePrefab, new Vector3(x, y, z), Quaternion.identity);
+        if (langNode is null) {
+            return null;
+        }
+        langNode.SetLangData(langData);
+        // var nodeSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        // nodeSphere.name = langData.name;
+        // nodeSphere.transform.position = new Vector3(x, y, z);
+        // langData.gameObject = nodeSphere;
+        return langNode;
     }
 
     private float RadiusScalingFunction(float value) {

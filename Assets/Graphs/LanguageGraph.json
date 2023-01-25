@@ -9,8 +9,7 @@
       },
       "influences": [],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     }
   },
   {
@@ -25,8 +24,7 @@
         "East Semitic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "East Semitic": {
       "name": "East Semitic",
@@ -40,8 +38,7 @@
         "North Central Semitic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     }
   },
   {
@@ -59,8 +56,7 @@
         "Central Semitic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "North Central Semitic": {
       "name": "North Central Semitic",
@@ -74,8 +70,7 @@
         "East Semitic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Eblaite": {
       "name": "Eblaite",
@@ -88,8 +83,7 @@
         "Amorite"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Akkadian": {
       "name": "Akkadian",
@@ -103,8 +97,7 @@
         "Old Aramaic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     }
   },
   {
@@ -120,8 +113,7 @@
         "Central Semitic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Eastern South Semitic": {
       "name": "Eastern South Semitic",
@@ -136,8 +128,7 @@
         "Sabaean"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "North West Semitic": {
       "name": "North West Semitic",
@@ -151,8 +142,7 @@
         "Central Semitic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Central Semitic": {
       "name": "Central Semitic",
@@ -173,8 +163,7 @@
         "Old Aramaic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Ethiopic": {
     "name": "Ethiopic",
@@ -188,8 +177,7 @@
       "Old South Arabian"
     ],
     "pathToMap": "",
-    "pathToAlphabet": "",
-      "gameObject": null
+    "pathToAlphabet": ""
   }
   },
   {
@@ -214,8 +202,7 @@
         "Arabic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Mehri-Socotri": {
       "name": "Mehri-Socotri",
@@ -231,8 +218,7 @@
         "Hadramatic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "North Ethiopic": {
       "name": "North Ethiopic",
@@ -244,8 +230,7 @@
         "South Ethiopic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "South Ethiopic": {
       "name": "South Ethiopic",
@@ -258,8 +243,7 @@
         "North Ethiopic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Old Arabic": {
       "name": "Old Arabic",
@@ -282,8 +266,7 @@
         "Mishnaic Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Canaanite": {
       "name": "Canaanite",
@@ -301,8 +284,7 @@
         "Old Aramaic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Amorite": {
       "name": "Amorite",
@@ -316,8 +298,7 @@
         "Canaanite"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     }
   },
   {
@@ -330,8 +311,7 @@
         "Hadramatic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Hadramatic": {
       "name": "Hadramatic",
@@ -347,8 +327,7 @@
         "Mehri"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Minaean": {
       "name": "Minaean",
@@ -360,8 +339,7 @@
         "Old Arabic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Shehri": {
       "name": "Shehri",
@@ -373,8 +351,7 @@
         "Arabic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Mehri": {
       "name": "Mehri",
@@ -389,8 +366,7 @@
         "Arabic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Socotri": {
       "name": "Socotri",
@@ -403,8 +379,7 @@
         "Arabic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Ge'ez": {
       "name": "Ge'ez",
@@ -416,8 +391,7 @@
         "Amharic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Amharic": {
       "name": "Amharic",
@@ -431,8 +405,7 @@
         "Harari"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Harari-Gurage": {
       "name": "Harari-Gurage",
@@ -445,8 +418,7 @@
         "Amharic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Arabic": {
       "name": "Arabic",
@@ -469,8 +441,7 @@
         "Modern Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Moabite": {
       "name": "Moabite",
@@ -481,8 +452,7 @@
         "Biblical Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Edomite": {
       "name": "Edomite",
@@ -493,8 +463,7 @@
         "Biblical Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Ammonite": {
       "name": "Ammonite",
@@ -505,8 +474,7 @@
         "Biblical Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Phoenician": {
       "name": "Phoenician",
@@ -516,8 +484,7 @@
         "Biblical Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Biblical Hebrew": {
       "name": "Biblical Hebrew",
@@ -534,8 +501,7 @@
         "Old Aramaic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Old Aramaic": {
       "name": "Old Aramaic",
@@ -552,8 +518,7 @@
         "Mishnaic Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     }
     },
   {
@@ -566,8 +531,7 @@
         "Hadramatic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Tigrinya": {
       "name": "Tigrinya",
@@ -580,8 +544,7 @@
         "Arabic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Gurage": {
       "name": "Gurage",
@@ -592,8 +555,7 @@
         "Harari"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Harari": {
       "name": "Harari",
@@ -605,8 +567,7 @@
         "Gurage"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Maltese": {
       "name": "Maltese",
@@ -616,8 +577,7 @@
         "Arabic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Mishnaic Hebrew": {
       "name": "Mishnaic Hebrew",
@@ -630,8 +590,7 @@
         "Old Aramaic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Mandaic": {
       "name": "Mandaic",
@@ -643,8 +602,7 @@
         "Neo Aramaic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Middle Aramaic": {
       "name": "Middle Aramaic",
@@ -657,8 +615,7 @@
         "Mandaic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     }
     },
   {
@@ -671,8 +628,7 @@
         "Arabic"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     },
     "Neo Aramaic": {
       "name": "Neo Aramaic",
@@ -686,8 +642,7 @@
         "Modern Hebrew"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     }
   },
   {
@@ -701,8 +656,7 @@
         "Yiddish"
       ],
       "pathToMap": "",
-      "pathToAlphabet": "",
-      "gameObject": null
+      "pathToAlphabet": ""
     }
   }
 ]

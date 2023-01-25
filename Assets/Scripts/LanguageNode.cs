@@ -1,24 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Unity.VisualScripting;
 using UnityEngine;
 
-[Serializable]
-class LanguageNode {
+public class LanguageNode : MonoBehaviour {
     private const float LineRendererWidthMultiplier = 0.1f;
-    public string name;
-    public string years;
-    public Dictionary<string, EChildType> Children;
-    public List<string> influences;
-    public string pathToMap;
-    public string pathToAlphabet;
-    public GameObject gameObject;
+
+    private LanguageData _langData;
+    
+    public static event Action<LanguageNode> OnLangNodeClicked;
+    
+    public void SetLangData(LanguageData langData) {
+        _langData = langData;
+        name = langData.name;
+    }
+
+    private void OnMouseDown() {
+        // rotate graph so that node is in front of camera
+        OnLangNodeClicked?.Invoke(this);
+        // zoom in to node
+    }
 
     public void ConnectToParent(LanguageNode parent, EChildType childType) {
-        var lineRendererGO = new GameObject($"{parent.name}->{name}");
-        lineRendererGO.transform.parent = gameObject.transform;
+        var lineRendererGO = new GameObject($"{parent.GetName()} -> {GetName()}");
+        lineRendererGO.transform.parent = transform;
         var lineRenderer = lineRendererGO.gameObject.AddComponent<LineRenderer>();
         if (lineRenderer is null) {
-            MonoBehaviour.print($"LineRenderer is null on {name}!");
+            print($"LineRenderer is null on {GetName()}!");
             return;
         }
         lineRenderer.widthMultiplier = LineRendererWidthMultiplier;
@@ -30,14 +39,27 @@ class LanguageNode {
             lineRenderer.sharedMaterial.mainTextureScale = new Vector2(1f, 1f);
         }
         lineRenderer.textureMode = LineTextureMode.Tile;
-        lineRenderer.SetPosition(0, parent.gameObject.transform.position);
-        lineRenderer.SetPosition(1, gameObject.transform.position);
+        lineRenderer.SetPosition(0, parent.transform.position);
+        lineRenderer.SetPosition(1, transform.position);
+    }
+
+    public EChildType GetChildType(string childName) {
+        if (!_langData.Children.ContainsKey(childName)) {
+            throw new ArgumentException($"{childName} wasn't found in {_langData.name}'s children!");
+        }
+
+        return _langData.Children[childName];
+    }
+
+    public string GetName() {
+        return _langData.name;
+    }
+
+    public IEnumerable<KeyValuePair<string, EChildType>> GetChildren() {
+        return _langData.Children.AsReadOnlyCollection();
     }
 
     public override string ToString() {
-        return $"\tName: {name},\n" +
-               $"\tYears: {years},\n" +
-               $"\tChildren: [{string.Join(", ", Children)}],\n" +
-               $"\tInfluences: [{string.Join(", ", influences)}]\n";
+        return _langData.ToString();
     }
 }

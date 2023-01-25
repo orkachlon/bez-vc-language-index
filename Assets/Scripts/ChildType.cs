@@ -1,13 +1,13 @@
 ﻿using System;
 using UnityEngine;
 
-internal enum EChildType {
+public enum EChildType {
     Replace,
     Add,
     Revive
 }
 
-internal static class ChildTypeExtensions {
+public static class ChildTypeExtensions {
 
     private static readonly Material ReplaceMaterial = Resources.Load<Material>("ReplaceChildTypeMaterial");
     private static readonly Material AddMaterial = Resources.Load<Material>("AddChildTypeMaterial");
