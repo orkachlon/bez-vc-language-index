@@ -20,6 +20,8 @@ public class GraphRotator : MonoBehaviour {
         _sensitivity = 0.4f;
         _rotation = Vector3.zero;
         LanguageNode.OnLangNodeClicked += RotateTowards;
+        AncestryConnection.OnConnectionClicked += RotateTowards;
+        BackArrowClickReceiver.OnBackArrowClicked += EnableRotation;
     }
 
     // Update is called once per frame
@@ -74,6 +76,10 @@ public class GraphRotator : MonoBehaviour {
         _isRotating = false;
     }
 
+    private void EnableRotation() {
+        _disableRotation = false;
+    }
+
     private void RotateTowards(LanguageNode langNode) {
         print($"clicked {langNode.GetName()}");
         var mainCam = Camera.main;
@@ -104,6 +110,7 @@ public class GraphRotator : MonoBehaviour {
             StopCoroutine(_graphRotateCoroutine);
         }
         _graphRotateCoroutine = StartCoroutine(LerpGraphRotation(endRotation));
+        _disableRotation = true;
     }
 
     private IEnumerator LerpGraphRotation(Quaternion endRotation) {
@@ -122,6 +129,5 @@ public class GraphRotator : MonoBehaviour {
         }
 
         transform.rotation = endRotation;
-        _disableRotation = true;
     }
 }

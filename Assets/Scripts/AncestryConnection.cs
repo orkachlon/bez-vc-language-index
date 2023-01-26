@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(LineRenderer))]
-public class LanguageAncestryConnection : MonoBehaviour {
-    private const float LineRendererWidthMultiplier = 0.1f;
+public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
 
+    public static event Action<LanguageNode> OnConnectionClicked; 
+    
+    private const float LineRendererWidthMultiplier = 0.1f;
 
     [SerializeField] private LanguageNode parent;
     [SerializeField] private LanguageNode child;
@@ -25,7 +28,8 @@ public class LanguageAncestryConnection : MonoBehaviour {
         SetCollider();
     }
 
-    private void OnMouseDown() {
+    public void OnPointerClick(PointerEventData eventData) {
+        OnConnectionClicked?.Invoke(child == SelectionManager.GetSelectedLanguage() ? parent : child);
         print($"clicked {name}");
     }
 
@@ -35,7 +39,7 @@ public class LanguageAncestryConnection : MonoBehaviour {
         print("LineRenderer not found from link, trying to fetch...");
         lineRenderer = GetComponent<LineRenderer>();
         if (!lineRenderer) {
-            throw new MissingComponentException("LanguageAncestryConnection must have a LineRenderer component!");
+            throw new MissingComponentException("AncestryConnection must have a LineRenderer component!");
         }
     }
 
@@ -45,7 +49,7 @@ public class LanguageAncestryConnection : MonoBehaviour {
         print("EdgeCollider2D not found from link, trying to fetch...");
         boxCollider = GetComponent<BoxCollider>();
         if (!boxCollider) {
-            throw new MissingComponentException("LanguageAncestryConnection must have a BoxCollider component!");
+            throw new MissingComponentException("AncestryConnection must have a BoxCollider component!");
         }
     }
 

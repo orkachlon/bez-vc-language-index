@@ -9,11 +9,10 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
-    private const float LineRendererWidthMultiplier = 0.1f;
 
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private Canvas uiCanvas;
-    [SerializeField] [NotNull] private LanguageAncestryConnection ancestryConnectionPrefab;
+    [SerializeField] [NotNull] private AncestryConnection ancestryConnectionPrefab;
 
 
     private readonly Dictionary<string, LanguageNode> _children = new();
@@ -108,5 +107,29 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
 
     public override string ToString() {
         return _langData.ToString();
+    }
+    
+    public bool Equals(LanguageNode other) {
+        return base.Equals(other) && other is not null && 
+               GetName().Equals(other.GetName());
+    }
+    
+    public override bool Equals(object obj) {
+        return !ReferenceEquals(null, obj) &&
+               (ReferenceEquals(this, obj) || (obj.GetType() == GetType() && Equals((LanguageNode) obj)));
+    }
+
+    public override int GetHashCode() {
+        return HashCode.Combine(base.GetHashCode(), GetName());
+    }
+
+    public static bool operator ==(LanguageNode me, LanguageNode other) {
+        return me is not null && 
+               other is not null && 
+               me.GetName().Equals(other.GetName());
+    }
+
+    public static bool operator !=(LanguageNode me, LanguageNode other) {
+        return !(me == other);
     }
 }

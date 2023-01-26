@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour {
     
     public ECameraType selectedCameraType;
 
+    private static Vector3 _cameraStartPos;
+
     private static Camera _mainCamera;
     [SerializeField]
     private float translationDuration = 1.5f;
@@ -23,24 +25,40 @@ public class CameraController : MonoBehaviour {
 
     private void Start() {
         _mainCamera = Camera.main;
-        LanguageNode.OnLangNodeClicked += MoveCamera;
+        if (!_mainCamera) {
+            throw new MissingComponentException("No main camera found!");
+        }
+        _cameraStartPos = _mainCamera.transform.position;
+        LanguageNode.OnLangNodeClicked += MoveCameraToLanguageNode;
+        AncestryConnection.OnConnectionClicked += MoveCameraToLanguageNode;
+        BackArrowClickReceiver.OnBackArrowClicked += ResetCamera;
     }
 
     private void Update() {
         if (_mainCamera is not null) _mainCamera.orthographic = ECameraType.Orthographic.Equals(selectedCameraType);
     }
 
-    private void MoveCamera(LanguageNode langNode) {
+    private void ResetCamera() {
+        StartCameraMoveCoroutine(_cameraStartPos.y, _cameraStartPos.z);
+    }
+
+    private void MoveCameraToLanguageNode(LanguageNode langNode) {
+        // calculate position
         var langNodePos = langNode.transform.position;
         var camHeight = langNodePos.y;
-        var camZ = Mathf.Sqrt(langNodePos.x * langNodePos.x + langNodePos.z * langNodePos.z) + cameraDistanceFromNode;
+        var camZ = -(Mathf.Sqrt(langNodePos.x * langNodePos.x + langNodePos.z * langNodePos.z) + cameraDistanceFromNode);
 
+        // move camera
+        StartCameraMoveCoroutine(camHeight, camZ);
+    }
+
+    private void StartCameraMoveCoroutine(float camHeight, float camZ) {
         if (_cameraMoveCoroutine is not null) {
             StopCoroutine(_cameraMoveCoroutine);
         }
-        _cameraMoveCoroutine = StartCoroutine(MoveCamera(new Vector3(0, camHeight, -camZ)));
+        _cameraMoveCoroutine = StartCoroutine(MoveCamera(new Vector3(0, camHeight, camZ)));
     }
-    
+
     private IEnumerator MoveCamera(Vector3 cameraEndPos) { 
         var time = 0f; 
         while (time < translationDuration) {
