@@ -6,7 +6,7 @@ using UnityEngine;
 public class GraphBuilderEditor : Editor {
     public override void OnInspectorGUI() {
         var graphBuilder = target as GraphBuilder;
-        if (graphBuilder == null) {
+        if (!graphBuilder) {
             return;
         }
 

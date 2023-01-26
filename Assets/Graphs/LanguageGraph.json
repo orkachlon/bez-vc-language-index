@@ -58,16 +58,16 @@
       "pathToMap": "",
       "pathToAlphabet": ""
     },
-    "North Central Semitic": {
-      "name": "North Central Semitic",
+    "Akkadian": {
+      "name": "Akkadian",
       "years": "",
       "children": {
-        "Central Semitic": "Replace",
-        "North West Semitic": "Replace"
       },
       "influences": [
-        "South Semitic",
-        "East Semitic"
+        "Eblaite",
+        "Central Semitic",
+        "Old Arabic",
+        "Old Aramaic"
       ],
       "pathToMap": "",
       "pathToAlphabet": ""
@@ -85,16 +85,16 @@
       "pathToMap": "",
       "pathToAlphabet": ""
     },
-    "Akkadian": {
-      "name": "Akkadian",
+    "North Central Semitic": {
+      "name": "North Central Semitic",
       "years": "",
       "children": {
+        "Central Semitic": "Replace",
+        "North West Semitic": "Replace"
       },
       "influences": [
-        "Eblaite",
-        "Central Semitic",
-        "Old Arabic",
-        "Old Aramaic"
+        "South Semitic",
+        "East Semitic"
       ],
       "pathToMap": "",
       "pathToAlphabet": ""
@@ -130,16 +130,16 @@
       "pathToMap": "",
       "pathToAlphabet": ""
     },
-    "North West Semitic": {
-      "name": "North West Semitic",
+    "Ethiopic": {
+      "name": "Ethiopic",
       "years": "",
       "children": {
-        "Canaanite": "Replace",
-        "Amorite": "Replace"
+        "North Ethiopic": "Replace",
+        "South Ethiopic": "Replace"
       },
       "influences": [
-        "Eblaite",
-        "Central Semitic"
+        "South Semitic",
+        "Old South Arabian"
       ],
       "pathToMap": "",
       "pathToAlphabet": ""
@@ -165,20 +165,20 @@
       "pathToMap": "",
       "pathToAlphabet": ""
     },
-    "Ethiopic": {
-    "name": "Ethiopic",
-    "years": "",
-    "children": {
-      "North Ethiopic": "Replace",
-      "South Ethiopic": "Replace"
-    },
-    "influences": [
-      "South Semitic",
-      "Old South Arabian"
-    ],
-    "pathToMap": "",
-    "pathToAlphabet": ""
-  }
+    "North West Semitic": {
+      "name": "North West Semitic",
+      "years": "",
+      "children": {
+        "Canaanite": "Replace",
+        "Amorite": "Replace"
+      },
+      "influences": [
+        "Eblaite",
+        "Central Semitic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    }
   },
   {
     "Sabaean": {

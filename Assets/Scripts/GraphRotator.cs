@@ -9,9 +9,11 @@ public class GraphRotator : MonoBehaviour {
     private Vector3 _mouseOffset;
     private Vector3 _rotation;
     private bool _isRotating;
-    private bool _isZoomed = false;
+    private bool _disableRotation = false;
     [SerializeField]
     private float rotationDuration = .5f;
+
+    private Coroutine _graphRotateCoroutine;
 
     // Start is called before the first frame update
     void Start() {
@@ -22,7 +24,7 @@ public class GraphRotator : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (_isZoomed) {
+        if (_disableRotation) {
             return;
         }
 
@@ -54,7 +56,7 @@ public class GraphRotator : MonoBehaviour {
     }
     
     void OnMouseDown() {
-        if (_isZoomed) {
+        if (_disableRotation) {
             return;
         }
         // rotating flag
@@ -65,7 +67,7 @@ public class GraphRotator : MonoBehaviour {
     }
      
     void OnMouseUp() {
-        if (_isZoomed) {
+        if (_disableRotation) {
             return;
         }
         // rotating flag
@@ -97,22 +99,21 @@ public class GraphRotator : MonoBehaviour {
 
         var eulerRotation = new Vector3(0, endAngle, 0);
         var endRotation = Quaternion.Euler(eulerRotation);
-        StartCoroutine(LerpGraphRotation(endRotation, rotationDuration));
 
-        // mainCam.transform.position = langNode.transform.position + Vector3.back * 5;
-        // var nodeRadius = graphToNode.magnitude;
-        // mainCam.transform.position = graphCenter + Vector3.back * nodeRadius + Vector3.back * 5 + Vector3.up * langNodePos.y;
-        // _isZoomed = true;
+        if (_graphRotateCoroutine is not null) {
+            StopCoroutine(_graphRotateCoroutine);
+        }
+        _graphRotateCoroutine = StartCoroutine(LerpGraphRotation(endRotation));
     }
 
-    private IEnumerator LerpGraphRotation(Quaternion endRotation, float duration) {
+    private IEnumerator LerpGraphRotation(Quaternion endRotation) {
         // rotate without animation
         // transform.Rotate(Vector3.up, angleToRotate);
         var time = 0f;
         var startRotation = transform.rotation;
-        while (time < duration) {
+        while (time < rotationDuration) {
             // lerp graph rotation
-            var t = time / duration;
+            var t = time / rotationDuration;
             t = t * t * (3f - 2f * t); // ease animation
             transform.rotation = Quaternion.Lerp(startRotation, endRotation, t);
             // increment
@@ -121,30 +122,6 @@ public class GraphRotator : MonoBehaviour {
         }
 
         transform.rotation = endRotation;
-    }
-    
-    private IEnumerator LerpGraphRotation(Vector3 endLookDirection, float duration) {
-        var time = 0f;
-        // Vector3.Lerp(transform.forward, Quaternion.)
-        while (time < duration) {
-            // lerp graph rotation
-            // transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, time / duration);
-            // increment
-            time += Time.deltaTime;
-            yield return null;
-        }
-    
-        // transform.rotation = endRotation;
-    }
-
-    private IEnumerator MoveCamera(Camera lerpCam, Vector3 cameraEndPos, float duration) {
-        var time = 0f;
-        while (time < duration) {
-            // lerp camera translation
-            lerpCam.transform.position = Vector3.Lerp(lerpCam.transform.position, cameraEndPos, time / duration);
-            // increment
-            time += Time.deltaTime;
-            yield return null;
-        }
+        _disableRotation = true;
     }
 }

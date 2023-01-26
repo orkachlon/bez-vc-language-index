@@ -1,46 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using JetBrains.Annotations;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class LanguageNode : MonoBehaviour {
+public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
     private const float LineRendererWidthMultiplier = 0.1f;
 
+    [SerializeField] private TextMeshProUGUI title;
+    [SerializeField] private Canvas uiCanvas;
+    [SerializeField] [NotNull] private LanguageAncestryConnection ancestryConnectionPrefab;
+
+
+    private readonly Dictionary<string, LanguageNode> _children = new();
+    
     private LanguageData _langData;
-    
+    private Camera _camera;
+
     public static event Action<LanguageNode> OnLangNodeClicked;
-    
+
+    private void Start() {
+        _camera = Camera.main;
+        GetTMProComponent();
+        BindCameraToCanvas();
+    }
+
+    private void Update() {
+        if (!_camera) {
+            return;
+        }
+        uiCanvas.transform.forward = _camera.transform.forward;
+    }
+
+    private void BindCameraToCanvas() {
+        if (!uiCanvas) {
+            uiCanvas = GetComponentInChildren<Canvas>();
+        }
+        if (!uiCanvas) {
+            throw new MissingComponentException("LanguageNode is missing Canvas component!");
+        }
+        uiCanvas.worldCamera = Camera.main;
+    }
+
+    private void GetTMProComponent() {
+        if (!title) {
+            title = GetComponentInChildren<TextMeshProUGUI>();
+        }
+        if (!title) {
+            throw new MissingComponentException("LanguageNode is missing TextMeshPro component!");
+        }
+    }
+
     public void SetLangData(LanguageData langData) {
         _langData = langData;
         name = langData.name;
+        if (!title) {
+            GetTMProComponent();
+        }
+        title.text = _langData.name;
     }
 
+    // not being used
     private void OnMouseDown() {
-        // rotate graph so that node is in front of camera
         OnLangNodeClicked?.Invoke(this);
-        // zoom in to node
     }
 
-    public void ConnectToParent(LanguageNode parent, EChildType childType) {
-        var lineRendererGO = new GameObject($"{parent.GetName()} -> {GetName()}");
-        lineRendererGO.transform.parent = transform;
-        var lineRenderer = lineRendererGO.gameObject.AddComponent<LineRenderer>();
-        if (lineRenderer is null) {
-            print($"LineRenderer is null on {GetName()}!");
-            return;
-        }
-        lineRenderer.widthMultiplier = LineRendererWidthMultiplier;
-        lineRenderer.material = childType.GetMaterial();
-        if (EChildType.Revive.Equals(childType)) {
-            lineRenderer.sharedMaterial.mainTextureScale = new Vector2(1f / lineRenderer.widthMultiplier, 1f);
-        }
-        else {
-            lineRenderer.sharedMaterial.mainTextureScale = new Vector2(1f, 1f);
-        }
-        lineRenderer.textureMode = LineTextureMode.Tile;
-        lineRenderer.SetPosition(0, parent.transform.position);
-        lineRenderer.SetPosition(1, transform.position);
+    public void OnPointerClick(PointerEventData eventData) {
+        OnLangNodeClicked?.Invoke(this);
     }
 
     public EChildType GetChildType(string childName) {
@@ -55,8 +85,25 @@ public class LanguageNode : MonoBehaviour {
         return _langData.name;
     }
 
-    public IEnumerable<KeyValuePair<string, EChildType>> GetChildren() {
-        return _langData.Children.AsReadOnlyCollection();
+    public IEnumerable<KeyValuePair<string, LanguageNode>> GetChildren() {
+        return _children.AsReadOnlyCollection();
+    }
+
+    public void AddChild([NotNull] LanguageNode childLangNode) {
+        _children[childLangNode.GetName()] = childLangNode;
+    }
+
+    public void ConnectEdgesRecursively(float parentConnectionOffset, float childConnectionOffset) {
+        foreach (var (childLangName, childLangNode) in _children) {
+            Instantiate(ancestryConnectionPrefab).Connect(
+                this,
+                childLangNode,
+                GetChildType(childLangName),
+                parentConnectionOffset,
+                childConnectionOffset
+                );
+            childLangNode.ConnectEdgesRecursively(parentConnectionOffset, childConnectionOffset);
+        }
     }
 
     public override string ToString() {
