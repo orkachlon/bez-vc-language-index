@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using JetBrains.Annotations;
 using TMPro;
 using Unity.VisualScripting;
@@ -10,11 +11,16 @@ using UnityEngine.UI;
 
 public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
 
-    [SerializeField] private TextMeshProUGUI title;
+    [SerializeField] private TextContainer languageName;
+    [SerializeField] private TextContainer years;
+    [SerializeField] private TextContainer influences;
+    [SerializeField] private Image map;
     [SerializeField] private Canvas uiCanvas;
     [SerializeField] [NotNull] private AncestryConnection ancestryConnectionPrefab;
 
 
+    private static readonly string InfluencesTitle = "Influences: ";
+    private static readonly string YearsTitle = "Years: ";
     private readonly Dictionary<string, LanguageNode> _children = new();
     
     private LanguageData _langData;
@@ -24,8 +30,26 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
 
     private void Start() {
         _camera = Camera.main;
-        GetTMProComponent();
+        languageName = GetLanguageComponent<TextContainer>(languageName, "LanguageName");
+        years = GetLanguageComponent<TextContainer>(years, "Years");
+        influences = GetLanguageComponent<TextContainer>(influences, "Influences");
+        map = GetLanguageComponent<Image>(map, "Map");
         BindCameraToCanvas();
+
+        OnLangNodeClicked += ShowLanguageDetails;
+        BackArrowClickReceiver.OnBackArrowClicked += HideLanguageDetails;
+    }
+
+    private void ShowLanguageDetails(LanguageNode langNode) {
+        years.enabled = true;
+        influences.enabled = true;
+        map.enabled = true;
+    }
+
+    private void HideLanguageDetails() {
+        years.enabled = false;
+        influences.enabled = false;
+        map.enabled = false;
     }
 
     private void Update() {
@@ -45,27 +69,31 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         uiCanvas.worldCamera = Camera.main;
     }
 
-    private void GetTMProComponent() {
-        if (!title) {
-            title = GetComponentInChildren<TextMeshProUGUI>();
+    private T GetLanguageComponent<T>(T component, string requestedTag) where T: Component {
+        if (!component) {
+            component = gameObject.FindComponentInChildWithTag<T>(requestedTag);
+        } else {
+            return component;
         }
-        if (!title) {
-            throw new MissingComponentException("LanguageNode is missing TextMeshPro component!");
+        if (!component) {
+            throw new MissingComponentException($"LanguageNode is missing {requestedTag} {typeof(T)} component!");
         }
+
+        return component;
     }
 
     public void SetLangData(LanguageData langData) {
+        languageName = GetLanguageComponent<TextContainer>(languageName, "LanguageName");
+        years = GetLanguageComponent<TextContainer>(years, "Years");
+        influences = GetLanguageComponent<TextContainer>(influences, "Influences");
+        map = GetLanguageComponent<Image>(map, "Map");
+        
         _langData = langData;
         name = langData.name;
-        if (!title) {
-            GetTMProComponent();
-        }
-        title.text = _langData.name;
-    }
-
-    // not being used
-    private void OnMouseDown() {
-        OnLangNodeClicked?.Invoke(this);
+        languageName.SetText(_langData.name);
+        years.SetText(YearsTitle + _langData.years); // todo remove years title
+        influences.SetText(InfluencesTitle + string.Join(", ", _langData.influences));
+        map.sprite = Resources.Load<Sprite>(_langData.pathToMap);
     }
 
     public void OnPointerClick(PointerEventData eventData) {
