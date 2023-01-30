@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class SelectionManager : MonoBehaviour {
 
-    private static LanguageNode _selectedLanguage;
+    private static LanguageNode _selectedLanguage = null;
     
     private void Start() {
+        _selectedLanguage = null;
         LanguageNode.OnLangNodeClicked += SetSelectedLanguage;
         AncestryConnection.OnConnectionClicked += SetSelectedLanguage;
+        BackArrowClickReceiver.OnBackArrowClicked += () => SetSelectedLanguage(null);
     }
 
     [CanBeNull]

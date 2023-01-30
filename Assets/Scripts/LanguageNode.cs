@@ -211,7 +211,7 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
     }
     
     public bool Equals(LanguageNode other) {
-        return base.Equals(other) && other is not null && 
+        return base.Equals(other) && other != null && 
                GetName().Equals(other.GetName());
     }
     
@@ -225,7 +225,8 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
     }
 
     public static bool operator ==(LanguageNode me, LanguageNode other) {
-        return me is not null && 
+        return me is null && other is null || 
+               me is not null && 
                other is not null && 
                me.GetName().Equals(other.GetName());
     }

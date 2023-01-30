@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7952365975525064009}
   - component: {fileID: 2257669860070214261}
   - component: {fileID: 2311310629565838651}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: MapBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6062204472939927561}
   - component: {fileID: 8115175566219982414}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: LanguageName
   m_TagString: LanguageName
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5672039540898432957}
   - component: {fileID: 3333659088793736927}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Years
   m_TagString: Years
   m_Icon: {fileID: 0}
@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 9213100668981708916}
   - component: {fileID: 8560226046496730770}
   - component: {fileID: 1842624882286962943}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: YearsBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 4325882356972229660}
   - component: {fileID: 3380848401065944643}
   - component: {fileID: 2914791573009059608}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: LanguageNameBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,6 +560,43 @@ MonoBehaviour:
   map: {fileID: 2311310629565838651}
   uiCanvas: {fileID: 4123262075033130253}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
+  children:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 
+    - 
+    - 
+    _Values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  langData:
+    name: 
+    years: 
+    childToType:
+      _Buckets: ffffffffffffffffffffffff
+      _HashCodes: 000000000000000000000000
+      _Next: 000000000000000000000000
+      _Count: 0
+      _Version: 0
+      _FreeList: -1
+      _FreeCount: 0
+      _Keys:
+      - 
+      - 
+      - 
+      _Values: 000000000000000000000000
+    influences: []
+    pathToMap: 
+    pathToAlphabet: 
+  ancestryConnections: []
+  mainCamera: {fileID: 0}
 --- !u!1 &3894643334201925178
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,7 +608,7 @@ GameObject:
   - component: {fileID: 6754902149367163444}
   - component: {fileID: 1384953789691217777}
   - component: {fileID: 7255209223306982450}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: InfluencesBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -988,7 +1025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8209317802338039447}
   - component: {fileID: 2872089888114936200}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Incluences
   m_TagString: Influences
   m_Icon: {fileID: 0}
@@ -1044,7 +1081,7 @@ GameObject:
   - component: {fileID: 4123262075033130253}
   - component: {fileID: 7763229103598763301}
   - component: {fileID: 8797140090622821119}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1317,7 +1354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1612596851113963832}
   - component: {fileID: 3647343471559878055}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}

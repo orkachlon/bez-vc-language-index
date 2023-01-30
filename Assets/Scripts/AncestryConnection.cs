@@ -34,6 +34,19 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
         print($"clicked {name}");
     }
 
+    private void OnMouseEnter() {
+        if (SelectionManager.GetSelectedLanguage() == null) {
+            return;
+        }
+        LanguageNameTooltip.ShowTooltipStatic(SelectionManager.GetSelectedLanguage() == child
+            ? parent.GetName()
+            : child.GetName());
+    }
+
+    private void OnMouseExit() {
+        LanguageNameTooltip.HideTooltipStatic();
+    }
+
     private void GetLineRenderer() {
         if (lineRenderer)
             return;

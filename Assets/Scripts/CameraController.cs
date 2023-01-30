@@ -35,7 +35,7 @@ public class CameraController : MonoBehaviour {
     }
 
     private void Update() {
-        if (_mainCamera is not null) _mainCamera.orthographic = ECameraType.Orthographic.Equals(selectedCameraType);
+        if (_mainCamera != null) _mainCamera.orthographic = ECameraType.Orthographic.Equals(selectedCameraType);
     }
 
     private void ResetCamera() {
@@ -53,13 +53,14 @@ public class CameraController : MonoBehaviour {
     }
 
     private void StartCameraMoveCoroutine(float camHeight, float camZ) {
-        if (_cameraMoveCoroutine is not null) {
+        if (_cameraMoveCoroutine != null) {
             StopCoroutine(_cameraMoveCoroutine);
         }
         _cameraMoveCoroutine = StartCoroutine(MoveCamera(new Vector3(0, camHeight, camZ)));
     }
 
     private IEnumerator MoveCamera(Vector3 cameraEndPos) { 
+        LanguageNameTooltip.RegisterDisable();
         var time = 0f; 
         while (time < translationDuration) {
             // lerp camera translation
@@ -68,6 +69,9 @@ public class CameraController : MonoBehaviour {
             _mainCamera.transform.position = Vector3.Lerp(_mainCamera.transform.position, cameraEndPos, t);
             // increment
             time += Time.deltaTime;
+            if (t > .9f) { 
+                LanguageNameTooltip.UnregisterDisable();
+            }
             yield return null;
         }
 

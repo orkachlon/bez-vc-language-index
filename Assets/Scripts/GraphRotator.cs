@@ -106,7 +106,7 @@ public class GraphRotator : MonoBehaviour {
         var eulerRotation = new Vector3(0, endAngle, 0);
         var endRotation = Quaternion.Euler(eulerRotation);
 
-        if (_graphRotateCoroutine is not null) {
+        if (_graphRotateCoroutine != null) {
             StopCoroutine(_graphRotateCoroutine);
         }
         _graphRotateCoroutine = StartCoroutine(LerpGraphRotation(endRotation));
@@ -114,6 +114,7 @@ public class GraphRotator : MonoBehaviour {
     }
 
     private IEnumerator LerpGraphRotation(Quaternion endRotation) {
+        LanguageNameTooltip.RegisterDisable();
         // rotate without animation
         // transform.Rotate(Vector3.up, angleToRotate);
         var time = 0f;
@@ -125,6 +126,9 @@ public class GraphRotator : MonoBehaviour {
             transform.rotation = Quaternion.Lerp(startRotation, endRotation, t);
             // increment
             time += Time.deltaTime;
+            if (t > .9f) { 
+                LanguageNameTooltip.UnregisterDisable();
+            }
             yield return null;
         }
 
