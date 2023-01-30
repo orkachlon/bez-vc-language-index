@@ -52,8 +52,28 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
     }
 
     private void ToggleLanguageVisibility(LanguageNode langNode) {
-        if (langNode == this || langNode.children.Values.Contains(this) || children.Values.Contains(langNode)) {
+        // if it's us, then show us and our connections
+        if (langNode == this) {
             gameObject.SetActive(true);
+            foreach (var connection in ancestryConnections) {
+                connection.gameObject.SetActive(true);
+            }
+            return;
+        }
+        // if we are a child of langNode, then show only us without connections
+        if (langNode.children.Values.Contains(this)) {
+            gameObject.SetActive(true);
+            foreach (var connection in ancestryConnections) {
+                connection.gameObject.SetActive(false);
+            }
+            return;
+        }
+        // if we are its parent, then show us and only our connection to langNode
+        if (children.Values.Contains(langNode)) {
+            gameObject.SetActive(true);
+            foreach (var connection in ancestryConnections) {
+                connection.gameObject.SetActive(connection.GetChild() == langNode);
+            }
             return;
         }
         gameObject.SetActive(false);
