@@ -5,6 +5,7 @@ using System.Linq;
 using JetBrains.Annotations;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -28,7 +29,8 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
 
     public static event Action<LanguageNode> OnLangNodeClicked;
 
-    private void Start() {
+    private void Awake() {
+        // EditorUtility.SetDirty(this);
         _camera = Camera.main;
         languageName = GetLanguageComponent<TextContainer>(languageName, "LanguageName");
         years = GetLanguageComponent<TextContainer>(years, "Years");
@@ -36,20 +38,44 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         map = GetLanguageComponent<Image>(map, "Map");
         BindCameraToCanvas();
 
-        OnLangNodeClicked += ShowLanguageDetails;
-        BackArrowClickReceiver.OnBackArrowClicked += HideLanguageDetails;
+        OnLangNodeClicked += ToggleLanguageDetails;
+        AncestryConnection.OnConnectionClicked += ToggleLanguageDetails;
+        BackArrowClickReceiver.OnBackArrowClicked += () => ToggleLanguageDetails(null);
     }
 
-    private void ShowLanguageDetails(LanguageNode langNode) {
-        years.enabled = true;
-        influences.enabled = true;
-        map.enabled = true;
+    private void OnDestroy() {
+        // throw new NotImplementedException();
     }
 
-    private void HideLanguageDetails() {
-        years.enabled = false;
-        influences.enabled = false;
-        map.enabled = false;
+    private void ToggleLanguageDetails(LanguageNode langNode) {
+        if (langNode != this) {
+            // hide details
+            if (years) {
+                years.gameObject.SetActive(false);
+            }
+            if (influences) {
+                influences.gameObject.SetActive(false);
+            }
+            if (map) {
+                map.gameObject.SetActive(false);
+            }
+            return;
+        }
+        // show details
+        // years = GetLanguageComponent<TextContainer>(years, "Years");
+        if (years) {
+            years.gameObject.SetActive(true);
+        }
+
+        // influences = GetLanguageComponent<TextContainer>(influences, "Influences");
+        if (influences) {
+            influences.gameObject.SetActive(true);
+        }
+
+        // map = GetLanguageComponent<Image>(map, "Map");
+        if (map) {
+            map.gameObject.SetActive(true);
+        }
     }
 
     private void Update() {

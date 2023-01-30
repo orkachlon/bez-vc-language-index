@@ -83,7 +83,7 @@ public class GraphRotator : MonoBehaviour {
     private void RotateTowards(LanguageNode langNode) {
         print($"clicked {langNode.GetName()}");
         var mainCam = Camera.main;
-        if (mainCam is null) {
+        if (mainCam == null) {
             throw new Exception("Main Camera can't be null!");
         }
         // graph center on camera height

@@ -34,7 +34,7 @@ public class GraphBuilder : MonoBehaviour {
         InitNodeContainers();
         CreateDictFromJson();
         // for debugging json
-        PrintLanguageDict();
+        // PrintLanguageDict();
         // create physical graph
         PlaceNodes();
         ConnectLanguageTree();
@@ -44,6 +44,9 @@ public class GraphBuilder : MonoBehaviour {
     }
 
     private void CreateDictFromJson() {
+        if (_langDataByLevels.Count > 0) {
+            return;
+        }
         var jsonText = ReadJsonText();
         if (jsonText == null) {
             throw new JsonException("Couldn't read text from json file!");
@@ -57,22 +60,24 @@ public class GraphBuilder : MonoBehaviour {
     }
 
     private void InitNodeContainers() {
-        var wasDestroyed = DestroyGameObject(_nodesContainer);
-        if (!wasDestroyed) {
-            var container = GameObject.FindWithTag("NodeContainer");
-            wasDestroyed = DestroyGameObject(container);
-        }
+        // var wasDestroyed = DestroyGameObject(_nodesContainer);
+        // if (!wasDestroyed) {
+        //     var container = GameObject.FindWithTag("NodeContainer");
+        //     wasDestroyed = DestroyGameObject(container);
+        // }
 
-        if (wasDestroyed || _nodesContainer is null) {
+        if (_langNodesByLevels == null) {
+            _langNodesByLevels = new List<Dictionary<string, LanguageNode>>();
+        }
+        if (_langDataByLevels == null) {
+            _langDataByLevels = new List<Dictionary<string, LanguageData>>();
+        }
+        if (/*wasDestroyed || */_nodesContainer == null) {
             _nodesContainer = new GameObject("NodeContainer") {
                 transform = {position = Vector3.zero},
                 tag = "NodeContainer"
             };
-        }
-
-        _langNodesByLevels ??= new List<Dictionary<string, LanguageNode>>();
-
-        if (_langNodesByLevels.Count != 0) {
+            _langDataByLevels.Clear();
             _langNodesByLevels.Clear();
         }
     }
@@ -100,7 +105,8 @@ public class GraphBuilder : MonoBehaviour {
             throw new ArgumentException("_langDataByLevels is null! Make sure json was read correctly.");
         }
         if (_langNodesByLevels.Count > 0) {
-            throw new ArgumentException("_langNodeByLevels is supposed to be empty before placing nodes!");
+            // assume graph was built in editor
+            return;
         }
         for (var level = 0; level < _langDataByLevels.Count; level++) {
             // create new level dictionary
@@ -111,7 +117,7 @@ public class GraphBuilder : MonoBehaviour {
             var siblingIndex = 0;
             foreach (var (langName, langData) in _langDataByLevels[level]) {
                 var langNode = PlaceNode(level, siblingIndex++, langData);
-                if (langNode is null) {
+                if (langNode == null) {
                     continue;
                 }
                 // organize hierarchy in scene
@@ -125,7 +131,7 @@ public class GraphBuilder : MonoBehaviour {
     }
 
     private void PrintLanguageDict() {
-        if (_langDataByLevels is null) {
+        if (_langDataByLevels == null) {
             return;
         }
 
@@ -139,7 +145,7 @@ public class GraphBuilder : MonoBehaviour {
     private LanguageNode PlaceNode(int level, int siblingIndex, LanguageData langData) {
         
         var numOfSiblings = _langDataByLevels[level].Count;
-        if (numOfSiblings == 0 || siblingIndex < 0 || siblingIndex >= numOfSiblings || level < 0 || langData is null) {
+        if (numOfSiblings == 0 || siblingIndex < 0 || siblingIndex >= numOfSiblings || level < 0 || langData == null) {
             return null;
         }
         var radius = RadiusScalingFunction(numOfSiblings - 1) * radiusFactor;
@@ -148,7 +154,7 @@ public class GraphBuilder : MonoBehaviour {
         var y = (_langDataByLevels.Count - level) * heightFactor;
         var z = radius * Mathf.Sin(angle);
         var langNode = Instantiate(languageNodePrefab, new Vector3(x, y, z), Quaternion.identity);
-        if (langNode is null) {
+        if (langNode == null) {
             return null;
         }
         langNode.SetLangData(langData);
@@ -156,6 +162,9 @@ public class GraphBuilder : MonoBehaviour {
     }
 
     private void ConnectLanguageTree() {
+        if (_langNodesByLevels.Count == 0) {
+            throw new ArgumentException("Language Nodes Dict must already be populated on ConnectLanguageTree!");
+        }
         for (var level = 0; level < _langNodesByLevels.Count; level++) {
             foreach (var (parentLangName, parentLangNode) in _langNodesByLevels[level]) {
                 var langData = _langDataByLevels[level][parentLangName];
@@ -171,9 +180,12 @@ public class GraphBuilder : MonoBehaviour {
         return Mathf.Log(1 + value);
     }
 
-    private static bool DestroyGameObject(Object destroyObject) {
-        if (destroyObject is null) return false;
-        
+    private static bool DestroyGameObject(GameObject destroyObject) {
+        if (destroyObject == null) return false;
+
+        foreach (Transform t in destroyObject.transform) {
+            DestroyGameObject(t.gameObject);
+        }
         if (Application.isPlaying) {
             Destroy(destroyObject);
         }
