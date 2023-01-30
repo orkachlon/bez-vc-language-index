@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(LineRenderer))]
+[Serializable]
 public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
 
     public static event Action<LanguageNode> OnConnectionClicked; 
@@ -15,8 +16,8 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private BoxCollider boxCollider;
     
-    private float _parentOffset;
-    private float _childOffset;
+    [SerializeField] [HideInInspector] private float parentOffset;
+    [SerializeField] [HideInInspector] private float childOffset;
 
     private void Start() {
         GetLineRenderer();
@@ -66,8 +67,8 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
     private (Vector3 parentLinePos, Vector3 childLinePos) GetOffsetPositions() {
         var parentPos = parent.transform.position;
         var childPos = child.transform.position;
-        var parentLinePos = parentPos + (childPos - parentPos).normalized * _parentOffset;
-        var childLinePos = childPos + (parentPos - childPos).normalized * _childOffset;
+        var parentLinePos = parentPos + (childPos - parentPos).normalized * parentOffset;
+        var childLinePos = childPos + (parentPos - childPos).normalized * childOffset;
         return (parentLinePos, childLinePos);
     }
 
@@ -77,8 +78,8 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
         transform.parent = parentConnect.transform;
         parent = parentConnect;
         child = childConnect;
-        _parentOffset = parentOffset;
-        _childOffset = childOffset;
+        this.parentOffset = parentOffset;
+        this.childOffset = childOffset;
         
         // draw line
         if (!lineRenderer) {
@@ -89,6 +90,14 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
         
         // create collider
         SetCollider();
+    }
+
+    public LanguageNode GetChild() {
+        return child;
+    }
+    
+    public LanguageNode GetParent() {
+        return parent;
     }
 
     private void SetLineRenderer(EChildType childType) {

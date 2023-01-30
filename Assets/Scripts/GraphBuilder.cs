@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Unity.VisualScripting;
@@ -18,9 +20,10 @@ public class GraphBuilder : MonoBehaviour {
     [SerializeField] private float childConnectionOffset = 2f;
     [SerializeField] [NotNull] private LanguageNode languageNodePrefab;
     
-    private GameObject _nodesContainer;
-    private List<Dictionary<string, LanguageData>> _langDataByLevels;
-    private List<Dictionary<string, LanguageNode>> _langNodesByLevels;
+    // Don't change from editor
+    [SerializeField] [HideInInspector] private GameObject nodesContainer;
+    [SerializeField] [HideInInspector] private List<LanguageDataInLevel> langDataByLevels;
+    [SerializeField] [HideInInspector] private List<LanguageNodesInLevel> langNodesByLevels;
 
     private void Start() {
         // BuildGraph();
@@ -40,11 +43,17 @@ public class GraphBuilder : MonoBehaviour {
         ConnectLanguageTree();
         ConnectEdges();
         // make the object rotatable
-        _nodesContainer.AddComponent<GraphRotator>();
+        nodesContainer.AddComponent<GraphRotator>();
+    }
+
+    public void DeleteGraph() {
+        if (nodesContainer != null) {
+            DestroyGameObject(nodesContainer);
+        }
     }
 
     private void CreateDictFromJson() {
-        if (_langDataByLevels.Count > 0) {
+        if (langDataByLevels.Count > 0) {
             return;
         }
         var jsonText = ReadJsonText();
@@ -53,9 +62,16 @@ public class GraphBuilder : MonoBehaviour {
         }
 
         // create objects from json
-        _langDataByLevels = JsonConvert.DeserializeObject<List<Dictionary<string, LanguageData>>>(jsonText);
-        if (_langDataByLevels == null) {
+        var allLangData = JsonConvert.DeserializeObject<List<Dictionary<string, LanguageData>>>(jsonText);
+        if (allLangData == null) {
             throw new JsonSerializationException("Couldn't create dictionary from json text!");
+        }
+        foreach (var dict in allLangData) {
+            var langsDataInLevel = new LanguageDataInLevel();
+            foreach (var (langName, data) in dict) {
+                langsDataInLevel[langName] = data;
+            }
+            langDataByLevels.Add(langsDataInLevel);
         }
     }
 
@@ -66,34 +82,34 @@ public class GraphBuilder : MonoBehaviour {
         //     wasDestroyed = DestroyGameObject(container);
         // }
 
-        if (_langNodesByLevels == null) {
-            _langNodesByLevels = new List<Dictionary<string, LanguageNode>>();
+        if (langNodesByLevels == null) {
+            langNodesByLevels = new List<LanguageNodesInLevel>();
         }
-        if (_langDataByLevels == null) {
-            _langDataByLevels = new List<Dictionary<string, LanguageData>>();
+        if (langDataByLevels == null) {
+            langDataByLevels = new List<LanguageDataInLevel>();
         }
-        if (/*wasDestroyed || */_nodesContainer == null) {
-            _nodesContainer = new GameObject("NodeContainer") {
+        if (/*wasDestroyed || */nodesContainer == null) {
+            nodesContainer = new GameObject("NodeContainer") {
                 transform = {position = Vector3.zero},
                 tag = "NodeContainer"
             };
-            _langDataByLevels.Clear();
-            _langNodesByLevels.Clear();
+            langDataByLevels.Clear();
+            langNodesByLevels.Clear();
         }
     }
 
     private void ConnectEdges() {
-        _langNodesByLevels[0]["Semitic"].ConnectEdgesRecursively(parentConnectionOffset, childConnectionOffset);
+        langNodesByLevels[0]["Semitic"].ConnectEdgesRecursively(parentConnectionOffset, childConnectionOffset);
     }
 
     private LanguageNode FindLanguage(string langName, int fromLevel = 0) {
-        if (fromLevel > _langNodesByLevels.Count) {
-            print($"{fromLevel} is higher than tree height ({_langDataByLevels.Count})!");
+        if (fromLevel > langNodesByLevels.Count) {
+            print($"{fromLevel} is higher than tree height ({langDataByLevels.Count})!");
             return null;
         }
-        for (var level = fromLevel; level < _langNodesByLevels.Count; level++) {
-            if (_langNodesByLevels[level].ContainsKey(langName)) {
-                return _langNodesByLevels[level][langName];
+        for (var level = fromLevel; level < langNodesByLevels.Count; level++) {
+            if (langNodesByLevels[level].ContainsKey(langName)) {
+                return langNodesByLevels[level][langName];
             }
         }
         print($"language {langName} was not found in tree from level {fromLevel}");
@@ -101,21 +117,21 @@ public class GraphBuilder : MonoBehaviour {
     }
 
     private void PlaceNodes() {
-        if (_langDataByLevels == null) {
+        if (langDataByLevels == null) {
             throw new ArgumentException("_langDataByLevels is null! Make sure json was read correctly.");
         }
-        if (_langNodesByLevels.Count > 0) {
+        if (langNodesByLevels.Count > 0) {
             // assume graph was built in editor
             return;
         }
-        for (var level = 0; level < _langDataByLevels.Count; level++) {
+        for (var level = 0; level < langDataByLevels.Count; level++) {
             // create new level dictionary
-            _langNodesByLevels.Add(new Dictionary<string, LanguageNode>());
+            langNodesByLevels.Add(new LanguageNodesInLevel());
             var levelContainer = new GameObject((level + 1).ToString()) {
                 transform = { position = Vector3.zero }
             };
             var siblingIndex = 0;
-            foreach (var (langName, langData) in _langDataByLevels[level]) {
+            foreach (var (langName, langData) in langDataByLevels[level]) {
                 var langNode = PlaceNode(level, siblingIndex++, langData);
                 if (langNode == null) {
                     continue;
@@ -123,35 +139,35 @@ public class GraphBuilder : MonoBehaviour {
                 // organize hierarchy in scene
                 langNode.transform.SetParent(levelContainer.transform, false);
                 // add langNode to level dictionary
-                _langNodesByLevels[level][langName] = langNode;
+                langNodesByLevels[level][langName] = langNode;
             }
             // organize hierarchy in scene
-            levelContainer.transform.parent = _nodesContainer.transform;
+            levelContainer.transform.parent = nodesContainer.transform;
         }
     }
 
     private void PrintLanguageDict() {
-        if (_langDataByLevels == null) {
+        if (langDataByLevels == null) {
             return;
         }
 
         var description = "";
-        for (var i = 0; i < _langDataByLevels.Count; i++) {
-            description += $"{i + 1}\n{string.Join("\n", _langDataByLevels[i].Values)}\n\n";
+        for (var i = 0; i < langDataByLevels.Count; i++) {
+            description += $"{i + 1}\n{string.Join("\n", langDataByLevels[i].Values)}\n\n";
         }
         print(description);
     }
 
     private LanguageNode PlaceNode(int level, int siblingIndex, LanguageData langData) {
         
-        var numOfSiblings = _langDataByLevels[level].Count;
+        var numOfSiblings = langDataByLevels[level].Count;
         if (numOfSiblings == 0 || siblingIndex < 0 || siblingIndex >= numOfSiblings || level < 0 || langData == null) {
             return null;
         }
         var radius = RadiusScalingFunction(numOfSiblings - 1) * radiusFactor;
         var angle = Mathf.PI * 2 * siblingIndex / numOfSiblings;
         var x = radius * Mathf.Cos(angle);
-        var y = (_langDataByLevels.Count - level) * heightFactor;
+        var y = (langDataByLevels.Count - level) * heightFactor;
         var z = radius * Mathf.Sin(angle);
         var langNode = Instantiate(languageNodePrefab, new Vector3(x, y, z), Quaternion.identity);
         if (langNode == null) {
@@ -162,13 +178,13 @@ public class GraphBuilder : MonoBehaviour {
     }
 
     private void ConnectLanguageTree() {
-        if (_langNodesByLevels.Count == 0) {
+        if (langNodesByLevels.Count == 0) {
             throw new ArgumentException("Language Nodes Dict must already be populated on ConnectLanguageTree!");
         }
-        for (var level = 0; level < _langNodesByLevels.Count; level++) {
-            foreach (var (parentLangName, parentLangNode) in _langNodesByLevels[level]) {
-                var langData = _langDataByLevels[level][parentLangName];
-                foreach (var (childLangName, childLangType) in langData.Children) {
+        for (var level = 0; level < langNodesByLevels.Count; level++) {
+            foreach (var (parentLangName, parentLangNode) in langNodesByLevels[level]) {
+                var langData = langDataByLevels[level][parentLangName];
+                foreach (var (childLangName, childLangType) in langData.childToType) {
                     parentLangNode.AddChild(FindLanguage(childLangName, level + 1));
                 }
             }
@@ -205,4 +221,14 @@ public class GraphBuilder : MonoBehaviour {
         var jsonText = File.ReadAllText(PathToGraphJson);
         return jsonText is {Length: 0} ? null : jsonText;
     }
+}
+
+[Serializable]
+public class LanguageDataInLevel : SerializableDictionary<string, LanguageData> {
+    
+}
+
+[Serializable]
+public class LanguageNodesInLevel : SerializableDictionary<string, LanguageNode> {
+    
 }

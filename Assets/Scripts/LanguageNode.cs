@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+[Serializable]
 public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
 
     [SerializeField] private TextContainer languageName;
@@ -22,16 +23,16 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
 
     private static readonly string InfluencesTitle = "Influences: ";
     private static readonly string YearsTitle = "Years: ";
-    private readonly Dictionary<string, LanguageNode> _children = new();
+    [SerializeField] [HideInInspector] private ChildNameToNodeDictionary children = new();
     
-    private LanguageData _langData;
-    private Camera _camera;
+    [SerializeField] [HideInInspector] private LanguageData langData;
+    [SerializeField] [HideInInspector] private List<AncestryConnection> ancestryConnections;
+    [SerializeField] [HideInInspector] private Camera mainCamera;
 
     public static event Action<LanguageNode> OnLangNodeClicked;
 
     private void Awake() {
-        // EditorUtility.SetDirty(this);
-        _camera = Camera.main;
+        mainCamera = Camera.main;
         languageName = GetLanguageComponent<TextContainer>(languageName, "LanguageName");
         years = GetLanguageComponent<TextContainer>(years, "Years");
         influences = GetLanguageComponent<TextContainer>(influences, "Influences");
@@ -39,12 +40,23 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         BindCameraToCanvas();
 
         OnLangNodeClicked += ToggleLanguageDetails;
+        OnLangNodeClicked += ToggleLanguageVisibility;
         AncestryConnection.OnConnectionClicked += ToggleLanguageDetails;
+        AncestryConnection.OnConnectionClicked += ToggleLanguageVisibility;
         BackArrowClickReceiver.OnBackArrowClicked += () => ToggleLanguageDetails(null);
+        BackArrowClickReceiver.OnBackArrowClicked += () => ToggleLanguageVisibility(this);
     }
 
     private void OnDestroy() {
         // throw new NotImplementedException();
+    }
+
+    private void ToggleLanguageVisibility(LanguageNode langNode) {
+        if (langNode == this || langNode.children.Values.Contains(this) || children.Values.Contains(langNode)) {
+            gameObject.SetActive(true);
+            return;
+        }
+        gameObject.SetActive(false);
     }
 
     private void ToggleLanguageDetails(LanguageNode langNode) {
@@ -79,10 +91,10 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
     }
 
     private void Update() {
-        if (!_camera) {
+        if (!mainCamera) {
             return;
         }
-        uiCanvas.transform.forward = _camera.transform.forward;
+        uiCanvas.transform.forward = mainCamera.transform.forward;
     }
 
     private void BindCameraToCanvas() {
@@ -114,12 +126,12 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         influences = GetLanguageComponent<TextContainer>(influences, "Influences");
         map = GetLanguageComponent<Image>(map, "Map");
         
-        _langData = langData;
+        this.langData = langData;
         name = langData.name;
-        languageName.SetText(_langData.name);
-        years.SetText(YearsTitle + _langData.years); // todo remove years title
-        influences.SetText(InfluencesTitle + string.Join(", ", _langData.influences));
-        map.sprite = Resources.Load<Sprite>(_langData.pathToMap);
+        languageName.SetText(this.langData.name);
+        years.SetText(YearsTitle + this.langData.years); // todo remove years title
+        influences.SetText(InfluencesTitle + string.Join(", ", this.langData.influences));
+        map.sprite = Resources.Load<Sprite>(this.langData.pathToMap);
     }
 
     public void OnPointerClick(PointerEventData eventData) {
@@ -127,40 +139,55 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
     }
 
     public EChildType GetChildType(string childName) {
-        if (!_langData.Children.ContainsKey(childName)) {
-            throw new ArgumentException($"{childName} wasn't found in {_langData.name}'s children!");
+        if (!langData.childToType.ContainsKey(childName)) {
+            throw new ArgumentException($"{childName} wasn't found in {langData.name}'s children!");
         }
 
-        return _langData.Children[childName];
+        return langData.childToType[childName];
     }
 
     public string GetName() {
-        return _langData.name;
+        return langData.name;
     }
 
     public IEnumerable<KeyValuePair<string, LanguageNode>> GetChildren() {
-        return _children.AsReadOnlyCollection();
+        return children.AsReadOnlyCollection();
     }
 
     public void AddChild([NotNull] LanguageNode childLangNode) {
-        _children[childLangNode.GetName()] = childLangNode;
+        children[childLangNode.GetName()] = childLangNode;
     }
 
     public void ConnectEdgesRecursively(float parentConnectionOffset, float childConnectionOffset) {
-        foreach (var (childLangName, childLangNode) in _children) {
-            Instantiate(ancestryConnectionPrefab).Connect(
+        foreach (var (childLangName, childLangNode) in children) {
+            if (ConnectionExists(childLangNode)) {
+                continue;
+            }
+
+            var connection = Instantiate(ancestryConnectionPrefab);
+            connection.Connect(
                 this,
                 childLangNode,
                 GetChildType(childLangName),
                 parentConnectionOffset,
                 childConnectionOffset
                 );
+            ancestryConnections.Add(connection);
             childLangNode.ConnectEdgesRecursively(parentConnectionOffset, childConnectionOffset);
         }
     }
 
+    private bool ConnectionExists(LanguageNode childLangNode) {
+        foreach (var connection in ancestryConnections) {
+            if (connection.GetChild() == childLangNode) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public override string ToString() {
-        return _langData.ToString();
+        return langData.ToString();
     }
     
     public bool Equals(LanguageNode other) {
@@ -186,4 +213,9 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
     public static bool operator !=(LanguageNode me, LanguageNode other) {
         return !(me == other);
     }
+}
+
+[Serializable]
+public class ChildNameToNodeDictionary : SerializableDictionary<string, LanguageNode> {
+        
 }

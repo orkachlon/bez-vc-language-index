@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,17 +7,12 @@ using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 
 [ExecuteAlways]
+[Serializable]
 public class TextContainer : MonoBehaviour {
 
     [SerializeField] private TextMeshProUGUI textElement;
     [SerializeField] private int maxCharacters;
     [SerializeField] private Image bgImage;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update() {

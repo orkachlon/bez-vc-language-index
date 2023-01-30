@@ -3,7 +3,7 @@
     "Semitic": {
       "name": "Semitic",
       "years": "",
-      "children": {
+      "childToType": {
         "West Semitic": "Replace",
         "East Semitic": "Replace"
       },
@@ -16,7 +16,7 @@
     "West Semitic": {
       "name": "West Semitic",
       "years": "",
-      "children": {
+      "childToType": {
         "South Semitic": "Replace",
         "North Central Semitic": "Replace"
       },
@@ -29,7 +29,7 @@
     "East Semitic": {
       "name": "East Semitic",
       "years": "",
-      "children": {
+      "childToType": {
         "Eblaite": "Replace",
         "Akkadian": "Replace"
       },
@@ -45,7 +45,7 @@
     "South Semitic": {
       "name": "South Semitic",
       "years": "",
-      "children": {
+      "childToType": {
         "Old South Arabian": "Replace",
         "Eastern South Semitic": "Replace",
         "Ethiopic": "Add"
@@ -61,7 +61,7 @@
     "Akkadian": {
       "name": "Akkadian",
       "years": "",
-      "children": {
+      "childToType": {
       },
       "influences": [
         "Eblaite",
@@ -75,7 +75,7 @@
     "Eblaite": {
       "name": "Eblaite",
       "years": "",
-      "children": {
+      "childToType": {
       },
       "influences": [
         "Akkadian",
@@ -88,7 +88,7 @@
     "North Central Semitic": {
       "name": "North Central Semitic",
       "years": "",
-      "children": {
+      "childToType": {
         "Central Semitic": "Replace",
         "North West Semitic": "Replace"
       },
@@ -104,7 +104,7 @@
     "Old South Arabian": {
       "name": "Old South Arabian",
       "years": "",
-      "children": {
+      "childToType": {
         "Sabaean": "Replace"
       },
       "influences": [
@@ -118,7 +118,7 @@
     "Eastern South Semitic": {
       "name": "Eastern South Semitic",
       "years": "",
-      "children": {
+      "childToType": {
         "Mehri-Socotri": "Replace"
       },
       "influences": [
@@ -133,7 +133,7 @@
     "Ethiopic": {
       "name": "Ethiopic",
       "years": "",
-      "children": {
+      "childToType": {
         "North Ethiopic": "Replace",
         "South Ethiopic": "Replace"
       },
@@ -147,7 +147,7 @@
     "Central Semitic": {
       "name": "Central Semitic",
       "years": "",
-      "children": {
+      "childToType": {
         "Old Arabic": "Replace"
       },
       "influences": [
@@ -168,7 +168,7 @@
     "North West Semitic": {
       "name": "North West Semitic",
       "years": "",
-      "children": {
+      "childToType": {
         "Canaanite": "Replace",
         "Amorite": "Replace"
       },
@@ -184,7 +184,7 @@
     "Sabaean": {
       "name": "Sabaean",
       "years": "",
-      "children": {
+      "childToType": {
         "Himyaritic": "Add",
         "Hadramatic": "Add",
         "Minaean": "Add"
@@ -207,7 +207,7 @@
     "Mehri-Socotri": {
       "name": "Mehri-Socotri",
       "years": "",
-      "children": {
+      "childToType": {
         "Shehri": "Replace",
         "Mehri": "Replace",
         "Socotri": "Replace"
@@ -223,7 +223,7 @@
     "North Ethiopic": {
       "name": "North Ethiopic",
       "years": "",
-      "children": {
+      "childToType": {
         "Ge'ez": "Replace"
       },
       "influences": [
@@ -235,7 +235,7 @@
     "South Ethiopic": {
       "name": "South Ethiopic",
       "years": "",
-      "children": {
+      "childToType": {
         "Amharic": "Replace",
         "Harari-Gurage": "Replace"
       },
@@ -248,7 +248,7 @@
     "Old Arabic": {
       "name": "Old Arabic",
       "years": "",
-      "children": {
+      "childToType": {
         "Arabic": "Replace"
       },
       "influences": [
@@ -271,7 +271,7 @@
     "Canaanite": {
       "name": "Canaanite",
       "years": "",
-      "children": {
+      "childToType": {
         "Moabite": "Replace",
         "Edomite": "Replace",
         "Ammonite": "Replace",
@@ -289,7 +289,7 @@
     "Amorite": {
       "name": "Amorite",
       "years": "",
-      "children": {
+      "childToType": {
         "Old Aramaic": "Replace"
       },
       "influences": [
@@ -305,7 +305,7 @@
     "Himyaritic": {
       "name": "Himyaritic",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Sabaean",
         "Hadramatic"
@@ -316,7 +316,7 @@
     "Hadramatic": {
       "name": "Hadramatic",
       "years": "",
-      "children": {
+      "childToType": {
         "Qatabanic": "Add"
       },
       "influences": [
@@ -332,7 +332,7 @@
     "Minaean": {
       "name": "Minaean",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Central Semitic",
         "Sabaean",
@@ -344,7 +344,7 @@
     "Shehri": {
       "name": "Shehri",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Mehri",
         "Socotri",
@@ -356,7 +356,7 @@
     "Mehri": {
       "name": "Mehri",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Sabaean",
         "Old Arabic",
@@ -371,7 +371,7 @@
     "Socotri": {
       "name": "Socotri",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Old Arabic",
         "Mehri",
@@ -384,7 +384,7 @@
     "Ge'ez": {
       "name": "Ge'ez",
       "years": "",
-      "children": {
+      "childToType": {
         "Tigrinya": "Replace"
       },
       "influences": [
@@ -396,7 +396,7 @@
     "Amharic": {
       "name": "Amharic",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Ge'ez",
         "Harari-Gurage",
@@ -410,7 +410,7 @@
     "Harari-Gurage": {
       "name": "Harari-Gurage",
       "years": "",
-      "children": {
+      "childToType": {
         "Gurage": "Replace",
         "Harari": "Replace"
       },
@@ -423,7 +423,7 @@
     "Arabic": {
       "name": "Arabic",
       "years": "",
-      "children": {
+      "childToType": {
         "Maltese": "Add",
         "Modern Hebrew": "Add"
       },
@@ -446,7 +446,7 @@
     "Moabite": {
       "name": "Moabite",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Old Arabic",
         "Biblical Hebrew"
@@ -457,7 +457,7 @@
     "Edomite": {
       "name": "Edomite",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Old Arabic",
         "Biblical Hebrew"
@@ -468,7 +468,7 @@
     "Ammonite": {
       "name": "Ammonite",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Old Arabic",
         "Biblical Hebrew"
@@ -479,7 +479,7 @@
     "Phoenician": {
       "name": "Phoenician",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Biblical Hebrew"
       ],
@@ -489,7 +489,7 @@
     "Biblical Hebrew": {
       "name": "Biblical Hebrew",
       "years": "",
-      "children": {
+      "childToType": {
         "Mishnaic Hebrew": "Replace",
         "Modern Hebrew": "Revive"
       },
@@ -506,7 +506,7 @@
     "Old Aramaic": {
       "name": "Old Aramaic",
       "years": "",
-      "children": {
+      "childToType": {
         "Mandaic": "Replace"
       },
       "influences": [
@@ -525,7 +525,7 @@
     "Qatabanic": {
       "name": "Qatabanic",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Sabaean",
         "Hadramatic"
@@ -536,7 +536,7 @@
     "Tigrinya": {
       "name": "Tigrinya",
       "years": "",
-      "children": {
+      "childToType": {
         "Tigre": "Add"
       },
       "influences": [
@@ -549,7 +549,7 @@
     "Gurage": {
       "name": "Gurage",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Amharic",
         "Harari"
@@ -560,7 +560,7 @@
     "Harari": {
       "name": "Harari",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Amharic",
         "Arabic",
@@ -572,7 +572,7 @@
     "Maltese": {
       "name": "Maltese",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Arabic"
       ],
@@ -582,7 +582,7 @@
     "Mishnaic Hebrew": {
       "name": "Mishnaic Hebrew",
       "years": "",
-      "children": {
+      "childToType": {
         "Modern Hebrew": "Revive"
       },
       "influences": [
@@ -595,7 +595,7 @@
     "Mandaic": {
       "name": "Mandaic",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Arabic",
         "Middle Aramaic",
@@ -607,7 +607,7 @@
     "Middle Aramaic": {
       "name": "Middle Aramaic",
       "years": "",
-      "children": {
+      "childToType": {
         "Neo Aramaic": "Replace"
       },
       "influences": [
@@ -622,7 +622,7 @@
     "Tigre": {
       "name": "Tigre",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Tigrinya",
         "Arabic"
@@ -633,7 +633,7 @@
     "Neo Aramaic": {
       "name": "Neo Aramaic",
       "years": "",
-      "children": {
+      "childToType": {
         "Modern Hebrew": "Add"
       },
       "influences": [
@@ -649,7 +649,7 @@
     "Modern Hebrew": {
       "name": "Modern Hebrew",
       "years": "",
-      "children": {},
+      "childToType": {},
       "influences": [
         "Arabic",
         "Neo Aramaic",

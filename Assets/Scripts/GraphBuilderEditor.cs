@@ -17,5 +17,11 @@ public class GraphBuilderEditor : Editor {
             serializedObject.ApplyModifiedProperties();
             return;
         }
+
+        if (GUILayout.Button("Delete Graph")) {
+            graphBuilder.DeleteGraph();
+            serializedObject.ApplyModifiedProperties();
+            return;
+        }
     }
 }
