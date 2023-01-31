@@ -23,6 +23,17 @@ public class TextContainer : MonoBehaviour {
         bgImage.rectTransform.sizeDelta = textElement.rectTransform.sizeDelta;
     }
 
+    public void MoveToLayer(string layerName) {
+        var layerID = LayerMask.NameToLayer(layerName);
+        if (layerID == -1) {
+            throw new ArgumentOutOfRangeException($"Couldn't find Layer {layerName}!");
+        }
+
+        gameObject.layer = layerID;
+        textElement.gameObject.layer = layerID;
+        bgImage.gameObject.layer = layerID;
+    }
+
     public void SetText(string text) {
         textElement.text = text;
     }

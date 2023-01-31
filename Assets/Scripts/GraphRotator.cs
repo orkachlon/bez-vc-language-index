@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GraphRotator : MonoBehaviour {
-    private float _sensitivity;
+    [SerializeField] private float sensitivity;
     private Vector3 _mouseReference;
     private Vector3 _mouseOffset;
     private Vector3 _rotation;
@@ -17,7 +17,7 @@ public class GraphRotator : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        _sensitivity = 0.4f;
+        sensitivity = 0.1f;
         _rotation = Vector3.zero;
         LanguageNode.OnLangNodeClicked += RotateTowards;
         AncestryConnection.OnConnectionClicked += RotateTowards;
@@ -48,7 +48,7 @@ public class GraphRotator : MonoBehaviour {
         _mouseOffset = Input.mousePosition - _mouseReference;
              
         // apply rotation
-        _rotation.y = -(_mouseOffset.x + _mouseOffset.y) * _sensitivity;
+        _rotation.y = -(_mouseOffset.x + _mouseOffset.y) * sensitivity;
              
         // rotate
         transform.Rotate(_rotation);
@@ -81,7 +81,6 @@ public class GraphRotator : MonoBehaviour {
     }
 
     private void RotateTowards(LanguageNode langNode) {
-        print($"clicked {langNode.GetName()}");
         var mainCam = Camera.main;
         if (mainCam == null) {
             throw new Exception("Main Camera can't be null!");

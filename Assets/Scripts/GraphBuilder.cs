@@ -20,7 +20,6 @@ public class GraphBuilder : MonoBehaviour {
     [SerializeField] private float childConnectionOffset = 2f;
     [SerializeField] [NotNull] private LanguageNode languageNodePrefab;
     
-    // Don't change from editor
     [SerializeField] [HideInInspector] private GameObject nodesContainer;
     [SerializeField] [HideInInspector] private List<LanguageDataInLevel> langDataByLevels;
     [SerializeField] [HideInInspector] private List<LanguageNodesInLevel> langNodesByLevels;
@@ -42,8 +41,6 @@ public class GraphBuilder : MonoBehaviour {
         PlaceNodes();
         ConnectLanguageTree();
         ConnectEdges();
-        // make the object rotatable
-        nodesContainer.AddComponent<GraphRotator>();
     }
 
     public void DeleteGraph() {
@@ -76,23 +73,18 @@ public class GraphBuilder : MonoBehaviour {
     }
 
     private void InitNodeContainers() {
-        // var wasDestroyed = DestroyGameObject(_nodesContainer);
-        // if (!wasDestroyed) {
-        //     var container = GameObject.FindWithTag("NodeContainer");
-        //     wasDestroyed = DestroyGameObject(container);
-        // }
-
         if (langNodesByLevels == null) {
             langNodesByLevels = new List<LanguageNodesInLevel>();
         }
         if (langDataByLevels == null) {
             langDataByLevels = new List<LanguageDataInLevel>();
         }
-        if (/*wasDestroyed || */nodesContainer == null) {
+        if (nodesContainer == null) {
             nodesContainer = new GameObject("NodeContainer") {
                 transform = {position = Vector3.zero},
                 tag = "NodeContainer"
             };
+            nodesContainer.AddComponent<GraphRotator>();
             langDataByLevels.Clear();
             langNodesByLevels.Clear();
         }

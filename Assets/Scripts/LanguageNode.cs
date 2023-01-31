@@ -47,10 +47,6 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         BackArrowClickReceiver.OnBackArrowClicked += () => ToggleLanguageVisibility(this);
     }
 
-    private void OnDestroy() {
-        // throw new NotImplementedException();
-    }
-
     private void ToggleLanguageVisibility(LanguageNode langNode) {
         // if it's us, then show us and our connections
         if (langNode == this) {
@@ -81,6 +77,8 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
 
     private void ToggleLanguageDetails(LanguageNode langNode) {
         if (langNode != this) {
+            // return canvas to render on same layer as lines
+            uiCanvas.gameObject.layer = LayerMask.NameToLayer("Default");
             // hide details
             if (years) {
                 years.gameObject.SetActive(false);
@@ -93,18 +91,17 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
             }
             return;
         }
+        // bring canvas to render in front of lines
+        uiCanvas.gameObject.layer = LayerMask.NameToLayer("UI");
         // show details
-        // years = GetLanguageComponent<TextContainer>(years, "Years");
         if (years) {
             years.gameObject.SetActive(true);
         }
 
-        // influences = GetLanguageComponent<TextContainer>(influences, "Influences");
         if (influences) {
             influences.gameObject.SetActive(true);
         }
 
-        // map = GetLanguageComponent<Image>(map, "Map");
         if (map) {
             map.gameObject.SetActive(true);
         }

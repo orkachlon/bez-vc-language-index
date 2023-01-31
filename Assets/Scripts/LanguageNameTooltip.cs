@@ -23,9 +23,6 @@ public class LanguageNameTooltip : MonoBehaviour {
 
     public static void RegisterDisable() {
         Interlocked.Increment(ref _instance._disableQueue);
-        if (Interlocked.CompareExchange(ref _instance._disableQueue, 0, 0) == 2) {
-            print("we are 2!");
-        }
     }
 
     public static void UnregisterDisable() {

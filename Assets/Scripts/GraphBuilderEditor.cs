@@ -23,5 +23,12 @@ public class GraphBuilderEditor : Editor {
             serializedObject.ApplyModifiedProperties();
             return;
         }
+        
+        if (GUILayout.Button("Rebuild Graph")) {
+            graphBuilder.DeleteGraph();
+            graphBuilder.BuildGraph();
+            serializedObject.ApplyModifiedProperties();
+            return;
+        }
     }
 }
