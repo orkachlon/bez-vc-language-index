@@ -507,7 +507,8 @@
       "name": "Old Aramaic",
       "years": "",
       "childToType": {
-        "Mandaic": "Replace"
+        "Mandaic": "Replace",
+        "Middle Aramaic": "Replace"
       },
       "influences": [
         "Akkadian",
