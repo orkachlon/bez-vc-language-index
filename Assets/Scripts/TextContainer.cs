@@ -32,8 +32,9 @@ public class TextContainer : MonoBehaviour {
             return;
         }
 
-        textMaterial = new Material(textElement.fontMaterial);
-        textElement.fontMaterial = textMaterial;
+        // Causes memory leak!
+        // textMaterial = new Material(textElement.fontMaterial);
+        // textElement.fontMaterial = textMaterial;
         // resize bg to text bounding box
         bgImage.rectTransform.sizeDelta = textElement.rectTransform.sizeDelta;
     }
