@@ -962,6 +962,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8209317802338039447}
   - component: {fileID: 2872089888114936200}
+  - component: {fileID: 7755468209178415208}
   m_Layer: 0
   m_Name: Incluences
   m_TagString: Influences
@@ -998,9 +999,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7939176007569184536}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ba56762ba090b44bbb67f0b39af2267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textElement: {fileID: 2274876197256787985}
+  maxCharacters: 15
+  bgImage: {fileID: 7255209223306982450}
+--- !u!114 &7755468209178415208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7939176007569184536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd628e9735d477c86ac1c26605f3d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 2274876197256787985}

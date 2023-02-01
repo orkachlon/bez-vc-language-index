@@ -11,6 +11,8 @@ public class CameraController : MonoBehaviour {
         Orthographic
     }
     
+    public static event Action<Vector3> OnCameraAnimationFinished;
+    
     public ECameraType selectedCameraType;
 
     private static Vector3 _cameraStartPos;
@@ -76,5 +78,6 @@ public class CameraController : MonoBehaviour {
         }
 
         _mainCamera.transform.position = cameraEndPos;
+        OnCameraAnimationFinished?.Invoke(cameraEndPos);
     }
 }
