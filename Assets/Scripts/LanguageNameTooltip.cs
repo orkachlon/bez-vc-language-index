@@ -21,6 +21,10 @@ public class LanguageNameTooltip : MonoBehaviour {
         HideTooltip();
     }
 
+    /// <summary>
+    /// This method is used during animations in order to disable the tooltip
+    /// The tooltip causes lag if activated while animating the graph
+    /// </summary>
     public static void RegisterDisable() {
         Interlocked.Increment(ref _instance._disableQueue);
     }
@@ -49,6 +53,7 @@ public class LanguageNameTooltip : MonoBehaviour {
         gameObject.SetActive(true);
 
         tooltipText.text = tooltipString;
+        // adjust background size to fit text
         var bgSize = new Vector2(tooltipText.preferredWidth + textPadding * 2f, tooltipText.preferredHeight + textPadding * 2f);
         _bgRectTransform.sizeDelta = bgSize;
     }
