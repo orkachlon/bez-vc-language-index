@@ -1,10 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 
 [ExecuteAlways]
@@ -18,6 +14,7 @@ public class TextContainer : MonoBehaviour {
     // not actually in use
     public static readonly Vector3 StartPos = new(0, 0, 21.5f);
 
+    [SerializeField] [HideInInspector] protected bool manualWidth;
     [SerializeField] [HideInInspector] protected float fontStartSize;
     [SerializeField] [HideInInspector] protected Vector2 textBoxStartSize;
 
@@ -32,7 +29,7 @@ public class TextContainer : MonoBehaviour {
         textBoxStartSize = textElement.rectTransform.sizeDelta;
     }
 
-    private void Update() {
+    protected virtual void Update() {
         if (!textElement || !bgImage) {
             return;
         }
@@ -40,14 +37,23 @@ public class TextContainer : MonoBehaviour {
         AdjustBGSize();
     }
 
-    public void SetMaterial(Vector3 newPos) {
-        if (!gameObject.activeInHierarchy) {
-            return;
-        }
+    public virtual void Show() {
     }
 
-    public void ResetMaterial() {
-        textElement.fontSharedMaterial.SetVector("FrontOfGraph", StartPos);
+    public virtual void Hide() {
+    }
+
+    public Vector2 GetTextBoxSize() {
+        return textElement.GetRenderedValues();
+    }
+
+    public Vector2 GetBGSize() {
+        return bgImage.rectTransform.sizeDelta;
+    }
+
+    public void SetBGWidth(float width) {
+        manualWidth = true;
+        bgImage.rectTransform.sizeDelta = new Vector2(width, bgImage.rectTransform.sizeDelta.y);
     }
 
     public void MoveToLayer(string layerName) {
@@ -73,15 +79,34 @@ public class TextContainer : MonoBehaviour {
         textElement.rectTransform.sizeDelta = textBoxStartSize;
         textElement.fontSize = fontStartSize;
     }
+
+    public RectTransform GetTextRectTransform() {
+        return textElement.rectTransform;
+    }
+
+    public Vector3 GetBottomLeft() {
+        var corners = new Vector3[4];
+        bgImage.rectTransform.GetWorldCorners(corners);
+        return corners[0];
+    }
+    
+    public Vector3 GetTopRight() {
+        var corners = new Vector3[4];
+        bgImage.rectTransform.GetWorldCorners(corners);
+        return corners[2];
+    }
     
     protected void AdjustTextBoxSize() {
         textElement.ForceMeshUpdate(true);
         var textRect = textElement.GetRenderedValues(false);
-        textElement.rectTransform.sizeDelta = textRect + Vector2.one * textPadding * 2f;
+        textElement.rectTransform.sizeDelta = textRect;
     }
 
     protected void AdjustBGSize() {
-        // var bgSize = new Vector2(textElement.preferredWidth, textElement.preferredHeight);
-        bgImage.rectTransform.sizeDelta = textElement.rectTransform.sizeDelta;
+        if (manualWidth) {
+            bgImage.rectTransform.sizeDelta = new Vector2(bgImage.rectTransform.sizeDelta.x, textElement.rectTransform.sizeDelta.y);
+            return;
+        }
+        bgImage.rectTransform.sizeDelta = textElement.rectTransform.sizeDelta + Vector2.right * (textPadding * 2f);
     }
 }

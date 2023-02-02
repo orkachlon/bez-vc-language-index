@@ -13,18 +13,11 @@ using UnityEngine.UI;
 [Serializable]
 public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
 
-    [SerializeField] private TextContainer languageName;
-    [SerializeField] private TextContainer years;
-    [SerializeField] private TextContainer influences;
-    [SerializeField] private Image map;
+    [SerializeField] private LanguageLayout langLayout;
     [SerializeField] private Canvas uiCanvas;
     [SerializeField] [NotNull] private AncestryConnection ancestryConnectionPrefab;
 
-
-    private static readonly string InfluencesTitle = "Influences: ";
-    private static readonly string YearsTitle = "Years: ";
     [SerializeField] [HideInInspector] private ChildNameToNodeDictionary children = new();
-    
     [SerializeField] [HideInInspector] private LanguageData langData;
     [SerializeField] [HideInInspector] private List<AncestryConnection> ancestryConnections;
     [SerializeField] [HideInInspector] private Camera mainCamera;
@@ -33,31 +26,12 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
 
     private void Awake() {
         mainCamera = Camera.main;
-        languageName = GetLanguageComponent<TextContainer>(languageName, "LanguageName");
-        years = GetLanguageComponent<TextContainer>(years, "Years");
-        influences = GetLanguageComponent<TextContainer>(influences, "Influences");
-        map = GetLanguageComponent<Image>(map, "Map");
+        langLayout = gameObject.GetLanguageComponent<LanguageLayout>(langLayout, "LanguageLayout");
         BindCameraToCanvas();
 
         OnLangNodeClicked += OnLangNodeClickedActions;
         AncestryConnection.OnConnectionClicked += OnAncestryConnectionClicked;
         BackArrowClickReceiver.OnBackArrowClicked += OnBackArrowClicked;
-    }
-
-    private void OnLangNodeClickedActions(LanguageNode langNode) {
-        ToggleLanguageDetails(langNode);
-        ToggleLanguageVisibility(langNode);
-    }
-
-    private void OnBackArrowClicked() {
-        ToggleLanguageDetails(null);
-        ToggleLanguageVisibility(this);
-        languageName.ResetTextSize();
-    }
-
-    private void OnAncestryConnectionClicked(LanguageNode langNode) {
-        ToggleLanguageDetails(langNode);
-        ToggleLanguageVisibility(langNode);
     }
 
     private void OnDestroy() {
@@ -70,8 +44,6 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         // if it's us, then show us and our connections
         if (langNode == this) {
             gameObject.SetActive(true);
-            // shrink text size to fit zoom
-            languageName.SetTextSize(0.5f);
             foreach (var connection in ancestryConnections) {
                 connection.gameObject.SetActive(true);
             }
@@ -81,7 +53,7 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         if (langNode.children.Values.Contains(this)) {
             gameObject.SetActive(true);
             // shrink text size to fit zoom
-            languageName.SetTextSize(0.5f);
+            langLayout.ToItemRelative();
             foreach (var connection in ancestryConnections) {
                 connection.gameObject.SetActive(false);
             }
@@ -91,7 +63,7 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         if (children.Values.Contains(langNode)) {
             gameObject.SetActive(true);
             // shrink text size to fit zoom
-            languageName.SetTextSize(0.5f);
+            langLayout.ToItemRelative();
             foreach (var connection in ancestryConnections) {
                 connection.gameObject.SetActive(connection.GetChild() == langNode);
             }
@@ -104,32 +76,12 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         if (langNode != this) {
             // return canvas to render on same layer as lines
             uiCanvas.gameObject.layer = LayerMask.NameToLayer("Default");
-            // hide details
-            if (years) {
-                years.gameObject.SetActive(false);
-            }
-            if (influences) {
-                influences.gameObject.SetActive(false);
-            }
-            if (map) {
-                map.gameObject.SetActive(false);
-            }
+            langLayout.ToNode();
             return;
         }
         // bring canvas to render in front of lines
         uiCanvas.gameObject.layer = LayerMask.NameToLayer("UI");
-        // show details
-        if (years) {
-            years.gameObject.SetActive(true);
-        }
-
-        if (influences) {
-            influences.gameObject.SetActive(true);
-        }
-
-        if (map) {
-            map.gameObject.SetActive(true);
-        }
+        langLayout.ToItem();
     }
 
     private void Update() {
@@ -149,31 +101,15 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         uiCanvas.worldCamera = Camera.main;
     }
 
-    private T GetLanguageComponent<T>(T component, string requestedTag) where T: Component {
-        if (!component) {
-            component = gameObject.FindComponentInChildWithTag<T>(requestedTag);
-        } else {
-            return component;
-        }
-        if (!component) {
-            throw new MissingComponentException($"LanguageNode is missing {requestedTag} {typeof(T)} component!");
-        }
 
-        return component;
-    }
-
-    public void SetLangData(LanguageData langData) {
-        languageName = GetLanguageComponent<TextContainer>(languageName, "LanguageName");
-        years = GetLanguageComponent<TextContainer>(years, "Years");
-        influences = GetLanguageComponent<TextContainer>(influences, "Influences");
-        map = GetLanguageComponent<Image>(map, "Map");
+    public void SetLangData(LanguageData newLangData) {
+        langData = newLangData;
+        name = newLangData.name;
         
-        this.langData = langData;
-        name = langData.name;
-        languageName.SetText(this.langData.name);
-        years.SetText(this.langData.years);
-        influences.SetText(InfluencesTitle + string.Join(", ", this.langData.influences));
-        map.sprite = Resources.Load<Sprite>(this.langData.pathToMap);
+        langLayout.SetName(langData.name);
+        langLayout.SetPhonetic(langData.phonetic);
+        langLayout.SetYears(langData.years);
+        langLayout.SetMap(langData.pathToMap);
     }
 
     public void OnPointerClick(PointerEventData eventData) {
@@ -227,6 +163,22 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         }
         return false;
     }
+    
+    private void OnLangNodeClickedActions(LanguageNode langNode) {
+        ToggleLanguageDetails(langNode);
+        ToggleLanguageVisibility(langNode);
+    }
+
+    private void OnBackArrowClicked() {
+        ToggleLanguageDetails(null);
+        ToggleLanguageVisibility(this);
+    }
+
+    private void OnAncestryConnectionClicked(LanguageNode langNode) {
+        ToggleLanguageDetails(langNode);
+        ToggleLanguageVisibility(langNode);
+    }
+
 
     public override string ToString() {
         return langData.ToString();

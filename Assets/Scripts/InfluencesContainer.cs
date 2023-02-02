@@ -8,7 +8,13 @@ public class InfluencesContainer : TextContainer {
         // doesn't work yet
         // CameraController.OnCameraAnimationFinished += StretchToLeft;
     }
-    
+
+    public override void Show() {
+    }
+
+    public override void Hide() {
+    }
+
     public void StretchToLeft() {
         if (!gameObject.activeInHierarchy) {
             return;
