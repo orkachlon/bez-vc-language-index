@@ -6,6 +6,7 @@ using UnityEngine;
 public class LanguageData {
     private const float LineRendererWidthMultiplier = 0.1f;
     public string name;
+    public string phonetic;
     public string years;
     public ChildToTypeDictionary childToType;
     public List<string> influences;
