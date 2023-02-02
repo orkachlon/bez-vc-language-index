@@ -59,16 +59,9 @@ public class GraphBuilder : MonoBehaviour {
         }
 
         // create objects from json
-        var allLangData = JsonConvert.DeserializeObject<List<Dictionary<string, LanguageData>>>(jsonText);
-        if (allLangData == null) {
+        langDataByLevels = JsonConvert.DeserializeObject<List<LanguageDataInLevel>>(jsonText);
+        if (langDataByLevels == null) {
             throw new JsonSerializationException("Couldn't create dictionary from json text!");
-        }
-        foreach (var dict in allLangData) {
-            var langsDataInLevel = new LanguageDataInLevel();
-            foreach (var (langName, data) in dict) {
-                langsDataInLevel[langName] = data;
-            }
-            langDataByLevels.Add(langsDataInLevel);
         }
     }
 
