@@ -31,7 +31,6 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
 
     public void OnPointerClick(PointerEventData eventData) {
         OnConnectionClicked?.Invoke(child == SelectionManager.GetSelectedLanguage() ? parent : child);
-        print($"clicked {name}");
     }
 
     private void OnMouseEnter() {
