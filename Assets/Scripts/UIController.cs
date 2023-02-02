@@ -3,18 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class UIController : MonoBehaviour {
 
     [SerializeField]
-    private TextMeshProUGUI backArrow;
+    private Image backArrow;
     
     // Start is called before the first frame update
     void Start() {
         if (backArrow) 
             return;
-        backArrow = GetComponentInChildren<TextMeshProUGUI>();
+        backArrow = GetComponentInChildren<Image>();
         if (!backArrow) {
             throw new MissingComponentException("UIController must have a child with TextMeshProUGUI component");
         }
