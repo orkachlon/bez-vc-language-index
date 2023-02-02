@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -24,7 +25,13 @@ public class UIController : MonoBehaviour {
         
         HideUI();
     }
-    
+
+    private void OnDestroy() {
+        BackArrowClickReceiver.OnBackArrowClicked -= HideUI;
+        LanguageNode.OnLangNodeClicked -= ShowUI;
+        AncestryConnection.OnConnectionClicked -= ShowUI;
+    }
+
     private void ShowUI(LanguageNode langNode) {
         gameObject.SetActive(true);
     }

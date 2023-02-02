@@ -16,7 +16,7 @@ public class GraphRotator : MonoBehaviour {
     private Coroutine _graphRotateCoroutine;
 
     // Start is called before the first frame update
-    void Start() {
+    private  void Start() {
         sensitivity = 0.1f;
         _rotation = Vector3.zero;
         LanguageNode.OnLangNodeClicked += RotateTowards;
@@ -24,8 +24,14 @@ public class GraphRotator : MonoBehaviour {
         BackArrowClickReceiver.OnBackArrowClicked += EnableRotation;
     }
 
+    private void OnDestroy() {
+        LanguageNode.OnLangNodeClicked -= RotateTowards;
+        AncestryConnection.OnConnectionClicked -= RotateTowards;
+        BackArrowClickReceiver.OnBackArrowClicked -= EnableRotation;
+    }
+
     // Update is called once per frame
-    void Update() {
+    private void Update() {
         if (_disableRotation) {
             return;
         }

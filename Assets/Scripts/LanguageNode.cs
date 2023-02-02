@@ -39,18 +39,39 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         map = GetLanguageComponent<Image>(map, "Map");
         BindCameraToCanvas();
 
-        OnLangNodeClicked += ToggleLanguageDetails;
-        OnLangNodeClicked += ToggleLanguageVisibility;
-        AncestryConnection.OnConnectionClicked += ToggleLanguageDetails;
-        AncestryConnection.OnConnectionClicked += ToggleLanguageVisibility;
-        BackArrowClickReceiver.OnBackArrowClicked += () => ToggleLanguageDetails(null);
-        BackArrowClickReceiver.OnBackArrowClicked += () => ToggleLanguageVisibility(this);
+        OnLangNodeClicked += OnLangNodeClickedActions;
+        AncestryConnection.OnConnectionClicked += OnAncestryConnectionClicked;
+        BackArrowClickReceiver.OnBackArrowClicked += OnBackArrowClicked;
+    }
+
+    private void OnLangNodeClickedActions(LanguageNode langNode) {
+        ToggleLanguageDetails(langNode);
+        ToggleLanguageVisibility(langNode);
+    }
+
+    private void OnBackArrowClicked() {
+        ToggleLanguageDetails(null);
+        ToggleLanguageVisibility(this);
+        languageName.ResetTextSize();
+    }
+
+    private void OnAncestryConnectionClicked(LanguageNode langNode) {
+        ToggleLanguageDetails(langNode);
+        ToggleLanguageVisibility(langNode);
+    }
+
+    private void OnDestroy() {
+        OnLangNodeClicked -= OnLangNodeClickedActions;
+        AncestryConnection.OnConnectionClicked -= OnAncestryConnectionClicked;
+        BackArrowClickReceiver.OnBackArrowClicked -= OnBackArrowClicked;
     }
 
     private void ToggleLanguageVisibility(LanguageNode langNode) {
         // if it's us, then show us and our connections
         if (langNode == this) {
             gameObject.SetActive(true);
+            // shrink text size to fit zoom
+            languageName.SetTextSize(0.5f);
             foreach (var connection in ancestryConnections) {
                 connection.gameObject.SetActive(true);
             }
@@ -59,6 +80,8 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         // if we are a child of langNode, then show only us without connections
         if (langNode.children.Values.Contains(this)) {
             gameObject.SetActive(true);
+            // shrink text size to fit zoom
+            languageName.SetTextSize(0.5f);
             foreach (var connection in ancestryConnections) {
                 connection.gameObject.SetActive(false);
             }
@@ -67,6 +90,8 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         // if we are its parent, then show us and only our connection to langNode
         if (children.Values.Contains(langNode)) {
             gameObject.SetActive(true);
+            // shrink text size to fit zoom
+            languageName.SetTextSize(0.5f);
             foreach (var connection in ancestryConnections) {
                 connection.gameObject.SetActive(connection.GetChild() == langNode);
             }
@@ -146,7 +171,7 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         this.langData = langData;
         name = langData.name;
         languageName.SetText(this.langData.name);
-        years.SetText(YearsTitle + this.langData.years); // todo remove years title
+        years.SetText(this.langData.years);
         influences.SetText(InfluencesTitle + string.Join(", ", this.langData.influences));
         map.sprite = Resources.Load<Sprite>(this.langData.pathToMap);
     }

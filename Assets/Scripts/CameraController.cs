@@ -36,6 +36,12 @@ public class CameraController : MonoBehaviour {
         BackArrowClickReceiver.OnBackArrowClicked += ResetCamera;
     }
 
+    private void OnDestroy() {
+        LanguageNode.OnLangNodeClicked -= MoveCameraToLanguageNode;
+        AncestryConnection.OnConnectionClicked -= MoveCameraToLanguageNode;
+        BackArrowClickReceiver.OnBackArrowClicked -= ResetCamera;
+    }
+
     private void Update() {
         if (_mainCamera != null) _mainCamera.orthographic = ECameraType.Orthographic.Equals(selectedCameraType);
     }
