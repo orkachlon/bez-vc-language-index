@@ -3,7 +3,8 @@
 public class InfluencesContainer : TextContainer {
     
     
-    private void Start() {
+    protected override void Start() {
+        base.Start();
         // doesn't work yet
         // CameraController.OnCameraAnimationFinished += StretchToLeft;
     }

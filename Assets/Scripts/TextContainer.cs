@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,45 +12,42 @@ using Image = UnityEngine.UI.Image;
 public class TextContainer : MonoBehaviour {
 
     [SerializeField] protected TextMeshProUGUI textElement;
-    [SerializeField] private int maxCharacters;
     [SerializeField] protected Image bgImage;
+    [SerializeField] private float textPadding;
 
-    public static readonly Vector3 startPos = new Vector3(0, 0, 21.5f);
+    // not actually in use
+    public static readonly Vector3 StartPos = new(0, 0, 21.5f);
 
-    [SerializeField] [HideInInspector] private Material textMaterial;
+    [SerializeField] [HideInInspector] protected float fontStartSize;
+    [SerializeField] [HideInInspector] protected Vector2 textBoxStartSize;
 
 
-    private void Start() {
-        BackArrowClickReceiver.OnBackArrowClicked += ResetMaterial;
-        // LanguageNode.OnLangNodeClicked += SetMaterial;
-        // AncestryConnection.OnConnectionClicked += SetMaterial;
-        CameraController.OnCameraAnimationFinished += SetMaterial;
+    protected virtual void Start() {
+        fontStartSize = textElement.fontSize;
+        
+        AdjustTextBoxSize();
+
+        // adjust background size to fit text
+        AdjustBGSize();
+        textBoxStartSize = textElement.rectTransform.sizeDelta;
     }
 
-    // Update is called once per frame
-    void Update() {
+    private void Update() {
         if (!textElement || !bgImage) {
             return;
         }
-
-        // Causes memory leak!
-        // textMaterial = new Material(textElement.fontMaterial);
-        // textElement.fontMaterial = textMaterial;
         // resize bg to text bounding box
-        bgImage.rectTransform.sizeDelta = textElement.rectTransform.sizeDelta;
+        AdjustBGSize();
     }
 
     public void SetMaterial(Vector3 newPos) {
-        if (!gameObject.activeSelf) {
+        if (!gameObject.activeInHierarchy) {
             return;
         }
-        textMaterial.SetVector("FrontOfGraph", newPos);
-        textElement.fontMaterial = new Material(textMaterial);
-        // GameObject.CreatePrimitive(PrimitiveType.Sphere).transform.position = newPos;
     }
-    
+
     public void ResetMaterial() {
-        textElement.fontSharedMaterial.SetVector("FrontOfGraph", startPos);
+        textElement.fontSharedMaterial.SetVector("FrontOfGraph", StartPos);
     }
 
     public void MoveToLayer(string layerName) {
@@ -58,12 +56,32 @@ public class TextContainer : MonoBehaviour {
             throw new ArgumentOutOfRangeException($"Couldn't find Layer {layerName}!");
         }
 
-        // gameObject.layer = layerID;  // not necessary
         textElement.gameObject.layer = layerID;
         bgImage.gameObject.layer = layerID;
     }
 
     public void SetText(string text) {
         textElement.text = text;
+    }
+
+    public void SetFontSize(float newSize) {
+        textElement.fontSize = newSize;
+        AdjustTextBoxSize();
+    }
+
+    public void ResetFontSize() {
+        textElement.rectTransform.sizeDelta = textBoxStartSize;
+        textElement.fontSize = fontStartSize;
+    }
+    
+    protected void AdjustTextBoxSize() {
+        textElement.ForceMeshUpdate(true);
+        var textRect = textElement.GetRenderedValues(false);
+        textElement.rectTransform.sizeDelta = textRect + Vector2.one * textPadding * 2f;
+    }
+
+    protected void AdjustBGSize() {
+        // var bgSize = new Vector2(textElement.preferredWidth, textElement.preferredHeight);
+        bgImage.rectTransform.sizeDelta = textElement.rectTransform.sizeDelta;
     }
 }
