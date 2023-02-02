@@ -91,7 +91,7 @@ public class GraphBuilder : MonoBehaviour {
     }
 
     private void ConnectEdges() {
-        langNodesByLevels[0]["Semitic"].ConnectEdgesRecursively(parentConnectionOffset, childConnectionOffset);
+        langNodesByLevels[0]["Proto-Semitic"].ConnectEdgesRecursively(parentConnectionOffset, childConnectionOffset);
     }
 
     private LanguageNode FindLanguage(string langName, int fromLevel = 0) {

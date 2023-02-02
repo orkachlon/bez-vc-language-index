@@ -1,8 +1,8 @@
 ﻿[
   {
-    "Semitic": {
-      "name": "Semitic",
-      "years": "",
+    "Proto-Semitic": {
+      "name": "Proto-Semitic",
+      "years": "4000 BCE - 3700 BCE",
       "childToType": {
         "West Semitic": "Replace",
         "East Semitic": "Replace"
@@ -15,7 +15,7 @@
   {
     "West Semitic": {
       "name": "West Semitic",
-      "years": "",
+      "years": "3700 BCE - 3250 BCE",
       "childToType": {
         "South Semitic": "Replace",
         "North Central Semitic": "Replace"
@@ -28,7 +28,7 @@
     },
     "East Semitic": {
       "name": "East Semitic",
-      "years": "",
+      "years": "3700 BCE - 2700 BCE",
       "childToType": {
         "Eblaite": "Replace",
         "Akkadian": "Replace"
@@ -44,7 +44,7 @@
   {
     "South Semitic": {
       "name": "South Semitic",
-      "years": "",
+      "years": "3250 BCE - 1700 BCE",
       "childToType": {
         "Old South Arabian": "Replace",
         "Eastern South Semitic": "Replace",
@@ -60,9 +60,8 @@
     },
     "Akkadian": {
       "name": "Akkadian",
-      "years": "",
-      "childToType": {
-      },
+      "years": "2700 BCE - 330 BCE",
+      "childToType": {},
       "influences": [
         "Eblaite",
         "Central Semitic",
@@ -74,7 +73,7 @@
     },
     "Eblaite": {
       "name": "Eblaite",
-      "years": "",
+      "years": "2700 BCE - 1900 BCE",
       "childToType": {
       },
       "influences": [
@@ -87,7 +86,7 @@
     },
     "North Central Semitic": {
       "name": "North Central Semitic",
-      "years": "",
+      "years": "3250 BCE - 2700 BCE",
       "childToType": {
         "Central Semitic": "Replace",
         "North West Semitic": "Replace"
@@ -103,7 +102,7 @@
   {
     "Old South Arabian": {
       "name": "Old South Arabian",
-      "years": "",
+      "years": "1700 BCE - 1300 BCE",
       "childToType": {
         "Sabaean": "Replace"
       },
@@ -117,7 +116,7 @@
     },
     "Eastern South Semitic": {
       "name": "Eastern South Semitic",
-      "years": "",
+      "years": "1700 BCE - 780 BCE",
       "childToType": {
         "Mehri-Socotri": "Replace"
       },
@@ -132,7 +131,7 @@
     },
     "Ethiopic": {
       "name": "Ethiopic",
-      "years": "",
+      "years": "2700 BCE - 1300 BCE",
       "childToType": {
         "North Ethiopic": "Replace",
         "South Ethiopic": "Replace"
@@ -144,9 +143,23 @@
       "pathToMap": "",
       "pathToAlphabet": ""
     },
+    "North West Semitic": {
+      "name": "North West Semitic",
+      "years": "2700 BCE - 2340 BCE",
+      "childToType": {
+        "Proto-Canaanite": "Replace",
+        "Amorite": "Replace"
+      },
+      "influences": [
+        "Eblaite",
+        "Central Semitic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
     "Central Semitic": {
       "name": "Central Semitic",
-      "years": "",
+      "years": "2700 BCE - 1080 BCE",
       "childToType": {
         "Old Arabic": "Replace"
       },
@@ -156,34 +169,19 @@
         "Old South Arabian",
         "Eastern South Semitic",
         "North West Semitic",
+        "Amorite",
         "Sabaean",
         "Canaanite",
-        "Amorite",
-        "Minaean",
-        "Old Aramaic"
+        "Proto-Aramaic"
       ],
       "pathToMap": "",
       "pathToAlphabet": ""
     },
-    "North West Semitic": {
-      "name": "North West Semitic",
-      "years": "",
-      "childToType": {
-        "Canaanite": "Replace",
-        "Amorite": "Replace"
-      },
-      "influences": [
-        "Eblaite",
-        "Central Semitic"
-      ],
-      "pathToMap": "",
-      "pathToAlphabet": ""
-    }
   },
   {
     "Sabaean": {
       "name": "Sabaean",
-      "years": "",
+      "years": "1300 BCE - 630 CE",
       "childToType": {
         "Himyaritic": "Add",
         "Hadramatic": "Add",
@@ -206,7 +204,7 @@
     },
     "Mehri-Socotri": {
       "name": "Mehri-Socotri",
-      "years": "",
+      "years": "780 BCE - 540 BCE",
       "childToType": {
         "Shehri": "Replace",
         "Mehri": "Replace",
@@ -222,7 +220,7 @@
     },
     "North Ethiopic": {
       "name": "North Ethiopic",
-      "years": "",
+      "years": "1300 BCE - 330 BCE",
       "childToType": {
         "Ge'ez": "Replace"
       },
@@ -234,7 +232,7 @@
     },
     "South Ethiopic": {
       "name": "South Ethiopic",
-      "years": "",
+      "years": "1300 BCE - 330 BCE",
       "childToType": {
         "Amharic": "Replace",
         "Harari-Gurage": "Replace"
@@ -245,9 +243,36 @@
       "pathToMap": "",
       "pathToAlphabet": ""
     },
+    "Proto-Canaanite": {
+      "name": "Proto-Canaanite",
+      "years": "2340 BCE - 1300 BCE",
+      "childToType": {
+        "Canaanite": "Replace",
+        "Proto-Aramaic": "Replace"
+      },
+      "influences": [
+        "Akkadian",
+        "Amorite",
+        "Central Semitic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    "Amorite": {
+      "name": "Amorite",
+      "years": "2340 BCE - 1080 BCE",
+      "childToType": {},
+      "influences": [
+        "Eblaite",
+        "Central Semitic",
+        "Canaanite"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
     "Old Arabic": {
       "name": "Old Arabic",
-      "years": "",
+      "years": "1080 BCE - 450 CE",
       "childToType": {
         "Arabic": "Replace"
       },
@@ -267,83 +292,12 @@
       ],
       "pathToMap": "",
       "pathToAlphabet": ""
-    },
-    "Canaanite": {
-      "name": "Canaanite",
-      "years": "",
-      "childToType": {
-        "Moabite": "Replace",
-        "Edomite": "Replace",
-        "Ammonite": "Replace",
-        "Phoenician": "Replace",
-        "Biblical Hebrew": "Replace"
-      },
-      "influences": [
-        "Central Semitic",
-        "Amorite",
-        "Old Aramaic"
-      ],
-      "pathToMap": "",
-      "pathToAlphabet": ""
-    },
-    "Amorite": {
-      "name": "Amorite",
-      "years": "",
-      "childToType": {
-        "Old Aramaic": "Replace"
-      },
-      "influences": [
-        "Eblaite",
-        "Central Semitic",
-        "Canaanite"
-      ],
-      "pathToMap": "",
-      "pathToAlphabet": ""
     }
   },
   {
-    "Himyaritic": {
-      "name": "Himyaritic",
-      "years": "",
-      "childToType": {},
-      "influences": [
-        "Sabaean",
-        "Hadramatic"
-      ],
-      "pathToMap": "",
-      "pathToAlphabet": ""
-    },
-    "Hadramatic": {
-      "name": "Hadramatic",
-      "years": "",
-      "childToType": {
-        "Qatabanic": "Add"
-      },
-      "influences": [
-        "Sabaean",
-        "Mehri-Socotri",
-        "Himyaritic",
-        "Qatabanic",
-        "Mehri"
-      ],
-      "pathToMap": "",
-      "pathToAlphabet": ""
-    },
-    "Minaean": {
-      "name": "Minaean",
-      "years": "",
-      "childToType": {},
-      "influences": [
-        "Central Semitic",
-        "Sabaean",
-        "Old Arabic"
-      ],
-      "pathToMap": "",
-      "pathToAlphabet": ""
-    },
     "Shehri": {
       "name": "Shehri",
-      "years": "",
+      "years": "540 BCE - Today",
       "childToType": {},
       "influences": [
         "Mehri",
@@ -355,7 +309,7 @@
     },
     "Mehri": {
       "name": "Mehri",
-      "years": "",
+      "years": "540 BCE - Today",
       "childToType": {},
       "influences": [
         "Sabaean",
@@ -370,7 +324,7 @@
     },
     "Socotri": {
       "name": "Socotri",
-      "years": "",
+      "years": "540 BCE - Today",
       "childToType": {},
       "influences": [
         "Old Arabic",
@@ -383,7 +337,7 @@
     },
     "Ge'ez": {
       "name": "Ge'ez",
-      "years": "",
+      "years": "330 BCE - 1230 CE",
       "childToType": {
         "Tigrinya": "Replace"
       },
@@ -395,7 +349,7 @@
     },
     "Amharic": {
       "name": "Amharic",
-      "years": "",
+      "years": "330 BCE - Today",
       "childToType": {},
       "influences": [
         "Ge'ez",
@@ -409,7 +363,7 @@
     },
     "Harari-Gurage": {
       "name": "Harari-Gurage",
-      "years": "",
+      "years": "330 BCE - 960 CE",
       "childToType": {
         "Gurage": "Replace",
         "Harari": "Replace"
@@ -420,9 +374,43 @@
       "pathToMap": "",
       "pathToAlphabet": ""
     },
+    "Proto-Aramaic": {
+      "name": "Proto-Aramaic",
+      "years": "1300 BCE - 1080 BCE",
+      "childToType": {
+        "Old Aramaic": "Replace"
+      },
+      "influences": [
+        "Akkadian",
+        "Central Semitic",
+        "Amorite",
+        "Canaanite"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    "Canaanite": {
+      "name": "Canaanite",
+      "years": "1300 BCE - 1080 BCE",
+      "childToType": {
+        "Moabite": "Replace",
+        "Edomite": "Replace",
+        "Ammonite": "Replace",
+        "Phoenician": "Replace",
+        "Biblical Hebrew": "Replace"
+      },
+      "influences": [
+        "Akkadian",
+        "Central Semitic",
+        "Amorite",
+        "Proto-Aramaic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
     "Arabic": {
       "name": "Arabic",
-      "years": "",
+      "years": "450 CE - Today",
       "childToType": {
         "Maltese": "Add",
         "Modern Hebrew": "Add"
@@ -443,52 +431,96 @@
       "pathToMap": "",
       "pathToAlphabet": ""
     },
-    "Moabite": {
-      "name": "Moabite",
-      "years": "",
+    "Himyaritic": {
+      "name": "Himyaritic",
+      "years": "135 CE - 960 CE",
       "childToType": {},
       "influences": [
-        "Old Arabic",
-        "Biblical Hebrew"
+        "Sabaean",
+        "Hadramatic"
       ],
       "pathToMap": "",
       "pathToAlphabet": ""
     },
-    "Edomite": {
-      "name": "Edomite",
-      "years": "",
-      "childToType": {},
+    "Hadramatic": {
+      "name": "Hadramatic",
+      "years": "780 BCE - 630 CE",
+      "childToType": {
+        "Qatabanic": "Add"
+      },
       "influences": [
-        "Old Arabic",
-        "Biblical Hebrew"
+        "Sabaean",
+        "Mehri-Socotri",
+        "Himyaritic",
+        "Qatabanic",
+        "Mehri"
       ],
       "pathToMap": "",
       "pathToAlphabet": ""
     },
-    "Ammonite": {
-      "name": "Ammonite",
-      "years": "",
+    "Minaean": {
+      "name": "Minaean",
+      "years": "1080 BCE - 135 CE",
       "childToType": {},
       "influences": [
-        "Old Arabic",
-        "Biblical Hebrew"
+        "Central Semitic",
+        "Sabaean",
+        "Old Arabic"
       ],
       "pathToMap": "",
       "pathToAlphabet": ""
     },
-    "Phoenician": {
-      "name": "Phoenician",
-      "years": "",
+    },
+  {
+    "Tigrinya": {
+      "name": "Tigrinya",
+      "years": "1230 CE - Today",
+      "childToType": {
+        "Tigre": "Add"
+      },
+      "influences": [
+        "Tigre",
+        "Arabic"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    "Gurage": {
+      "name": "Gurage",
+      "years": "960 CE - Today",
       "childToType": {},
       "influences": [
-        "Biblical Hebrew"
+        "Amharic",
+        "Harari"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    "Harari": {
+      "name": "Harari",
+      "years": "960 CE - Today",
+      "childToType": {},
+      "influences": [
+        "Amharic",
+        "Arabic",
+        "Gurage"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    "Maltese": {
+      "name": "Maltese",
+      "years": "1230 CE - Today",
+      "childToType": {},
+      "influences": [
+        "Arabic"
       ],
       "pathToMap": "",
       "pathToAlphabet": ""
     },
     "Biblical Hebrew": {
       "name": "Biblical Hebrew",
-      "years": "",
+      "years": "1080 BCE - 135 CE",
       "childToType": {
         "Mishnaic Hebrew": "Replace",
         "Modern Hebrew": "Revive"
@@ -503,9 +535,52 @@
       "pathToMap": "",
       "pathToAlphabet": ""
     },
+    "Edomite": {
+      "name": "Edomite",
+      "years": "1080 BCE - 540 BCE",
+      "childToType": {},
+      "influences": [
+        "Old Arabic",
+        "Biblical Hebrew"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    "Ammonite": {
+      "name": "Ammonite",
+      "years": "1080 BCE - 330 BCE",
+      "childToType": {},
+      "influences": [
+        "Old Arabic",
+        "Biblical Hebrew"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    "Phoenician": {
+      "name": "Phoenician",
+      "years": "1080 BCE - 450 CE",
+      "childToType": {},
+      "influences": [
+        "Biblical Hebrew"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
+    "Moabite": {
+      "name": "Moabite",
+      "years": "1080 BCE - 540 BCE",
+      "childToType": {},
+      "influences": [
+        "Old Arabic",
+        "Biblical Hebrew"
+      ],
+      "pathToMap": "",
+      "pathToAlphabet": ""
+    },
     "Old Aramaic": {
       "name": "Old Aramaic",
-      "years": "",
+      "years": "1080 BCE - 450 CE",
       "childToType": {
         "Mandaic": "Replace",
         "Middle Aramaic": "Replace"
@@ -513,19 +588,18 @@
       "influences": [
         "Akkadian",
         "Central Semitic",
-        "Canaanite",
         "Old Arabic",
         "Biblical Hebrew",
+        "Phoenician",
+        "Moabite",
         "Mishnaic Hebrew"
       ],
       "pathToMap": "",
       "pathToAlphabet": ""
-    }
     },
-  {
     "Qatabanic": {
       "name": "Qatabanic",
-      "years": "",
+      "years": "540 BCE - 200 CE",
       "childToType": {},
       "influences": [
         "Sabaean",
@@ -533,48 +607,27 @@
       ],
       "pathToMap": "",
       "pathToAlphabet": ""
-    },
-    "Tigrinya": {
-      "name": "Tigrinya",
-      "years": "",
-      "childToType": {
-        "Tigre": "Add"
-      },
-      "influences": [
-        "Tigre",
-        "Arabic"
-      ],
-      "pathToMap": "",
-      "pathToAlphabet": ""
-    },
-    "Gurage": {
-      "name": "Gurage",
-      "years": "",
+    }
+  },
+  {
+    "Mandaic": {
+      "name": "Mandaic",
+      "years": "450 CE - Today",
       "childToType": {},
       "influences": [
-        "Amharic",
-        "Harari"
-      ],
-      "pathToMap": "",
-      "pathToAlphabet": ""
-    },
-    "Harari": {
-      "name": "Harari",
-      "years": "",
-      "childToType": {},
-      "influences": [
-        "Amharic",
         "Arabic",
-        "Gurage"
+        "Middle Aramaic",
+        "Neo Aramaic"
       ],
       "pathToMap": "",
       "pathToAlphabet": ""
     },
-    "Maltese": {
-      "name": "Maltese",
-      "years": "",
+    "Tigre": {
+      "name": "Tigre",
+      "years": "1800 CE - Today",
       "childToType": {},
       "influences": [
+        "Tigrinya",
         "Arabic"
       ],
       "pathToMap": "",
@@ -582,7 +635,7 @@
     },
     "Mishnaic Hebrew": {
       "name": "Mishnaic Hebrew",
-      "years": "",
+      "years": "135 CE - 450 CE",
       "childToType": {
         "Modern Hebrew": "Revive"
       },
@@ -593,21 +646,9 @@
       "pathToMap": "",
       "pathToAlphabet": ""
     },
-    "Mandaic": {
-      "name": "Mandaic",
-      "years": "",
-      "childToType": {},
-      "influences": [
-        "Arabic",
-        "Middle Aramaic",
-        "Neo Aramaic"
-      ],
-      "pathToMap": "",
-      "pathToAlphabet": ""
-    },
     "Middle Aramaic": {
       "name": "Middle Aramaic",
-      "years": "",
+      "years": "450 CE - 1230 CE",
       "childToType": {
         "Neo Aramaic": "Replace"
       },
@@ -618,22 +659,11 @@
       "pathToMap": "",
       "pathToAlphabet": ""
     }
-    },
+  },
   {
-    "Tigre": {
-      "name": "Tigre",
-      "years": "",
-      "childToType": {},
-      "influences": [
-        "Tigrinya",
-        "Arabic"
-      ],
-      "pathToMap": "",
-      "pathToAlphabet": ""
-    },
     "Neo Aramaic": {
       "name": "Neo Aramaic",
-      "years": "",
+      "years": "1230 CE - Today",
       "childToType": {
         "Modern Hebrew": "Add"
       },
@@ -649,7 +679,7 @@
   {
     "Modern Hebrew": {
       "name": "Modern Hebrew",
-      "years": "",
+      "years": "1910 CE - Today",
       "childToType": {},
       "influences": [
         "Arabic",
