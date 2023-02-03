@@ -38,9 +38,6 @@ public class LanguageLayout : MonoBehaviour {
 
         // erase phonetic from name
         languageName.ToNode();
-        
-        // render by depth
-        uiCanvas.gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
     public void ToItem() {
@@ -68,12 +65,15 @@ public class LanguageLayout : MonoBehaviour {
         AlignYears();
         // map
         AlignMap();
+    }
 
-        // move item to UI layer (render in front of lines)
-        uiCanvas.gameObject.layer = LayerMask.NameToLayer("UI");
-        languageName.MoveToLayer("UI");
-        years.MoveToLayer("UI");
-        map.MoveToLayer("UI");
+    public void ToItemRelative() {
+        languageName.ToItemRelative();
+        years.ToItemRelative();
+        map.ToItemRelative();
+        if (alphabet) {
+            alphabet.ToItemRelative();
+        }
     }
 
     private void AlignYears() {
@@ -94,15 +94,6 @@ public class LanguageLayout : MonoBehaviour {
         map.SetPosition(newPosition);
     }
 
-    public void ToItemRelative() {
-        languageName.ToItemRelative();
-        years.ToItemRelative();
-        map.ToItemRelative();
-        if (alphabet) {
-            alphabet.ToItemRelative();
-        }
-    }
-    
     public void SetName(string newName) {
         languageName.SetName(newName);
     }

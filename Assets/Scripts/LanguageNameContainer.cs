@@ -91,6 +91,7 @@ public class LanguageNameContainer : TextContainer {
         textElement.alignment = TextAlignmentOptions.Center;
         textElement.text = languageName;
         textElement.ForceMeshUpdate();
+        MoveToLayer("Default");
     }
     
     public override void ToItem() {
@@ -98,6 +99,7 @@ public class LanguageNameContainer : TextContainer {
         textElement.alignment = TextAlignmentOptions.Left;
         textElement.text = $"{languageName}<size=60%>\n<font=NotoSerif-Italic SDF>({phonetic})</font></size>";
         textElement.ForceMeshUpdate();
+        MoveToLayer("UI");
     }
 
     public override void ToNode() {
@@ -105,5 +107,6 @@ public class LanguageNameContainer : TextContainer {
         textElement.alignment = TextAlignmentOptions.Center;
         textElement.text = languageName;
         textElement.ForceMeshUpdate();
+        MoveToLayer("Default");
     }
 }

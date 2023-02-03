@@ -29,14 +29,17 @@ public class MapContainer : MonoBehaviour, IItemContainer {
     
     public void ToItem() {
         gameObject.SetActive(true);
+        MoveToLayer("UI");
     }
 
     public void ToItemRelative() {
         gameObject.SetActive(false);
+        MoveToLayer("Default");
     }
 
     public void ToNode() {
         gameObject.SetActive(false);
+        MoveToLayer("Default");
     }
 
     public void MoveToLayer(string layerName) {

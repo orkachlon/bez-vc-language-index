@@ -53,13 +53,15 @@ public class TextContainer : MonoBehaviour, IItemContainer {
     }
 
     public virtual void ToItem() {
+        MoveToLayer("UI");
     }
 
     public virtual void ToItemRelative() {
-        
+        MoveToLayer("Default");
     }
 
     public virtual void ToNode() {
+        MoveToLayer("Default");
     }
 
     public void MoveToLayer(string layerName) {
