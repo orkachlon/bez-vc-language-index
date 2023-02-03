@@ -3,11 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [Serializable]
-public class MapContainer : MonoBehaviour {
+public class MapContainer : MonoBehaviour, IItemContainer {
 
     [SerializeField] private Image map;
-    [SerializeField] private LanguageNameContainer languageName;
-    [SerializeField] private YearsContainer years;
     [SerializeField] private float spacing;
 
 
@@ -15,16 +13,6 @@ public class MapContainer : MonoBehaviour {
         if (map == null) {
             throw new Exception("Map container doesn't have a map!");
         }
-        if (languageName == null) {
-            throw new Exception("Map container isn't linked to a language name!");
-        }
-        if (years == null) {
-            throw new Exception("Map container isn't linked to a years container!");
-        }
-    }
-
-    private void Update() {
-        SetPosition();
     }
 
     public Vector2 GetSize() {
@@ -35,21 +23,28 @@ public class MapContainer : MonoBehaviour {
         
     }
 
-    public void Show() {
-        gameObject.SetActive(true);
-        // // position
-        // SetPosition();
+    public void SetPosition(Vector3 newPos) {
+        transform.position = newPos;
     }
     
-    private void SetPosition() {
-        var leftBound = languageName.GetBottomLeft().x;
-        var bottomBound = years.GetBottomLeft().y;
-        var currPosition = transform.position;
-        var newPosition = new Vector3(leftBound - spacing, bottomBound + map.rectTransform.sizeDelta.y / 2f, currPosition.z);
-        transform.position = newPosition;
+    public void ToItem() {
+        gameObject.SetActive(true);
     }
 
-    public void Hide() {
+    public void ToItemRelative() {
         gameObject.SetActive(false);
+    }
+
+    public void ToNode() {
+        gameObject.SetActive(false);
+    }
+
+    public void MoveToLayer(string layerName) {
+        var layerID = LayerMask.NameToLayer(layerName);
+        if (layerID == -1) {
+            throw new ArgumentOutOfRangeException($"Couldn't find Layer {layerName}!");
+        }
+
+        map.gameObject.layer = layerID;
     }
 }

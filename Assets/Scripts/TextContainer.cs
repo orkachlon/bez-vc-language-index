@@ -5,7 +5,7 @@ using Image = UnityEngine.UI.Image;
 
 [ExecuteAlways]
 [Serializable]
-public class TextContainer : MonoBehaviour {
+public class TextContainer : MonoBehaviour, IItemContainer {
 
     [SerializeField] protected TextMeshProUGUI textElement;
     [SerializeField] protected Image bgImage;
@@ -14,7 +14,7 @@ public class TextContainer : MonoBehaviour {
     // not actually in use
     public static readonly Vector3 StartPos = new(0, 0, 21.5f);
 
-    [SerializeField] [HideInInspector] protected bool manualWidth;
+    [SerializeField] [HideInInspector] protected float manualWidth;
     [SerializeField] [HideInInspector] protected float fontStartSize;
     [SerializeField] [HideInInspector] protected Vector2 textBoxStartSize;
 
@@ -37,23 +37,29 @@ public class TextContainer : MonoBehaviour {
         AdjustBGSize();
     }
 
-    public virtual void Show() {
-    }
-
-    public virtual void Hide() {
-    }
-
     public Vector2 GetTextBoxSize() {
-        return textElement.GetRenderedValues();
+        return textElement.GetPreferredValues();
     }
 
     public Vector2 GetBGSize() {
-        return bgImage.rectTransform.sizeDelta;
+        if (manualWidth > 0) {
+            return new Vector2(manualWidth, textElement.rectTransform.sizeDelta.y);
+        }
+        return textElement.rectTransform.sizeDelta + Vector2.right * (textPadding * 2f);
     }
 
     public void SetBGWidth(float width) {
-        manualWidth = true;
-        bgImage.rectTransform.sizeDelta = new Vector2(width, bgImage.rectTransform.sizeDelta.y);
+        manualWidth = width;
+    }
+
+    public virtual void ToItem() {
+    }
+
+    public virtual void ToItemRelative() {
+        
+    }
+
+    public virtual void ToNode() {
     }
 
     public void MoveToLayer(string layerName) {
@@ -64,6 +70,10 @@ public class TextContainer : MonoBehaviour {
 
         textElement.gameObject.layer = layerID;
         bgImage.gameObject.layer = layerID;
+    }
+
+    public void SetPosition(Vector3 newPos) {
+        transform.position = newPos;
     }
 
     public void SetText(string text) {
@@ -103,10 +113,6 @@ public class TextContainer : MonoBehaviour {
     }
 
     protected void AdjustBGSize() {
-        if (manualWidth) {
-            bgImage.rectTransform.sizeDelta = new Vector2(bgImage.rectTransform.sizeDelta.x, textElement.rectTransform.sizeDelta.y);
-            return;
-        }
-        bgImage.rectTransform.sizeDelta = textElement.rectTransform.sizeDelta + Vector2.right * (textPadding * 2f);
+        bgImage.rectTransform.sizeDelta = GetBGSize();
     }
 }

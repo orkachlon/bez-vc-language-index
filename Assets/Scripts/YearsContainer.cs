@@ -20,11 +20,15 @@ public class YearsContainer : TextContainer {
         // SetSpacingFromLanguageName();
     // }
 
-    public override void Show() {
+    public override void ToItem() {
         gameObject.SetActive(true);
     }
+    
+    public override void ToItemRelative() {
+        gameObject.SetActive(false);
+    }
 
-    public override void Hide() {
+    public override void ToNode() {
         gameObject.SetActive(false);
     }
 }

@@ -7,6 +7,8 @@ using UnityEngine;
 public class LanguageNameContainer : TextContainer {
 
     [SerializeField] private int maxCharactersPerLine;
+    [SerializeField] private float regularFontSize = 0.8f;
+    [SerializeField] private float zoomedFontSize = 0.5f;
     [SerializeField] [HideInInspector] private string phonetic;
     [SerializeField] [HideInInspector] private string languageName;
 
@@ -14,12 +16,6 @@ public class LanguageNameContainer : TextContainer {
         base.Start();
         // insert new lines if text is too long
         // InsertNewLines();
-    }
-
-    public override void Show() {
-    }
-
-    public override void Hide() {
     }
 
     public void SetName(string languageNameString) {
@@ -90,19 +86,24 @@ public class LanguageNameContainer : TextContainer {
         return bgImage.rectTransform.sizeDelta;
     }
 
-    public void ToItemRelative() {
-        SetFontSize(0.5f);
-    }
-    
-    public void ToItem() {
-        SetFontSize(0.5f);
-        textElement.alignment = TextAlignmentOptions.Left;
-        textElement.text += $"<size=60%>\n<font=NotoSerif-Italic SDF>({phonetic})</font></size>";
-    }
-
-    public void ToNode() {
-        SetFontSize(0.8f);
+    public override void ToItemRelative() {
+        SetFontSize(zoomedFontSize);
         textElement.alignment = TextAlignmentOptions.Center;
         textElement.text = languageName;
+        textElement.ForceMeshUpdate();
+    }
+    
+    public override void ToItem() {
+        SetFontSize(zoomedFontSize);
+        textElement.alignment = TextAlignmentOptions.Left;
+        textElement.text = $"{languageName}<size=60%>\n<font=NotoSerif-Italic SDF>({phonetic})</font></size>";
+        textElement.ForceMeshUpdate();
+    }
+
+    public override void ToNode() {
+        SetFontSize(regularFontSize);
+        textElement.alignment = TextAlignmentOptions.Center;
+        textElement.text = languageName;
+        textElement.ForceMeshUpdate();
     }
 }

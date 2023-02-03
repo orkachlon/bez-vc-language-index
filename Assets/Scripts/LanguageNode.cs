@@ -30,52 +30,74 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         BindCameraToCanvas();
 
         OnLangNodeClicked += OnLangNodeClickedActions;
-        AncestryConnection.OnConnectionClicked += OnAncestryConnectionClicked;
-        BackArrowClickReceiver.OnBackArrowClicked += OnBackArrowClicked;
+        AncestryConnection.OnConnectionClicked += OnLangNodeClickedActions;
+        BackArrowClickReceiver.OnBackArrowClicked += ToNode;
     }
 
     private void OnDestroy() {
         OnLangNodeClicked -= OnLangNodeClickedActions;
-        AncestryConnection.OnConnectionClicked -= OnAncestryConnectionClicked;
-        BackArrowClickReceiver.OnBackArrowClicked -= OnBackArrowClicked;
+        AncestryConnection.OnConnectionClicked -= OnLangNodeClickedActions;
+        BackArrowClickReceiver.OnBackArrowClicked -= ToNode;
+    }
+
+    private void ToNode() {
+        gameObject.SetActive(true);
+        ToggleAncestryConnections(true);
+        langLayout.ToNode();
+    }
+
+    private void ToItem() {
+        gameObject.SetActive(true);
+        ToggleAncestryConnections(true);
+        langLayout.ToItem();
+    }
+
+    private void ToItemRelative(LanguageNode focusedRelative) {
+        // if we are a child of langNode, then show only us without connections
+        if (focusedRelative.children.Values.Contains(this)) {
+            gameObject.SetActive(true);
+            // Set layout to relative mode
+            langLayout.ToItemRelative();
+            ToggleAncestryConnections(false);
+            return;
+        }
+        // if we are its parent, then show us and only our connection to langNode
+        if (!children.Values.Contains(focusedRelative))
+            return;
+        gameObject.SetActive(true);
+        // set layout to relative
+        langLayout.ToItemRelative();
+        ToggleAncestryConnections(connection => connection.GetChild() == focusedRelative);
     }
 
     private void ToggleLanguageVisibility(LanguageNode langNode) {
         // if it's us, then show us and our connections
         if (langNode == this) {
             gameObject.SetActive(true);
-            foreach (var connection in ancestryConnections) {
-                connection.gameObject.SetActive(true);
-            }
+            ToggleAncestryConnections(true);
+            langLayout.ToItem();
             return;
         }
         // if we are a child of langNode, then show only us without connections
-        if (langNode.children.Values.Contains(this)) {
-            gameObject.SetActive(true);
-            // shrink text size to fit zoom
-            langLayout.ToItemRelative();
-            foreach (var connection in ancestryConnections) {
-                connection.gameObject.SetActive(false);
-            }
-            return;
+        if (langNode.children.Values.Contains(this) || children.Values.Contains(langNode)) {
+            ToItemRelative(langNode);
         }
-        // if we are its parent, then show us and only our connection to langNode
-        if (children.Values.Contains(langNode)) {
-            gameObject.SetActive(true);
-            // shrink text size to fit zoom
-            langLayout.ToItemRelative();
-            foreach (var connection in ancestryConnections) {
-                connection.gameObject.SetActive(connection.GetChild() == langNode);
-            }
-            return;
-        }
+        // otherwise, we are unrelated
         gameObject.SetActive(false);
+    }
+
+    private void ToggleAncestryConnections(bool show) {
+        ToggleAncestryConnections(_ => show);
+    }
+
+    private void ToggleAncestryConnections(Func<AncestryConnection, bool> comparison) {
+        foreach (var connection in ancestryConnections) {
+            connection.gameObject.SetActive(comparison.Invoke(connection));
+        }
     }
 
     private void ToggleLanguageDetails(LanguageNode langNode) {
         if (langNode != this) {
-            // return canvas to render on same layer as lines
-            uiCanvas.gameObject.layer = LayerMask.NameToLayer("Default");
             langLayout.ToNode();
             return;
         }
@@ -110,6 +132,7 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         langLayout.SetPhonetic(langData.phonetic);
         langLayout.SetYears(langData.years);
         langLayout.SetMap(langData.pathToMap);
+        langLayout.ToNode();
     }
 
     public void OnPointerClick(PointerEventData eventData) {
@@ -163,15 +186,21 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         }
         return false;
     }
-    
-    private void OnLangNodeClickedActions(LanguageNode langNode) {
-        ToggleLanguageDetails(langNode);
-        ToggleLanguageVisibility(langNode);
-    }
 
-    private void OnBackArrowClicked() {
-        ToggleLanguageDetails(null);
-        ToggleLanguageVisibility(this);
+
+    private void OnLangNodeClickedActions(LanguageNode langNode) {
+        // if it's us, then show us and our connections
+        if (langNode == this) {
+            ToItem();
+            return;
+        }
+        // if we are a relative
+        if (langNode.children.Values.Contains(this) || children.Values.Contains(langNode)) {
+            ToItemRelative(langNode);
+            return;
+        }
+        // otherwise, we are unrelated
+        gameObject.SetActive(false);
     }
 
     private void OnAncestryConnectionClicked(LanguageNode langNode) {
