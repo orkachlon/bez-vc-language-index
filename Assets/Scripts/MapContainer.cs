@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +7,6 @@ using UnityEngine.UI;
 public class MapContainer : MonoBehaviour, IItemContainer {
 
     [SerializeField] private Image map;
-    [SerializeField] private float spacing;
 
 
     protected void Start() {
@@ -19,8 +19,11 @@ public class MapContainer : MonoBehaviour, IItemContainer {
         return map.rectTransform.sizeDelta;
     }
 
-    public void LoadMap(string pathToMap) {
-        
+    public void LoadMap(string languageName) {
+        if (!File.Exists(Directory.GetCurrentDirectory() + $"/Assets/Resources/Maps/{languageName}.png")) {
+            return;
+        }
+        map.sprite = Resources.Load<Sprite>($"Maps/{languageName}");
     }
 
     public void SetPosition(Vector3 newPos) {

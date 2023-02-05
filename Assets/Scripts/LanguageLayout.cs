@@ -84,13 +84,10 @@ public class LanguageLayout : MonoBehaviour {
     }
 
     private void AlignMap() {
-        float bottomBound;
-        Vector3 currPosition;
-        Vector3 newPosition;
         var leftBound = languageName.GetBottomLeft().x;
-        bottomBound = years.GetBottomLeft().y;
-        currPosition = transform.position;
-        newPosition = new Vector3(leftBound - mapSpacing, bottomBound + map.GetSize().y / 2f, currPosition.z);
+        var bottomBound = years.GetBottomLeft().y;
+        var currPosition = transform.position;
+        var newPosition = new Vector3(leftBound - mapSpacing, bottomBound + map.GetSize().y / 2f, currPosition.z);
         map.SetPosition(newPosition);
     }
 
@@ -106,8 +103,7 @@ public class LanguageLayout : MonoBehaviour {
         years.SetText(newYears);
     }
     
-    public void SetMap(string pathToMap) {
-        map.LoadMap(pathToMap);
+    public void SetMap(string langName) {
+        map.LoadMap(langName);
     }
-
 }

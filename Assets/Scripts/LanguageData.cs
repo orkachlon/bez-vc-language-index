@@ -10,7 +10,6 @@ public class LanguageData {
     public string years;
     public ChildToTypeDictionary childToType;
     public List<string> influences;
-    public string pathToMap;
     public string pathToAlphabet;
 
     public LanguageData() {
