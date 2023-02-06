@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: fffef53dca5785644a318d0f618588c5
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Noto Serif Hebrew ExtraCondensed
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9eeee99cef5bf2048ab0024f65f6420e, type: 3}
+  - {fileID: 12800000, guid: 9ef5c3824ab491c4a851cfa6fcd7aa2f, type: 3}
+  - {fileID: 12800000, guid: fc101ea311f58854a8cebc1b0aac5798, type: 3}
+  - {fileID: 12800000, guid: 95fe95c65cf16a747acbd09ee9252d33, type: 3}
+  - {fileID: 12800000, guid: 1db619f01f7822b4794dff446c7b7526, type: 3}
+  - {fileID: 12800000, guid: 4004e8deac81e7c4582440617b0586e7, type: 3}
+  - {fileID: 12800000, guid: a1f5f4dc921bfc342b97ca818389bfbb, type: 3}
+  - {fileID: 12800000, guid: 7d2fa14c5be5e1049b8a0e15e2211505, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

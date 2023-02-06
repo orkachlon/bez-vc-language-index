@@ -9,7 +9,7 @@ public class LanguageLayout : MonoBehaviour {
     [SerializeField] private LanguageNameContainer languageName;
     [SerializeField] private YearsContainer years;
     [SerializeField] private MapContainer map;
-    [SerializeField] [CanBeNull] private TextContainer alphabet;
+    [SerializeField] private AlphabetContainer alphabet;
 
     [SerializeField] private float yearsSpacing;
     [SerializeField] private float mapSpacing;
@@ -19,6 +19,7 @@ public class LanguageLayout : MonoBehaviour {
         uiCanvas = GetComponent<Canvas>();
         languageName = gameObject.GetLanguageComponent<LanguageNameContainer>(languageName, "LanguageName");
         years = gameObject.GetLanguageComponent<YearsContainer>(years, "Years");
+        alphabet = gameObject.GetLanguageComponent<AlphabetContainer>(alphabet, "Alphabet");
         map = gameObject.GetLanguageComponent<MapContainer>(map, "Map");
     }
 
@@ -32,7 +33,7 @@ public class LanguageLayout : MonoBehaviour {
         years.ToNode();
         map.ToNode();
         // not all languages have an alphabet
-        if (alphabet) {
+        if (!alphabet.IsEmpty()) {
             alphabet.ToNode();
         }
 
@@ -45,7 +46,7 @@ public class LanguageLayout : MonoBehaviour {
         years.ToItem();
         map.ToItem();
         // not all languages have an alphabet
-        if (alphabet) {
+        if (!alphabet.IsEmpty()) {
             alphabet.ToItem();
         }
         // add phonetic to name
@@ -65,13 +66,15 @@ public class LanguageLayout : MonoBehaviour {
         AlignYears();
         // map
         AlignMap();
+        // alphabet
+        AlignAlphabet();
     }
 
     public void ToItemRelative() {
         languageName.ToItemRelative();
         years.ToItemRelative();
         map.ToItemRelative();
-        if (alphabet) {
+        if (!alphabet.IsEmpty()) {
             alphabet.ToItemRelative();
         }
     }
@@ -91,6 +94,13 @@ public class LanguageLayout : MonoBehaviour {
         map.SetPosition(newPosition);
     }
 
+    private void AlignAlphabet() {
+        if (!alphabet.IsEmpty()) {
+            return;
+        }
+        // todo align alphabet
+    }
+
     public void SetName(string newName) {
         languageName.SetName(newName);
     }
@@ -105,5 +115,9 @@ public class LanguageLayout : MonoBehaviour {
     
     public void SetMap(string langName) {
         map.LoadMap(langName);
+    }
+    
+    public void SetAlphabet(string newAlphabet) {
+        alphabet.SetText(newAlphabet);
     }
 }

@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 7c491f750ce5c4f47a906d2f86b9d396
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Noto Serif Ethiopic Condensed
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d9d4215c8ab32f945b448a3dcc14fd31, type: 3}
+  - {fileID: 12800000, guid: a7d25ee676683b9498218e5fb604163d, type: 3}
+  - {fileID: 12800000, guid: 057186ec66f46c845baa9a26b2adfdce, type: 3}
+  - {fileID: 12800000, guid: f8e6a7cc1911fd445b3c4f3837344b74, type: 3}
+  - {fileID: 12800000, guid: 910cd37be3fac30448120713bc78e39d, type: 3}
+  - {fileID: 12800000, guid: 3158ef0152fc52049afa1afbbb0f3f5c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

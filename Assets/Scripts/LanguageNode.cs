@@ -132,6 +132,7 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         langLayout.SetPhonetic(langData.phonetic);
         langLayout.SetYears(langData.years);
         langLayout.SetMap(langData.name);
+        langLayout.SetAlphabet(langData.alphabet);
         langLayout.ToNode();
     }
 

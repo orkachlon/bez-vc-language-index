@@ -9,7 +9,7 @@
         "East Semitic": "Replace"
       },
       "influences": [],
-      "pathToAlphabet": ""
+      "alphabet": ""
     }
   },
   {
@@ -24,7 +24,7 @@
       "influences": [
         "East Semitic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     },
     "East Semitic": {
       "name": "East Semitic",
@@ -38,7 +38,7 @@
         "West Semitic",
         "North Central Semitic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     }
   },
   {
@@ -56,7 +56,7 @@
         "Ethiopic",
         "Central Semitic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     },
     "Akkadian": {
       "name": "Akkadian",
@@ -69,7 +69,7 @@
         "Old Arabic",
         "Old Aramaic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD808\uDC1D\uD808\uDD57\uD808\uDC7A\uD808\uDF11"
     },
     "Eblaite": {
       "name": "Eblaite",
@@ -82,7 +82,7 @@
         "North West Semitic",
         "Amorite"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD808\uDF08\uD808\uDDB7"
     },
     "North Central Semitic": {
       "name": "North Central Semitic",
@@ -96,7 +96,7 @@
         "South Semitic",
         "East Semitic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     }
   },
   {
@@ -112,7 +112,7 @@
         "Ethiopic",
         "Central Semitic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD802\uDE63\uD802\uDE6F\uD802\uDE6C\uD802\uDE75"
     },
     "Ethiopic": {
       "name": "Ethiopic",
@@ -126,7 +126,7 @@
         "South Semitic",
         "Old South Arabian"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     },
     "Eastern South Semitic": {
       "name": "Eastern South Semitic",
@@ -141,7 +141,7 @@
         "Old Arabic",
         "Sabaean"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     },
     "North West Semitic": {
       "name": "North West Semitic",
@@ -155,7 +155,7 @@
         "Eblaite",
         "Central Semitic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     },
     "Central Semitic": {
       "name": "Central Semitic",
@@ -175,7 +175,7 @@
         "Canaanite",
         "Proto-Aramaic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     }
   },
   {
@@ -200,7 +200,7 @@
         "Mehri",
         "Arabic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD802\uDE6A\uD802\uDE68\uD802\uDE71"
     },
     "South Ethiopic": {
       "name": "South Ethiopic",
@@ -213,7 +213,7 @@
       "influences": [
         "North Ethiopic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     },
     "North Ethiopic": {
       "name": "North Ethiopic",
@@ -225,7 +225,7 @@
       "influences": [
         "South Ethiopic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     },
     "Mehri-Socotri": {
       "name": "Mehri-Socotri",
@@ -241,7 +241,7 @@
         "Old Arabic",
         "Hadramatic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     },
     "Proto-Canaanite": {
       "name": "Proto-Canaanite",
@@ -256,7 +256,7 @@
         "Amorite",
         "Central Semitic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     },
     "Amorite": {
       "name": "Amorite",
@@ -268,7 +268,7 @@
         "Central Semitic",
         "Canaanite"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     },
     "Old Arabic": {
       "name": "Old Arabic",
@@ -291,7 +291,7 @@
         "Ammonite",
         "Mishnaic Hebrew"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     }
   },
   {
@@ -307,7 +307,7 @@
         "Gurage",
         "Harari"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "አማርኛ"
     },
     "Harari-Gurage": {
       "name": "Harari-Gurage",
@@ -320,11 +320,11 @@
       "influences": [
         "Amharic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     },
     "Ge'ez": {
       "name": "Ge'ez",
-      "phonetic": "d͡ʒ ɪz",
+      "phonetic": "ˈɡɨ.ʕɨz",
       "years": "330 BCE - 1230 CE",
       "childToType": {
         "Tigrinya": "Replace"
@@ -332,7 +332,7 @@
       "influences": [
         "Amharic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "ግዕዝ"
     },
     "Shehri": {
       "name": "Shehri",
@@ -344,7 +344,7 @@
         "Socotri",
         "Arabic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "شحرية"
     },
     "Mehri": {
       "name": "Mehri",
@@ -359,7 +359,7 @@
         "Socotri",
         "Arabic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "مهريّت"
     },
     "Socotri": {
       "name": "Socotri",
@@ -372,7 +372,7 @@
         "Shehri",
         "Arabic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "ماتڸ دسقطري"
     },
     "Canaanite": {
       "name": "Canaanite",
@@ -391,7 +391,7 @@
         "Amorite",
         "Proto-Aramaic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": ""
     },
     "Proto-Aramaic": {
       "name": "Proto-Aramaic",
@@ -406,7 +406,7 @@
         "Amorite",
         "Canaanite"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD802\uDC40\uD802\uDC53\uD802\uDC4C\uD802\uDC49\uD802\uDC40"
     },
     "Arabic": {
       "name": "Arabic",
@@ -429,7 +429,7 @@
         "Neo Aramaic",
         "Modern Hebrew"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "عربي"
     },
     "Himyaritic": {
       "name": "Himyaritic",
@@ -440,7 +440,7 @@
         "Sabaean",
         "Hadramatic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD802\uDE62\uD802\uDE63\uD802\uDE7A\uD802\uDE67"
     },
     "Hadramatic": {
       "name": "Hadramatic",
@@ -456,7 +456,7 @@
         "Qatabanic",
         "Mehri"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD802\uDE69\uD802\uDE65\uD802\uDE63\uD802\uDE67\uD802\uDE6E\uD802\uDE62"
     },
     "Minaean": {
       "name": "Minaean",
@@ -468,7 +468,7 @@
         "Sabaean",
         "Old Arabic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD802\uDE63\uD802\uDE72\uD802\uDE7A\uD802\uDE6C\uD802\uDE7A\uD802\uDE69"
     }
     },
   {
@@ -482,7 +482,7 @@
         "Arabic",
         "Gurage"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "ሃራሪ"
     },
     "Gurage": {
       "name": "Gurage",
@@ -493,7 +493,7 @@
         "Amharic",
         "Harari"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "ጉራጌ"
     },
     "Tigrinya": {
       "name": "Tigrinya",
@@ -506,7 +506,7 @@
         "Tigre",
         "Arabic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "ትግርኛ"
     },
     "Moabite": {
       "name": "Moabite",
@@ -517,7 +517,7 @@
         "Old Arabic",
         "Biblical Hebrew"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD802\uDD0C\uD802\uDD00\uD802\uDD01"
     },
     "Biblical Hebrew": {
       "name": "Biblical Hebrew",
@@ -534,7 +534,7 @@
         "Moabite",
         "Old Aramaic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "עִבְרִית מִקְרָאִית"
     },
     "Edomite": {
       "name": "Edomite",
@@ -545,7 +545,7 @@
         "Old Arabic",
         "Biblical Hebrew"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD802\uDD00\uD802\uDD03\uD802\uDD0C"
     },
     "Ammonite": {
       "name": "Ammonite",
@@ -556,7 +556,7 @@
         "Old Arabic",
         "Biblical Hebrew"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD802\uDD0F\uD802\uDD0C\uD802\uDD0D"
     },
     "Phoenician": {
       "name": "Phoenician",
@@ -566,7 +566,7 @@
       "influences": [
         "Biblical Hebrew"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD802\uDD03\uD802\uDD01\uD802\uDD13\uD802\uDD09\uD802\uDD0C \uD802\uDD0A\uD802\uDD0D\uD802\uDD0F\uD802\uDD0D\uD802\uDD09\uD802\uDD0C"
     },
     "Old Aramaic": {
       "name": "Old Aramaic",
@@ -585,17 +585,17 @@
         "Moabite",
         "Mishnaic Hebrew"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD802\uDD15\uD802\uDD09\uD802\uDD0C\uD802\uDD01\uD802\uDD00"
     },
     "Maltese": {
       "name": "Maltese",
-      "phonetic": "mɒlti:s",
+      "phonetic": "mɒlˈtiːz",
       "years": "1230 CE - Today",
       "childToType": {},
       "influences": [
         "Arabic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "Malti"
     },
     "Qatabanic": {
       "name": "Qatabanic",
@@ -606,7 +606,7 @@
         "Sabaean",
         "Hadramatic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD802\uDE64\uD802\uDE69\uD802\uDE68\uD802\uDE71\uD802\uDE6C\uD802\uDE7A\uD802\uDE69"
     }
   },
   {
@@ -618,20 +618,21 @@
       "influences": [
         "Arabic",
         "Middle Aramaic",
-        "Neo Aramaic"
+        "Neo Aramaic",
+        "ࡓࡀࡈࡍࡀ"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "ࡀࡍࡈࡀࡓ"
     },
     "Tigre": {
       "name": "Tigre",
-      "phonetic": "taɪ̯gɹ",
+      "phonetic": "tiɡˈɾe",
       "years": "1800 CE - Today",
       "childToType": {},
       "influences": [
         "Tigrinya",
         "Arabic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "ትግሬ"
     },
     "Mishnaic Hebrew": {
       "name": "Mishnaic Hebrew",
@@ -644,7 +645,7 @@
         "Old Arabic",
         "Old Aramaic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "לְשׁוֹן חָזָ\"ל"
     },
     "Middle Aramaic": {
       "name": "Middle Aramaic",
@@ -657,7 +658,7 @@
         "Arabic",
         "Mandaic"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "\uD802\uDC40\uD802\uDC53\uD802\uDC4C\uD802\uDC49\uD802\uDC40"
     }
   },
   {
@@ -673,7 +674,7 @@
         "Mandaic",
         "Modern Hebrew"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "אַרָמִית לׅשָנַא\nܐܪܡܝܐ\nܟܠܕܝܐ\nࠀࠓࠌࠉࠕ\n"
     }
   },
   {
@@ -687,7 +688,7 @@
         "Neo Aramaic",
         "Yiddish"
       ],
-      "pathToAlphabet": ""
+      "alphabet": "עברית מודרנית"
     }
   }
 ]

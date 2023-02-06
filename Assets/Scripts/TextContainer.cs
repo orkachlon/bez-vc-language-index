@@ -78,8 +78,12 @@ public class TextContainer : MonoBehaviour, IItemContainer {
         transform.position = newPos;
     }
 
-    public void SetText(string text) {
+    public virtual void SetText(string text) {
         textElement.text = text;
+    }
+
+    public bool IsEmpty() {
+        return textElement.text.Length == 0;
     }
 
     public void SetFontSize(float newSize) {
