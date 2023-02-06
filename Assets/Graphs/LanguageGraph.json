@@ -618,10 +618,9 @@
       "influences": [
         "Arabic",
         "Middle Aramaic",
-        "Neo Aramaic",
-        "ࡓࡀࡈࡍࡀ"
+        "Neo Aramaic"
       ],
-      "alphabet": "ࡀࡍࡈࡀࡓ"
+      "alphabet": "\u08b2\u0860\u0883\u089c\u0860"
     },
     "Tigre": {
       "name": "Tigre",
