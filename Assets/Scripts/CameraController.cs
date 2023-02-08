@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[ExecuteAlways]
 public class CameraController : MonoBehaviour {
 
     public enum ECameraType {

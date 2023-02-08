@@ -12,7 +12,7 @@ using Object = UnityEngine.Object;
 
 [ExecuteAlways]
 public class GraphBuilder : MonoBehaviour {
-    private const string PathToGraphJson = "./Assets/Graphs/LanguageGraph.json";
+    [SerializeField] private TextAsset graphJsonFile;
     
     [SerializeField] private float heightFactor = 1f;
     [SerializeField] private float radiusFactor = 1f;
@@ -51,7 +51,8 @@ public class GraphBuilder : MonoBehaviour {
         if (langDataByLevels.Count > 0) {
             return;
         }
-        var jsonText = ReadJsonText();
+
+        var jsonText = graphJsonFile.text;
         if (jsonText == null) {
             throw new JsonException("Couldn't read text from json file!");
         }
@@ -192,17 +193,6 @@ public class GraphBuilder : MonoBehaviour {
             DestroyImmediate(destroyObject);
         }
         return true;
-    }
-
-    private static string ReadJsonText() {
-        // validate json path
-        if (!File.Exists(PathToGraphJson)) {
-            return null;
-        }
-
-        // read json and validate
-        var jsonText = File.ReadAllText(PathToGraphJson);
-        return jsonText is {Length: 0} ? null : jsonText;
     }
 }
 

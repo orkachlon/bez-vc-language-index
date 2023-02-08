@@ -11,6 +11,7 @@ public class LanguageData {
     public ChildToTypeDictionary childToType;
     public List<string> influences;
     public string alphabet;
+    public string description;
 
     public LanguageData() {
         childToType = new ChildToTypeDictionary();
