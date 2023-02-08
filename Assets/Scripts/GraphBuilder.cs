@@ -16,8 +16,6 @@ public class GraphBuilder : MonoBehaviour {
     
     [SerializeField] private float heightFactor = 1f;
     [SerializeField] private float radiusFactor = 1f;
-    [SerializeField] private float parentConnectionOffset = 2f;
-    [SerializeField] private float childConnectionOffset = 2f;
     [SerializeField] [NotNull] private LanguageNode languageNodePrefab;
     
     [SerializeField] [HideInInspector] private GameObject nodesContainer;
@@ -84,7 +82,7 @@ public class GraphBuilder : MonoBehaviour {
     }
 
     private void ConnectEdges() {
-        langNodesByLevels[0]["Proto-Semitic"].ConnectEdgesRecursively(parentConnectionOffset, childConnectionOffset);
+        langNodesByLevels[0]["Proto-Semitic"].ConnectEdgesRecursively();
     }
 
     private LanguageNode FindLanguage(string langName, int fromLevel = 0) {

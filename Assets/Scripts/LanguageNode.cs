@@ -160,7 +160,7 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         children[childLangNode.GetName()] = childLangNode;
     }
 
-    public void ConnectEdgesRecursively(float parentConnectionOffset, float childConnectionOffset) {
+    public void ConnectEdgesRecursively() {
         foreach (var (childLangName, childLangNode) in children) {
             if (ConnectionExists(childLangNode)) {
                 continue;
@@ -170,12 +170,10 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
             connection.Connect(
                 this,
                 childLangNode,
-                GetChildType(childLangName),
-                parentConnectionOffset,
-                childConnectionOffset
+                GetChildType(childLangName)
                 );
             ancestryConnections.Add(connection);
-            childLangNode.ConnectEdgesRecursively(parentConnectionOffset, childConnectionOffset);
+            childLangNode.ConnectEdgesRecursively();
         }
     }
 

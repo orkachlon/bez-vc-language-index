@@ -5,19 +5,18 @@ using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(LineRenderer))]
 [Serializable]
+[ExecuteAlways]
 public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
 
     public static event Action<LanguageNode> OnConnectionClicked; 
     
-    private const float LineRendererWidthMultiplier = 0.1f;
-
     [SerializeField] private LanguageNode parent;
     [SerializeField] private LanguageNode child;
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private BoxCollider boxCollider;
     
-    [SerializeField] [HideInInspector] private float parentOffset;
-    [SerializeField] [HideInInspector] private float childOffset;
+    [SerializeField] [Range(0, 1)] private float parentOffset;
+    [SerializeField] [Range(0, 1)] private float childOffset;
 
     private void Start() {
         GetLineRenderer();
@@ -84,15 +83,13 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
         return (parentLinePos, childLinePos);
     }
 
-    public void Connect(LanguageNode parentConnect, LanguageNode childConnect, EChildType childType, float parentOffset, float childOffset) {
+    public void Connect(LanguageNode parentConnect, LanguageNode childConnect, EChildType childType) {
         // update fields
         name = $"{parentConnect.GetName()} -> {childConnect.GetName()}";
         transform.parent = parentConnect.transform;
         parent = parentConnect;
         child = childConnect;
-        this.parentOffset = parentOffset;
-        this.childOffset = childOffset;
-        
+
         // draw line
         if (!lineRenderer) {
             print($"LineRenderer is null on {name}!");
@@ -114,13 +111,7 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
 
     private void SetLineRenderer(EChildType childType) {
         // looks
-        lineRenderer.widthMultiplier = LineRendererWidthMultiplier;
-        lineRenderer.material = childType.GetMaterial();
-        lineRenderer.sharedMaterial.mainTextureScale = EChildType.Revive.Equals(childType)
-            ? new Vector2(1f / lineRenderer.widthMultiplier, 1f)
-            : new Vector2(1f, 1f);
-        lineRenderer.textureMode = LineTextureMode.Tile;
-        lineRenderer.sortingLayerName = "Lines";
+        childType.SetLineType(lineRenderer);
 
         // line position
         var (parentLinePos, childLinePos) = GetOffsetPositions();

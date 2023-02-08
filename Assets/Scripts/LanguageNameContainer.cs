@@ -97,7 +97,7 @@ public class LanguageNameContainer : TextContainer {
     public override void ToItem() {
         SetFontSize(zoomedFontSize);
         textElement.alignment = TextAlignmentOptions.Left;
-        textElement.text = $"{languageName}<size=60%>\n<font=NotoSerif-Italic SDF>({phonetic})</font></size>";
+        textElement.text = $"{languageName}<size=60%>\n<font=NotoSerif-Italic SDF>/{phonetic}/</font></size>";
         textElement.ForceMeshUpdate();
         MoveToLayer("UI");
     }
