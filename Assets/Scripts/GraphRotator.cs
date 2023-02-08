@@ -21,13 +21,13 @@ public class GraphRotator : MonoBehaviour {
         _rotation = Vector3.zero;
         LanguageNode.OnLangNodeClicked += RotateTowards;
         AncestryConnection.OnConnectionClicked += RotateTowards;
-        BackArrowClickReceiver.OnBackArrowClicked += EnableRotation;
+        BackClickReceiver.OnBackArrowClicked += EnableRotation;
     }
 
     private void OnDestroy() {
         LanguageNode.OnLangNodeClicked -= RotateTowards;
         AncestryConnection.OnConnectionClicked -= RotateTowards;
-        BackArrowClickReceiver.OnBackArrowClicked -= EnableRotation;
+        BackClickReceiver.OnBackArrowClicked -= EnableRotation;
     }
 
     // Update is called once per frame

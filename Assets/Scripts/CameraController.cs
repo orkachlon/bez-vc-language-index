@@ -33,13 +33,13 @@ public class CameraController : MonoBehaviour {
         _cameraStartPos = _mainCamera.transform.position;
         LanguageNode.OnLangNodeClicked += MoveCameraToLanguageNode;
         AncestryConnection.OnConnectionClicked += MoveCameraToLanguageNode;
-        BackArrowClickReceiver.OnBackArrowClicked += ResetCamera;
+        BackClickReceiver.OnBackArrowClicked += ResetCamera;
     }
 
     private void OnDestroy() {
         LanguageNode.OnLangNodeClicked -= MoveCameraToLanguageNode;
         AncestryConnection.OnConnectionClicked -= MoveCameraToLanguageNode;
-        BackArrowClickReceiver.OnBackArrowClicked -= ResetCamera;
+        BackClickReceiver.OnBackArrowClicked -= ResetCamera;
     }
 
     private void Update() {
@@ -55,6 +55,7 @@ public class CameraController : MonoBehaviour {
         var langNodePos = langNode.transform.position;
         var camHeight = langNodePos.y;
         var camZ = -(Mathf.Sqrt(langNodePos.x * langNodePos.x + langNodePos.z * langNodePos.z) + cameraDistanceFromNode);
+        // var camZ = 0f;
 
         // move camera
         StartCameraMoveCoroutine(camHeight, camZ);

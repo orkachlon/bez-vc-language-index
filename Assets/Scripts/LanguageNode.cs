@@ -31,13 +31,13 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
 
         OnLangNodeClicked += OnLangNodeClickedActions;
         AncestryConnection.OnConnectionClicked += OnLangNodeClickedActions;
-        BackArrowClickReceiver.OnBackArrowClicked += ToNode;
+        BackClickReceiver.OnBackArrowClicked += ToNode;
     }
 
     private void OnDestroy() {
         OnLangNodeClicked -= OnLangNodeClickedActions;
         AncestryConnection.OnConnectionClicked -= OnLangNodeClickedActions;
-        BackArrowClickReceiver.OnBackArrowClicked -= ToNode;
+        BackClickReceiver.OnBackArrowClicked -= ToNode;
     }
 
     private void ToNode() {

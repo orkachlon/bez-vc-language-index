@@ -83,7 +83,7 @@ Properties {
 	_CullMode			("Cull Mode", Float) = 0
 	_ColorMask			("Color Mask", Float) = 15
 	
-	_BrightnessController ("BrightnessController", float) = 21.55
+	_BrightnessController ("BrightnessController", float) = 31.7
 	_FrontOfGraph ("FrontOfGraph", vector) = (0, 0, -16.63553, 1)
 }
 
@@ -319,7 +319,7 @@ SubShader {
 			const float dist_from_origin = sqrt(pow(input.worldPos.x - _FrontOfGraph.x, 2) + pow(input.worldPos.z - _FrontOfGraph.z, 2));
 			
   			float4 col = faceColor * input.color.a;
-			col.xyz *= 1 - smoothstep(0, _BrightnessController, dist_from_origin);
+			col.xyz *= 1 - smoothstep(0, 36, dist_from_origin);
 			return col;
 		}
 

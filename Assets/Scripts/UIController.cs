@@ -20,7 +20,7 @@ public class UIController : MonoBehaviour {
             throw new MissingComponentException("UIController must have a child with TextMeshProUGUI component");
         }
 
-        BackArrowClickReceiver.OnBackArrowClicked += HideUI;
+        BackClickReceiver.OnBackArrowClicked += HideUI;
         LanguageNode.OnLangNodeClicked += ShowUI;
         AncestryConnection.OnConnectionClicked += ShowUI;
         
@@ -28,7 +28,7 @@ public class UIController : MonoBehaviour {
     }
 
     private void OnDestroy() {
-        BackArrowClickReceiver.OnBackArrowClicked -= HideUI;
+        BackClickReceiver.OnBackArrowClicked -= HideUI;
         LanguageNode.OnLangNodeClicked -= ShowUI;
         AncestryConnection.OnConnectionClicked -= ShowUI;
     }

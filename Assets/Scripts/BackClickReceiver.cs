@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BackArrowClickReceiver : MonoBehaviour, IPointerClickHandler {
+public class BackClickReceiver : MonoBehaviour, IPointerClickHandler {
 
     public static event Action OnBackArrowClicked;
     

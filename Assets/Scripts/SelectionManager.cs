@@ -10,13 +10,13 @@ public class SelectionManager : MonoBehaviour {
         _selectedLanguage = null;
         LanguageNode.OnLangNodeClicked += SetSelectedLanguage;
         AncestryConnection.OnConnectionClicked += SetSelectedLanguage;
-        BackArrowClickReceiver.OnBackArrowClicked += ResetSelectedLanguage;
+        BackClickReceiver.OnBackArrowClicked += ResetSelectedLanguage;
     }
 
     private void OnDestroy() {
         LanguageNode.OnLangNodeClicked -= SetSelectedLanguage;
         AncestryConnection.OnConnectionClicked -= SetSelectedLanguage;
-        BackArrowClickReceiver.OnBackArrowClicked -= ResetSelectedLanguage;
+        BackClickReceiver.OnBackArrowClicked -= ResetSelectedLanguage;
     }
 
     [CanBeNull]
