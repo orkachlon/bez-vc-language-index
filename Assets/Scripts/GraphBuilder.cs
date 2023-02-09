@@ -22,12 +22,10 @@ public class GraphBuilder : MonoBehaviour {
     [SerializeField] [HideInInspector] private List<LanguageDataInLevel> langDataByLevels;
     [SerializeField] [HideInInspector] private List<LanguageNodesInLevel> langNodesByLevels;
 
-    private void Start() {
-        // BuildGraph();
-    }
-
     private void Awake() {
         BuildGraph();
+        LanguageManager.PopulateNodes(langNodesByLevels);
+        LanguageManager.PopulateData(langDataByLevels);
     }
 
     public void BuildGraph() {
@@ -100,6 +98,18 @@ public class GraphBuilder : MonoBehaviour {
         return null;
     }
 
+    private void PrintLanguageDict() {
+        if (langDataByLevels == null) {
+            return;
+        }
+
+        var description = "";
+        for (var i = 0; i < langDataByLevels.Count; i++) {
+            description += $"{i + 1}\n{string.Join("\n", langDataByLevels[i].Values)}\n\n";
+        }
+        print(description);
+    }
+
     private void PlaceNodes() {
         if (langDataByLevels == null) {
             throw new ArgumentException("_langDataByLevels is null! Make sure json was read correctly.");
@@ -130,18 +140,7 @@ public class GraphBuilder : MonoBehaviour {
         }
     }
 
-    private void PrintLanguageDict() {
-        if (langDataByLevels == null) {
-            return;
-        }
-
-        var description = "";
-        for (var i = 0; i < langDataByLevels.Count; i++) {
-            description += $"{i + 1}\n{string.Join("\n", langDataByLevels[i].Values)}\n\n";
-        }
-        print(description);
-    }
-
+    [CanBeNull]
     private LanguageNode PlaceNode(int level, int siblingIndex, LanguageData langData) {
         
         var numOfSiblings = langDataByLevels[level].Count;

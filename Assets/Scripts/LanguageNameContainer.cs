@@ -8,7 +8,8 @@ public class LanguageNameContainer : TextContainer {
 
     [SerializeField] private int maxCharactersPerLine;
     [SerializeField] private float regularFontSize = 0.8f;
-    [SerializeField] private float zoomedFontSize = 0.5f;
+    [SerializeField] private float itemFontSize = 0.5f;
+    [SerializeField] private float itemRelativeFontSize = 0.3f;
     [SerializeField] [HideInInspector] private string phonetic;
     [SerializeField] [HideInInspector] private string languageName;
 
@@ -87,15 +88,15 @@ public class LanguageNameContainer : TextContainer {
     }
 
     public override void ToItemRelative() {
-        SetFontSize(zoomedFontSize);
+        SetFontSize(itemRelativeFontSize);
         textElement.alignment = TextAlignmentOptions.Center;
         textElement.text = languageName;
         textElement.ForceMeshUpdate();
-        MoveToLayer("Default");
+        MoveToLayer("UI");
     }
     
     public override void ToItem() {
-        SetFontSize(zoomedFontSize);
+        SetFontSize(itemFontSize);
         textElement.alignment = TextAlignmentOptions.Left;
         textElement.text = $"{languageName}<size=60%>\n<font=NotoSerif-Italic SDF>/{phonetic}/</font></size>";
         textElement.ForceMeshUpdate();

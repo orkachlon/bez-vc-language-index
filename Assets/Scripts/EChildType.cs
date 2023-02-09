@@ -13,8 +13,8 @@ public static class ChildTypeExtensions {
     private static readonly Material AddMaterial = Resources.Load<Material>("AddChildTypeMaterial");
     private static readonly Material ReviveMaterial = Resources.Load<Material>("ReviveChildTypeMaterial");
     
-    private static readonly float LineWide = 0.2f;
-    private static readonly float LineNarrow = 0.1f;
+    public static readonly float LineWide = 0.2f;
+    public static readonly float LineNarrow = 0.1f;
 
     public static Material GetMaterial(this EChildType type) {
         return type switch {

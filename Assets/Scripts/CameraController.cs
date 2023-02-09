@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 [ExecuteAlways]
+[RequireComponent(typeof(Camera))]
 public class CameraController : MonoBehaviour {
 
     public enum ECameraType {
@@ -48,25 +49,24 @@ public class CameraController : MonoBehaviour {
     }
 
     private void ResetCamera() {
-        StartCameraMoveCoroutine(_cameraStartPos.y, _cameraStartPos.z);
+        StartCameraMoveCoroutine(_cameraStartPos);
     }
 
     private void MoveCameraToLanguageNode(LanguageNode langNode) {
         // calculate position
         var langNodePos = langNode.transform.position;
-        var camHeight = langNodePos.y;
+        var camY = langNodePos.y;
         var camZ = -(Mathf.Sqrt(langNodePos.x * langNodePos.x + langNodePos.z * langNodePos.z) + cameraDistanceFromNode);
-        // var camZ = 0f;
 
         // move camera
-        StartCameraMoveCoroutine(camHeight, camZ);
+        StartCameraMoveCoroutine(new Vector3(0, camY, camZ));
     }
 
-    private void StartCameraMoveCoroutine(float camHeight, float camZ) {
+    private void StartCameraMoveCoroutine(Vector3 endPosition) {
         if (_cameraMoveCoroutine != null) {
             StopCoroutine(_cameraMoveCoroutine);
         }
-        _cameraMoveCoroutine = StartCoroutine(MoveCamera(new Vector3(0, camHeight, camZ)));
+        _cameraMoveCoroutine = StartCoroutine(MoveCamera(endPosition));
     }
 
     private IEnumerator MoveCamera(Vector3 cameraEndPos) { 

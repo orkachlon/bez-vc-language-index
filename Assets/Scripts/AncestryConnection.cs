@@ -25,6 +25,7 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
 
     private void Update() {
         UpdateLinePositions();
+        SetLineTransform();
         SetCollider();
     }
 
@@ -119,6 +120,10 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
         lineRenderer.SetPosition(1, childLinePos);
         
         // object position
+        SetLineTransform();
+    }
+
+    private void SetLineTransform() {
         var lineDirection = child.transform.position - parent.transform.position;
         transform.position = parent.transform.position + lineDirection / 2f;
         var tmp = Vector3.Cross(lineDirection, Vector3.forward);
@@ -128,7 +133,7 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
     private void SetCollider() {
         var (parentLinePos, childLinePos) = GetOffsetPositions();
         var lineDirection = childLinePos - parentLinePos;
-        var width = lineRenderer.widthMultiplier;
+        var width = ChildTypeExtensions.LineWide;
         var height = lineDirection.magnitude;
         var colliderTransform = boxCollider.transform;
         

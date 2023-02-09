@@ -16,6 +16,7 @@ public class GraphRotator : MonoBehaviour {
     private Coroutine _graphRotateCoroutine;
 
     public static event Action OnGraphStartRotating;
+    public static event Action<LanguageNode> OnGraphFinishedRotating;
     public static event Action OnGraphStopRotating;
 
     // Start is called before the first frame update
@@ -42,14 +43,12 @@ public class GraphRotator : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
             // rotating flag
             _isRotating = true;
-            OnGraphStartRotating?.Invoke();
          
             // store mouse
             _mouseReference = Input.mousePosition;
         } else if (Input.GetMouseButtonUp(0)) {
             // rotating flag
             _isRotating = false;
-            OnGraphStopRotating?.Invoke();
             return;
         }
         
@@ -99,15 +98,13 @@ public class GraphRotator : MonoBehaviour {
             StopCoroutine(_graphRotateCoroutine);
             OnGraphStopRotating?.Invoke();
         }
-        _graphRotateCoroutine = StartCoroutine(LerpGraphRotation(endRotation));
+        _graphRotateCoroutine = StartCoroutine(LerpGraphRotation(endRotation, langNode));
         OnGraphStartRotating?.Invoke();
         _disableRotation = true;
     }
 
-    private IEnumerator LerpGraphRotation(Quaternion endRotation) {
+    private IEnumerator LerpGraphRotation(Quaternion endRotation, LanguageNode langNode) {
         LanguageNameTooltip.RegisterDisable();
-        // rotate without animation
-        // transform.Rotate(Vector3.up, angleToRotate);
         var time = 0f;
         var startRotation = transform.rotation;
         while (time < rotationDuration) {
@@ -124,5 +121,6 @@ public class GraphRotator : MonoBehaviour {
         }
 
         transform.rotation = endRotation;
+        OnGraphFinishedRotating?.Invoke(langNode);
     }
 }

@@ -19,32 +19,41 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
 
     [SerializeField] [HideInInspector] private ChildNameToNodeDictionary children = new();
     [SerializeField] [HideInInspector] private LanguageData langData;
-    [SerializeField] [HideInInspector] private List<AncestryConnection> ancestryConnections;
+    [SerializeField] [HideInInspector] private List<AncestryConnection> ancestryChildConnections;
+    [SerializeField] [HideInInspector] private Vector3 positionInGraph;
+    [SerializeField] [HideInInspector] private CameraController mainCam;
 
     public static event Action<LanguageNode> OnLangNodeClicked;
 
-    private void Awake() {
+    private void Start() {
         langLayout = gameObject.GetLanguageComponent<LanguageLayout>(langLayout, "LanguageLayout");
+        positionInGraph = transform.localPosition;
+        mainCam = Camera.main.GetComponent<CameraController>();
 
         OnLangNodeClicked += OnLangNodeClickedActions;
         AncestryConnection.OnConnectionClicked += OnLangNodeClickedActions;
         BackClickReceiver.OnBackArrowClicked += ToNode;
+        GraphRotator.OnGraphFinishedRotating += AlignChildToParentItem;
+        GraphRotator.OnGraphFinishedRotating += AlignParentToChildItem;
     }
 
     private void OnDestroy() {
         OnLangNodeClicked -= OnLangNodeClickedActions;
         AncestryConnection.OnConnectionClicked -= OnLangNodeClickedActions;
         BackClickReceiver.OnBackArrowClicked -= ToNode;
+        GraphRotator.OnGraphFinishedRotating -= AlignChildToParentItem;
     }
 
     private void ToNode() {
         gameObject.SetActive(true);
+        transform.localPosition = positionInGraph;
         ToggleAncestryConnections(true);
         langLayout.ToNode();
     }
 
     private void ToItem() {
         gameObject.SetActive(true);
+        transform.localPosition = positionInGraph;
         ToggleAncestryConnections(true);
         langLayout.ToItem();
     }
@@ -63,6 +72,36 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         // Set layout to relative mode
         langLayout.ToItemRelative();
         ToggleAncestryConnections(false);
+    }
+
+    private void AlignChildToParentItem(LanguageNode parent) {
+        if (!parent.children.ContainsKey(GetName())) {
+            return;
+        }
+        var childs = parent.children.Values.ToList();
+        childs = childs.OrderBy(child => -Vector3.SignedAngle(parent.transform.forward, child.transform.forward, Vector3.up))
+            .ToList();
+        var i = childs.IndexOf(this);
+        var pp = parent.transform.position;
+        var screenWidth = 18f;
+        var cellSize = screenWidth / childs.Count;
+        var p = new Vector3((i * cellSize) - pp.x - screenWidth / 2f + cellSize / 2f, pp.y - 4, pp.z);
+        transform.position = p;
+    }
+    
+    private void AlignParentToChildItem(LanguageNode langChild) {
+        if (!children.ContainsKey(langChild.GetName())) {
+            return;
+        }
+        var parents = LanguageManager.GetParents(langChild);
+        parents = parents.OrderBy(child => -Vector3.SignedAngle(langChild.transform.forward, child.transform.forward, Vector3.up))
+            .ToList();
+        var i = parents.IndexOf(this);
+        var pp = langChild.transform.position;
+        var screenWidth = 18f;
+        var cellSize = screenWidth / parents.Count;
+        var p = new Vector3((i * cellSize) - pp.x - screenWidth / 2f + cellSize / 2f, pp.y + 4, pp.z);
+        transform.position = p;
     }
 
     private void ToggleLanguageVisibility(LanguageNode langNode) {
@@ -92,7 +131,7 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
     }
 
     private void ToggleAncestryConnections(Func<AncestryConnection, bool> comparison) {
-        foreach (var connection in ancestryConnections) {
+        foreach (var connection in ancestryChildConnections) {
             connection.gameObject.SetActive(comparison.Invoke(connection));
         }
     }
@@ -136,8 +175,8 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         return langData.name;
     }
 
-    public IEnumerable<KeyValuePair<string, LanguageNode>> GetChildren() {
-        return children.AsReadOnlyCollection();
+    public ChildNameToNodeDictionary GetChildren() {
+        return children;
     }
 
     public void AddChild([NotNull] LanguageNode childLangNode) {
@@ -156,13 +195,13 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
                 childLangNode,
                 GetChildType(childLangName)
                 );
-            ancestryConnections.Add(connection);
+            ancestryChildConnections.Add(connection);
             childLangNode.ConnectEdgesRecursively();
         }
     }
 
     private bool ConnectionExists(LanguageNode childLangNode) {
-        return ancestryConnections.Any(connection => connection.GetChild() == childLangNode);
+        return ancestryChildConnections.Any(connection => connection.GetChild() == childLangNode);
     }
     
     

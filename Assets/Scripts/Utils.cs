@@ -16,7 +16,6 @@ public static class Utils {
         return null;
     }
     
-    
     public static T GetLanguageComponent<T>(this GameObject gameObject, T component, string requestedTag) where T: Component {
         if (!component) {
             component = gameObject.FindComponentInChildWithTag<T>(requestedTag);
