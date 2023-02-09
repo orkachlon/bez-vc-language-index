@@ -153,7 +153,10 @@ public class GraphBuilder : MonoBehaviour {
         var x = radius * Mathf.Cos(angle);
         var y = (langDataByLevels.Count - level) * heightFactor;
         var z = radius * Mathf.Sin(angle);
-        var langNode = Instantiate(languageNodePrefab, new Vector3(x, y, z), Quaternion.identity);
+        var position = new Vector3(x, y, z);
+        var lookDirection = new Vector3(x, 0, z).normalized;
+        lookDirection = lookDirection == Vector3.zero ? -Vector3.forward : lookDirection;
+        var langNode = Instantiate(languageNodePrefab, position, Quaternion.LookRotation(lookDirection, Vector3.up));
         if (langNode == null) {
             return null;
         }

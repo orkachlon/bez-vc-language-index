@@ -20,14 +20,11 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
     [SerializeField] [HideInInspector] private ChildNameToNodeDictionary children = new();
     [SerializeField] [HideInInspector] private LanguageData langData;
     [SerializeField] [HideInInspector] private List<AncestryConnection> ancestryConnections;
-    [SerializeField] [HideInInspector] private Camera mainCamera;
 
     public static event Action<LanguageNode> OnLangNodeClicked;
 
     private void Awake() {
-        mainCamera = Camera.main;
         langLayout = gameObject.GetLanguageComponent<LanguageLayout>(langLayout, "LanguageLayout");
-        BindCameraToCanvas();
 
         OnLangNodeClicked += OnLangNodeClickedActions;
         AncestryConnection.OnConnectionClicked += OnLangNodeClickedActions;
@@ -106,23 +103,6 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         langLayout.ToItem();
     }
 
-    private void Update() {
-        if (!mainCamera) {
-            return;
-        }
-        uiCanvas.transform.forward = mainCamera.transform.forward;
-    }
-
-    private void BindCameraToCanvas() {
-        if (!uiCanvas) {
-            uiCanvas = GetComponentInChildren<Canvas>();
-        }
-        if (!uiCanvas) {
-            throw new MissingComponentException("LanguageNode is missing Canvas component!");
-        }
-        uiCanvas.worldCamera = Camera.main;
-    }
-
 
     public void SetLangData(LanguageData newLangData) {
         langData = newLangData;
@@ -178,14 +158,10 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
     }
 
     private bool ConnectionExists(LanguageNode childLangNode) {
-        foreach (var connection in ancestryConnections) {
-            if (connection.GetChild() == childLangNode) {
-                return true;
-            }
-        }
-        return false;
+        return ancestryConnections.Any(connection => connection.GetChild() == childLangNode);
     }
-
+    
+    
 
     private void OnLangNodeClickedActions(LanguageNode langNode) {
         // if it's us, then show us and our connections
@@ -206,8 +182,7 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         ToggleLanguageDetails(langNode);
         ToggleLanguageVisibility(langNode);
     }
-
-
+    
     public override string ToString() {
         return langData.ToString();
     }

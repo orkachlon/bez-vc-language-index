@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 
 [RequireComponent(typeof(Canvas))]
+[ExecuteAlways]
 public class LanguageLayout : MonoBehaviour {
 
     [SerializeField] private Canvas uiCanvas;
@@ -13,10 +14,17 @@ public class LanguageLayout : MonoBehaviour {
 
     [SerializeField] private float yearsSpacing;
     [SerializeField] private float mapSpacing;
+    
+    [SerializeField] [HideInInspector] private Camera mainCamera;
 
 
     private void Start() {
+        mainCamera = Camera.main;
         uiCanvas = GetComponent<Canvas>();
+        BindCameraToCanvas();
+        RotateTowardsCamera();
+        
+        // Get all container components
         languageName = gameObject.GetLanguageComponent<LanguageNameContainer>(languageName, "LanguageName");
         years = gameObject.GetLanguageComponent<YearsContainer>(years, "Years");
         alphabet = gameObject.GetLanguageComponent<AlphabetContainer>(alphabet, "Alphabet");
@@ -24,6 +32,7 @@ public class LanguageLayout : MonoBehaviour {
     }
 
     private void Update() {
+        RotateTowardsCamera();
         AlignYears();
         AlignMap();
     }
@@ -99,6 +108,23 @@ public class LanguageLayout : MonoBehaviour {
             return;
         }
         // todo align alphabet
+    }
+
+    private void RotateTowardsCamera() {
+        if (!mainCamera) {
+            return;
+        }
+        uiCanvas.transform.forward = mainCamera.transform.forward;
+    }
+    
+    private void BindCameraToCanvas() {
+        if (!uiCanvas) {
+            uiCanvas = GetComponentInChildren<Canvas>();
+        }
+        if (!uiCanvas) {
+            throw new MissingComponentException("LanguageNode is missing Canvas component!");
+        }
+        uiCanvas.worldCamera = mainCamera == null ? Camera.main : mainCamera;
     }
 
     public void SetName(string newName) {

@@ -91,17 +91,15 @@ public class GraphRotator : MonoBehaviour {
         if (mainCam == null) {
             throw new Exception("Main Camera can't be null!");
         }
-        // graph center on camera height
         var mainCamPos = mainCam.transform.position;
-        var langNodePos = langNode.transform.position;
+        // languageNodes face the outside of the graph
+        var langNodeDir = langNode.transform.forward;
         // we only rotate around y so
         // zero out all y values to not mess with the rotation angle
         var graphCenter = new Vector3(mainCamPos.x ,0, 0);
-        var graphToNode = langNodePos - graphCenter;
-        graphToNode.y = 0;
         var graphToCam = mainCamPos - graphCenter;
         graphToCam.y = 0;
-        var angleToRotate = Vector3.SignedAngle(graphToNode, graphToCam, Vector3.up);
+        var angleToRotate = Vector3.SignedAngle(langNodeDir, graphToCam, Vector3.up);
 
         // get angle between V3fwd and transform.fwd
         var fwdOffset = Vector3.SignedAngle(Vector3.forward, transform.forward, Vector3.up);
