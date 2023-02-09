@@ -15,6 +15,9 @@ public class GraphRotator : MonoBehaviour {
 
     private Coroutine _graphRotateCoroutine;
 
+    public static event Action OnGraphStartRotating;
+    public static event Action OnGraphStopRotating;
+
     // Start is called before the first frame update
     private  void Start() {
         sensitivity = 0.1f;
@@ -39,12 +42,14 @@ public class GraphRotator : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
             // rotating flag
             _isRotating = true;
+            OnGraphStartRotating?.Invoke();
          
             // store mouse
             _mouseReference = Input.mousePosition;
         } else if (Input.GetMouseButtonUp(0)) {
             // rotating flag
             _isRotating = false;
+            OnGraphStopRotating?.Invoke();
             return;
         }
         
@@ -54,7 +59,7 @@ public class GraphRotator : MonoBehaviour {
         _mouseOffset = Input.mousePosition - _mouseReference;
              
         // apply rotation
-        _rotation.y = -(_mouseOffset.x + _mouseOffset.y) * sensitivity;
+        _rotation.y = -_mouseOffset.x * sensitivity;
              
         // rotate
         transform.Rotate(_rotation);
@@ -63,25 +68,6 @@ public class GraphRotator : MonoBehaviour {
         _mouseReference = Input.mousePosition;
     }
     
-    void OnMouseDown() {
-        if (_disableRotation) {
-            return;
-        }
-        // rotating flag
-        _isRotating = true;
-         
-        // store mouse
-        _mouseReference = Input.mousePosition;
-    }
-     
-    void OnMouseUp() {
-        if (_disableRotation) {
-            return;
-        }
-        // rotating flag
-        _isRotating = false;
-    }
-
     private void EnableRotation() {
         _disableRotation = false;
     }
@@ -111,8 +97,10 @@ public class GraphRotator : MonoBehaviour {
 
         if (_graphRotateCoroutine != null) {
             StopCoroutine(_graphRotateCoroutine);
+            OnGraphStopRotating?.Invoke();
         }
         _graphRotateCoroutine = StartCoroutine(LerpGraphRotation(endRotation));
+        OnGraphStartRotating?.Invoke();
         _disableRotation = true;
     }
 
