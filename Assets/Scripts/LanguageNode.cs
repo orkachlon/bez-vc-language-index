@@ -49,35 +49,39 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         langLayout.ToItem();
     }
 
-    private void ToItemRelative(LanguageNode focusedRelative) {
-        // if we are a child of langNode, then show only us without connections
-        if (focusedRelative.children.Values.Contains(this)) {
-            gameObject.SetActive(true);
-            // Set layout to relative mode
-            langLayout.ToItemRelative();
-            ToggleAncestryConnections(false);
-            return;
-        }
-        // if we are its parent, then show us and only our connection to langNode
-        if (!children.Values.Contains(focusedRelative))
-            return;
+    private void ToItemParent(LanguageNode child) {
+        //  show us and only our connection to langNode
         gameObject.SetActive(true);
         // set layout to relative
         langLayout.ToItemRelative();
-        ToggleAncestryConnections(connection => connection.GetChild() == focusedRelative);
+        ToggleAncestryConnections(connection => connection.GetChild().GetName() == child.GetName());
+    }
+
+    private void ToItemChild(LanguageNode parent) {
+        // show only us without connections
+        gameObject.SetActive(true);
+        // Set layout to relative mode
+        langLayout.ToItemRelative();
+        ToggleAncestryConnections(false);
     }
 
     private void ToggleLanguageVisibility(LanguageNode langNode) {
         // if it's us, then show us and our connections
-        if (langNode == this) {
+        if (langNode.GetName() == GetName()) {
             gameObject.SetActive(true);
             ToggleAncestryConnections(true);
             langLayout.ToItem();
             return;
         }
-        // if we are a child of langNode, then show only us without connections
-        if (langNode.children.Values.Contains(this) || children.Values.Contains(langNode)) {
-            ToItemRelative(langNode);
+        // if we are a parent of langNode
+        if (children.ContainsKey(langNode.GetName())) {
+            ToItemParent(langNode);
+            return;
+        }
+        // if we are a child of langNode
+        if (langNode.children.ContainsKey(GetName())) {
+            ToItemChild(langNode);
+            return;
         }
         // otherwise, we are unrelated
         gameObject.SetActive(false);
@@ -169,9 +173,13 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
             ToItem();
             return;
         }
-        // if we are a relative
-        if (langNode.children.Values.Contains(this) || children.Values.Contains(langNode)) {
-            ToItemRelative(langNode);
+        // if we are a parent
+        if (children.Values.Contains(langNode)) {
+            ToItemParent(langNode);
+            return;
+        }
+        if (langNode.children.ContainsKey(GetName())) {
+            ToItemChild(langNode);
             return;
         }
         // otherwise, we are unrelated
