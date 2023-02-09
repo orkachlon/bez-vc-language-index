@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -13,7 +10,6 @@ public class CameraController : MonoBehaviour {
         Orthographic
     }
     
-    public static event Action<Vector3> OnCameraAnimationFinished;
     
     public ECameraType selectedCameraType;
 
@@ -24,8 +20,6 @@ public class CameraController : MonoBehaviour {
     private float translationDuration = 1.5f;
     [SerializeField]
     private float cameraDistanceFromNode = 5f;
-
-    private Coroutine _cameraMoveCoroutine;
 
     private void Start() {
         _mainCamera = Camera.main;
@@ -49,28 +43,20 @@ public class CameraController : MonoBehaviour {
     }
 
     private void ResetCamera() {
-        StartCameraMoveCoroutine(_cameraStartPos);
+        if (transform.position == _cameraStartPos) {
+            return;
+        }
+        StartCoroutine(MoveCamera(_cameraStartPos));
     }
 
     private void MoveCameraToLanguageNode(LanguageNode langNode) {
-        // calculate position
-        var langNodePos = langNode.transform.position;
-        var camY = langNodePos.y;
-        var camZ = -(Mathf.Sqrt(langNodePos.x * langNodePos.x + langNodePos.z * langNodePos.z) + cameraDistanceFromNode);
-
         // move camera
-        StartCameraMoveCoroutine(new Vector3(0, camY, camZ));
+        StartCoroutine(MoveCamera(langNode.GetEndPosition() + Vector3.back * cameraDistanceFromNode));
     }
 
-    private void StartCameraMoveCoroutine(Vector3 endPosition) {
-        if (_cameraMoveCoroutine != null) {
-            StopCoroutine(_cameraMoveCoroutine);
-        }
-        _cameraMoveCoroutine = StartCoroutine(MoveCamera(endPosition));
-    }
-
-    private IEnumerator MoveCamera(Vector3 cameraEndPos) { 
+    private IEnumerator MoveCamera(Vector3 cameraEndPos) {
         LanguageNameTooltip.RegisterDisable();
+        LanguageNode.RegisterClickDisabler();
         var time = 0f; 
         while (time < translationDuration) {
             // lerp camera translation
@@ -86,6 +72,6 @@ public class CameraController : MonoBehaviour {
         }
 
         _mainCamera.transform.position = cameraEndPos;
-        OnCameraAnimationFinished?.Invoke(cameraEndPos);
+        LanguageNode.UnregisterClickDisabler();
     }
 }

@@ -30,7 +30,14 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        OnConnectionClicked?.Invoke(child == SelectionManager.GetSelectedLanguage() ? parent : child);
+        if (!LanguageNode.IsClickEnabled()) {
+            return;
+        }
+        var languageToFocus = child == SelectionManager.GetSelectedLanguage() ? parent : child;
+        languageToFocus.SetEndPosition();
+        GraphRotator.SetEndRotation(languageToFocus);
+        
+        OnConnectionClicked?.Invoke(languageToFocus);
     }
 
     private void OnMouseEnter() {
