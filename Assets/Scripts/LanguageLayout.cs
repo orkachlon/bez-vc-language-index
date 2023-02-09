@@ -38,6 +38,8 @@ public class LanguageLayout : MonoBehaviour {
     }
 
     public void ToNode() {
+        // move layout to same layer as lines
+        gameObject.layer = LayerMask.NameToLayer("Default");
         // hide all fields but name
         years.ToNode();
         map.ToNode();
@@ -51,6 +53,8 @@ public class LanguageLayout : MonoBehaviour {
     }
 
     public void ToItem() {
+        // bring layout in front of lines
+        gameObject.layer = LayerMask.NameToLayer("UI");
         // show all fields
         years.ToItem();
         map.ToItem();
@@ -80,6 +84,9 @@ public class LanguageLayout : MonoBehaviour {
     }
 
     public void ToItemRelative() {
+        // bring layout in front of lines
+        gameObject.layer = LayerMask.NameToLayer("UI");
+        
         languageName.ToItemRelative();
         years.ToItemRelative();
         map.ToItemRelative();
