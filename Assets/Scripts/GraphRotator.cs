@@ -11,7 +11,7 @@ public class GraphRotator : MonoBehaviour {
     private bool _isRotating;
     private bool _disableRotation = false;
     [SerializeField]
-    private float rotationDuration = .5f;
+    private float rotationDuration = .75f;
 
     private static GraphRotator _instance;
     private static Quaternion _endRotation;

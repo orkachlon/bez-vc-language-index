@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour {
 
     private static Camera _mainCamera;
     [SerializeField]
-    private float translationDuration = 1.5f;
+    private float translationDuration = .75f;
     [SerializeField]
     private float cameraDistanceFromNode = 5f;
 

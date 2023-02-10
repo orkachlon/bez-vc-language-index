@@ -2249,8 +2249,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 2.8645833, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "\u02C8\u025Bbl\u0259.a\u026At"
@@ -3059,14 +3058,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1344877011}
-  uiCanvas: {fileID: 1344877008}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffff00000000ffffffff
     _HashCodes: 441fd6450000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 10
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -3140,8 +3138,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 6.578194, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "m\u0252dn hi:b\u0279u:"
@@ -4299,7 +4296,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 2096483493}
-  uiCanvas: {fileID: 2096483496}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -6908,14 +6904,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1538859267}
-  uiCanvas: {fileID: 1538859264}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffff00000000
     _HashCodes: d4c3f8610000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 10
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -6991,8 +6986,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 3.9134724, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "\u0259\u02C8ke\u026Adi\u0259n"
@@ -9495,14 +9489,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 643114909}
-  uiCanvas: {fileID: 643114906}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffff00000000
     _HashCodes: f3fbbf6d0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 10
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -9854,8 +9847,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 2.7320833, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "h\xE6\u0279\u0259\u0279\u026A"
@@ -10430,8 +10422,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 3.4281945, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "t\u0259\u02C8\u0261riny\u0259"
@@ -11376,8 +11367,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 3.5258334, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "m\u026An\u0259i:n"
@@ -12459,8 +12449,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 2.1837502, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "\u02C8\u0261i\u02D0\u025Bz"
@@ -13654,8 +13643,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 4.265694, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "\u0259m\u0259\u028Ana\u026A\u032Ft"
@@ -17471,14 +17459,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 663967935}
-  uiCanvas: {fileID: 663967932}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: 0400000000000000ffffffff0500000003000000ffffffff02000000
     _HashCodes: b1c68a5dfb9521506aca961fd4a9586ded8f6175078e062700000000
     _Next: ffffffffffffffff01000000ffffffffffffffffffffffff00000000
     _Count: 6
-    _Version: 24
+    _Version: 60
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -17664,7 +17651,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 862500706}
-  uiCanvas: {fileID: 862500709}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -18309,14 +18295,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1912964308}
-  uiCanvas: {fileID: 1912964305}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: 01000000ffffffffffffffff
     _HashCodes: dad81b22b2e9ee4a00000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 8
+    _Version: 20
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -18621,8 +18606,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 5.1094446, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "\u0259\u028Ald \xE6\u0279\u0259me\u026A\u026Ak"
@@ -22591,14 +22575,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 281492860}
-  uiCanvas: {fileID: 281492857}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffff00000000ffffffff
     _HashCodes: c99087010000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 10
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -23419,8 +23402,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 2.95125, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "\u0261\u028A\u0259\u02C8r\u0251\u02D0\u0261e\u026A"
@@ -25905,14 +25887,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1865200537}
-  uiCanvas: {fileID: 1865200534}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: 00000000ffffffffffffffff
     _HashCodes: 7a84167e0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 10
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -26938,14 +26919,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 446484532}
-  uiCanvas: {fileID: 446484529}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: 00000000ffffffffffffffff
     _HashCodes: 69c6140d0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 10
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -27331,8 +27311,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 5.5806947, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "sa\u028A\u03B8 s\u026A\u02C8m\u026At\u026Ak"
@@ -29674,7 +29653,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 2096352217}
-  uiCanvas: {fileID: 2096352220}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -30186,8 +30164,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 3.4762502, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "m\xE6nde\u026A\u026Ak"
@@ -30452,8 +30429,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 3.150139, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "m\u0252l\u02C8ti\u02D0z"
@@ -31294,7 +31270,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 155480670}
-  uiCanvas: {fileID: 155480673}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -32649,8 +32624,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 4.3606944, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "\u0259\u028Ald \xE6\u0279\u0259b\u026Ak"
@@ -33046,7 +33020,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 175379098}
-  uiCanvas: {fileID: 175379101}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -33141,7 +33114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1445257438}
-  uiCanvas: {fileID: 1445257441}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -33845,14 +33817,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 198304015}
-  uiCanvas: {fileID: 198304012}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffff01000000ffffffff
     _HashCodes: 31a23c3f6198b24500000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 8
+    _Version: 20
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -35319,7 +35290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCameraType: 0
-  translationDuration: 0.5
+  translationDuration: 0.75
   cameraDistanceFromNode: 9
 --- !u!114 &963194230
 MonoBehaviour:
@@ -35915,8 +35886,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 4.3951387, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "h\u026Amje\u0259\u0279\u026At\u026Ak"
@@ -36500,8 +36470,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 4.1475, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "ke\u026At\u0259b\xE6n\u026Ak"
@@ -36879,8 +36848,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 5.9751387, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "n\u0254:\u03B8 e\u03B8\u026A\u0259\u028Ap\u026Ak"
@@ -36942,8 +36910,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 7.482639, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "n\u0254\u02D0\u03B8 w\u025Bst s\u026A\u02C8m\u026At\u026Ak"
@@ -37016,7 +36983,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 824150144}
-  uiCanvas: {fileID: 824150147}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -37215,8 +37181,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 5.92875, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "sa\u028A\u032F\u03B8 e\u03B8\u026A\u0259\u028Ap\u026Ak"
@@ -38858,7 +38823,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1047457940}
-  uiCanvas: {fileID: 1047457943}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -39955,8 +39919,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 2.7223613, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "al \u0295ara\u02C8bij\u02D0a"
@@ -40468,7 +40431,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 748404718}
-  uiCanvas: {fileID: 748404721}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -41362,8 +41324,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 2.692639, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "\u0283h\u0279\u026A"
@@ -41722,14 +41683,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1766373486}
-  uiCanvas: {fileID: 1766373483}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: 0100000000000000ffffffffffffffff03000000ffffffffffffffff
     _HashCodes: 9168a748fc642a0dc9f3fd1a90ca7b18000000000000000000000000
     _Next: ffffffffffffffffffffffff02000000000000000000000000000000
     _Count: 4
-    _Version: 16
+    _Version: 40
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -42681,7 +42641,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 966993326}
-  uiCanvas: {fileID: 966993329}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -43591,14 +43550,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 758267608}
-  uiCanvas: {fileID: 758267605}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffff00000000ffffffff
     _HashCodes: 441fd6450000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 10
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -45363,14 +45321,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1145787397}
-  uiCanvas: {fileID: 1145787394}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffff01000000
     _HashCodes: e023a52b2d9e707a00000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 8
+    _Version: 20
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -45808,8 +45765,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 8.912778, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "\u02C8i\u02D0st\u0259n sa\u028A\u03B8 s\u026A\u02C8m\u026At\u026Ak"
@@ -47056,14 +47012,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1393954438}
-  uiCanvas: {fileID: 1393954435}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffff00000000ffffffff
     _HashCodes: 5b71a5310000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 10
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -48353,8 +48308,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 3.312639, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "m\u0259\u028A\u0259b\u026At"
@@ -50321,14 +50275,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1976131728}
-  uiCanvas: {fileID: 1976131725}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: 0100000002000000ffffffff
     _HashCodes: d63b83404b5faf66850aef45
     _Next: ffffffff00000000ffffffff
     _Count: 3
-    _Version: 12
+    _Version: 30
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -51484,14 +51437,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 66999881}
-  uiCanvas: {fileID: 66999878}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: 0000000001000000ffffffff
     _HashCodes: 532f4040441fd64500000000
     _Next: ffffffffffffffff00000000
     _Count: 2
-    _Version: 8
+    _Version: 20
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -51589,14 +51541,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 830413421}
-  uiCanvas: {fileID: 830413418}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffff01000000ffffffff
     _HashCodes: 29f14369441fd64500000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 8
+    _Version: 20
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -52569,8 +52520,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 2.1269445, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "ti\u0261\u02C8\u027Ee"
@@ -52985,8 +52935,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 3.416111, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "s\u0259be\u0259i:n"
@@ -53307,7 +53256,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1645650154}
-  uiCanvas: {fileID: 1645650157}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -54299,8 +54247,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 3.3825, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "ed\u0252m\u026At"
@@ -54413,8 +54360,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 3.5254169, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "\xE6m\u02C8h\xE6r\u026Ak"
@@ -55497,7 +55443,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 29760440}
-  uiCanvas: {fileID: 29760443}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -55899,14 +55844,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 171964233}
-  uiCanvas: {fileID: 171964230}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: 000000000100000002000000
     _HashCodes: bd4e5e1a23b08f1c4de00d0c
     _Next: ffffffffffffffffffffffff
     _Count: 3
-    _Version: 12
+    _Version: 30
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -59299,7 +59243,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 128683082}
-  uiCanvas: {fileID: 128683085}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -61948,8 +61891,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 4.1018057, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "p\u0279\u0259t\u0259\u028A k\u0259n\xE6\xE6na\u026A\u032Ft"
@@ -62669,8 +62611,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 7.081805, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "m\u026A\u0283ne\u026A\u026Ak hi:b\u0279u:"
@@ -62746,14 +62687,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1401782771}
-  uiCanvas: {fileID: 1401782768}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffff0100000002000000
     _HashCodes: fdc193593b980b7689558267
     _Next: ffffffff00000000ffffffff
     _Count: 3
-    _Version: 12
+    _Version: 30
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -63712,7 +63652,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1312528101}
-  uiCanvas: {fileID: 1312528104}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -64033,7 +63972,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 990165922}
-  uiCanvas: {fileID: 990165925}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -64260,7 +64198,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 757488823}
-  uiCanvas: {fileID: 757488826}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -65452,7 +65389,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 257787014}
-  uiCanvas: {fileID: 257787017}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -65535,8 +65471,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 6.482639, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "b\u026Abl\u026Akl hi:b\u0279u:"
@@ -66129,8 +66064,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 3.3618057, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "\u0259m\u0252\u0279\u026At"
@@ -66192,8 +66126,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 7.5100007, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "\u0259\u028Ald sa\u028A\u03B8 \u0259\u02C8re\u026Ab\u026A\u0259n"
@@ -66577,8 +66510,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 4.5225005, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "f\u0259\u02C8ni\u02D0\u0283\u0259n"
@@ -66640,8 +66572,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 5.5041666, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "\u02C8prot\u0259 s\u026A\u02C8m\u026At\u026Ak"
@@ -66741,8 +66672,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 2.9915278, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "m\u025B\u0301ta\u1E37 di-sa\u1E33\u0254\u0301\u1E6Dri"
@@ -67503,7 +67433,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 49404231}
-  uiCanvas: {fileID: 49404234}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -70661,14 +70590,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1316214364}
-  uiCanvas: {fileID: 1316214361}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffff0000000002000000
     _HashCodes: 691715500fb7f353a4574a6a
     _Next: ffffffffffffffff01000000
     _Count: 3
-    _Version: 12
+    _Version: 30
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -71115,8 +71043,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 5.2562504, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "n\u026A\u0259\u028A \xE6\u0279\u0259me\u026A\u026Ak"
@@ -71381,8 +71308,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 4.9462504, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "i\u02D0st s\u026A\u02C8m\u026At\u026Ak"
@@ -72475,7 +72401,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 779609990}
-  uiCanvas: {fileID: 779609993}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -72633,8 +72558,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 3.3708334, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "e\u03B8\u026A\u0259\u028Ap\u026Ak"
@@ -72959,14 +72883,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1578385923}
-  uiCanvas: {fileID: 1578385920}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: 0100000000000000ffffffff
     _HashCodes: 75e9326fb37f637e00000000
     _Next: ffffffffffffffff00000000
     _Count: 2
-    _Version: 8
+    _Version: 20
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -73930,14 +73853,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1125905898}
-  uiCanvas: {fileID: 1125905895}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: 00000000ffffffffffffffff
     _HashCodes: f88b105f0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 10
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -74976,8 +74898,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 6.258472, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "\u02C8s\u025Bntr\u0259l s\u026A\u02C8m\u026At\u026Ak"
@@ -76210,8 +76131,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 4.84625, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "h\xE6d\u0279\u0259m\xE6t\u026Ak"
@@ -76798,8 +76718,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 6.4988894, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "m\u026Adl \xE6\u0279\u0259me\u026A\u026Ak"
@@ -77831,8 +77750,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 5.2548614, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "w\u025Bst s\u026A\u02C8m\u026At\u026Ak"
@@ -78092,7 +78010,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 1567450720}
-  uiCanvas: {fileID: 1567450723}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -78268,14 +78185,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 500148119}
-  uiCanvas: {fileID: 500148116}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: 01000000ffffffffffffffff
     _HashCodes: eae927103011252d00000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 8
+    _Version: 20
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -78572,7 +78488,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   langLayout: {fileID: 429393790}
-  uiCanvas: {fileID: 429393793}
   ancestryConnectionPrefab: {fileID: 3420147457370283057, guid: e8311f9cbd2824245a6d9a9d96886de8, type: 3}
   children:
     _Buckets: ffffffffffffffffffffffff
@@ -79284,8 +79199,7 @@ MonoBehaviour:
   manualWidth: 0
   fontStartSize: 0.8
   textBoxStartSize: {x: 2.4519446, y: 1.0894532}
-  maxCharactersPerLine: 15
-  regularFontSize: 0.8
+  nodeFontSize: 0.8
   itemFontSize: 0.5
   itemRelativeFontSize: 0.3
   phonetic: "mh\u0279\u026A"

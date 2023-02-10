@@ -10,10 +10,9 @@ using UnityEngine.EventSystems;
 
 [Serializable]
 public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
-    private const float TranslationDuration = .5f;
+    private const float TranslationDuration = .75f;
 
     [SerializeField] private LanguageLayout langLayout;
-    [SerializeField] private Canvas uiCanvas;
     [SerializeField] [NotNull] private AncestryConnection ancestryConnectionPrefab;
 
     [SerializeField] [HideInInspector] private ChildNameToNodeDictionary children = new();
@@ -45,21 +44,20 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         gameObject.SetActive(true);
         SetEndPosition();
         ToggleAncestryConnections(true);
-        // langLayout.ToNode();
+        langLayout.ToNode();
     }
 
     public void ToItem() {
         gameObject.SetActive(true);
-        // transform.localPosition = positionInGraph;
         ToggleAncestryConnections(true);
-        // langLayout.ToItem();
+        langLayout.ToItem();
     }
 
     private void ToItemParent(LanguageNode child) {
-        //  show us and only our connection to langNode
+        // show us and only our connection to langNode
         gameObject.SetActive(true);
         // set layout to relative
-        // langLayout.ToItemRelative();
+        langLayout.ToItemRelative();
         ToggleAncestryConnections(connection => connection.GetChild().GetName() == child.GetName());
         AlignParentToChildItem(child);
     }
@@ -68,7 +66,7 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         // show only us without connections
         gameObject.SetActive(true);
         // Set layout to relative mode
-        // langLayout.ToItemRelative();
+        langLayout.ToItemRelative();
         ToggleAncestryConnections(false);
         AlignChildToParentItem(parent);
     }
