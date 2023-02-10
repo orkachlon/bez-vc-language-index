@@ -53,18 +53,10 @@ public class LanguageLayout : MonoBehaviour {
     public void ToItem() {
         // bring layout in front of lines
         gameObject.layer = LayerMask.NameToLayer("UI");
-        // show all fields
-        years.ToItem();
-        map.ToItem();
-        // not all languages have an alphabet
-        if (!alphabet.IsEmpty()) {
-            alphabet.ToItem();
-        }
-        // add phonetic to name
         languageName.ToItem();
-        
-        // scale boxes
-        // name and years
+        // years
+        years.ToItem();
+        AlignYears();
         if (years.GetTextBoxSize().x > languageName.GetTextBoxSize().x) {
             languageName.SetBGWidth(years.GetBGSize().x);
         }
@@ -72,9 +64,14 @@ public class LanguageLayout : MonoBehaviour {
             years.SetBGWidth(languageName.GetBGSize().x);
         }
         
+        map.ToItem();
+        
+        // not all languages have an alphabet
+        if (!alphabet.IsEmpty()) {
+            alphabet.ToItem();
+        }
+
         // align boxes
-        // years
-        AlignYears();
         // map
         AlignMap();
         // alphabet

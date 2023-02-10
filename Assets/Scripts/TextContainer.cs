@@ -45,7 +45,7 @@ public class TextContainer : MonoBehaviour, IItemContainer {
         if (manualWidth > 0) {
             return new Vector2(manualWidth, textElement.rectTransform.sizeDelta.y);
         }
-        return textElement.rectTransform.sizeDelta + Vector2.right * (textPadding * 2f);
+        return textElement.GetRenderedValues() + Vector2.right * (textPadding * 2f);
     }
 
     public void SetBGWidth(float width) {
@@ -118,7 +118,7 @@ public class TextContainer : MonoBehaviour, IItemContainer {
         textElement.rectTransform.sizeDelta = textRect;
     }
 
-    protected void AdjustBGSize() {
+    protected virtual void AdjustBGSize() {
         bgImage.rectTransform.sizeDelta = GetBGSize();
     }
 }
