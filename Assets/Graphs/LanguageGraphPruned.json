@@ -454,7 +454,7 @@
         "Arabic",
         "Mandaic"
       ],
-      "alphabet": "\uD802\uDC40\uD802\uDC53\uD802\uDC4C\uD802\uDC49\uD802\uDC40",
+      "alphabet": "\uD802\uDC40\uD802\uDC49\uD802\uDC4C\uD802\uDC53\uD802\uDC40",
       "description": "The 3rd century AD is taken as the threshold between Old and Middle Aramaic. During that century, the nature of the various Aramaic languages and dialects began to change. The descendants of Imperial Aramaic ceased to be living languages, and the eastern and western regional languages began to develop vital new literatures."
     },
     "Maltese": {
@@ -585,7 +585,7 @@
       ],
       "alphabet": "\u08b2\u0860\u0883\u089c\u0860",
       "description": "Mandaic is a southeastern Aramaic variety in use by the Mandaean community, traditionally based in southern parts of Iraq and southwest Iran, for their religious books. Classical Mandaic is still employed by Mandaean priests in liturgical rites. The modern descendant of Classical Mandaic, known as Neo-Mandaic or Modern Mandaic, is spoken by a small section of Mandaeans around Ahvaz and Khorramshahr in the southern Iranian Khuzestan province."
-    },
+    }
   },
   {
     "Neo Aramaic": {

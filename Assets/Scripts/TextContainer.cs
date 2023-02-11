@@ -9,7 +9,7 @@ public class TextContainer : MonoBehaviour, IItemContainer {
 
     [SerializeField] protected TextMeshProUGUI textElement;
     [SerializeField] protected Image bgImage;
-    [SerializeField] private float textPadding;
+    [SerializeField] protected float textPadding;
 
     // not actually in use
     public static readonly Vector3 StartPos = new(0, 0, 21.5f);
@@ -22,34 +22,33 @@ public class TextContainer : MonoBehaviour, IItemContainer {
     protected virtual void Start() {
         fontStartSize = textElement.fontSize;
         
-        AdjustTextBoxSize();
+        // AdjustTextBoxSize();
 
         // adjust background size to fit text
         AdjustBGSize();
         textBoxStartSize = textElement.rectTransform.sizeDelta;
     }
+    
+    // private void Update() {
+    //     textElement.rectTransform.sizeDelta = textElement.GetRenderedValues() + Vector2.right * (textPadding * 2);
+    //     // resize bg to text bounding box
+    //     AdjustBGSize();
+    // }
 
-    protected virtual void Update() {
-        if (!textElement || !bgImage) {
-            return;
-        }
-        // resize bg to text bounding box
-        AdjustBGSize();
-    }
-
-    public Vector2 GetTextBoxSize() {
-        return textElement.GetPreferredValues();
+    public virtual Vector2 GetTextBoxSize() {
+        return textElement.rectTransform.sizeDelta;
     }
 
     public Vector2 GetBGSize() {
         if (manualWidth > 0) {
             return new Vector2(manualWidth, textElement.rectTransform.sizeDelta.y);
         }
-        return textElement.GetRenderedValues() + Vector2.right * (textPadding * 2f);
+        return textElement.rectTransform.sizeDelta;
     }
 
-    public void SetBGWidth(float width) {
-        manualWidth = width;
+    public virtual void SetWidth(float width) {
+        textElement.rectTransform.sizeDelta = new Vector2(width, textElement.rectTransform.sizeDelta.y);
+        AdjustBGSize();
     }
 
     public virtual void ToItem() {
@@ -115,7 +114,7 @@ public class TextContainer : MonoBehaviour, IItemContainer {
     protected void AdjustTextBoxSize() {
         textElement.ForceMeshUpdate(true);
         var textRect = textElement.GetRenderedValues(false);
-        textElement.rectTransform.sizeDelta = textRect;
+        textElement.rectTransform.sizeDelta = textElement.GetPreferredValues();
     }
 
     protected virtual void AdjustBGSize() {

@@ -5,12 +5,16 @@
 public class LanguageLayout : MonoBehaviour {
 
     [SerializeField] private Canvas uiCanvas;
+    [Header("Containers")]
     [SerializeField] private LanguageNameContainer languageName;
     [SerializeField] private YearsContainer years;
     [SerializeField] private MapContainer map;
     [SerializeField] private AlphabetContainer alphabet;
+    [SerializeField] private DescriptionContainer description;
 
+    [Header("Spacing")]
     [SerializeField] private float yearsSpacing;
+    [SerializeField] private float alphabetSpacing;
     [SerializeField] private float mapSpacing;
     
     [SerializeField] [HideInInspector] private Camera mainCamera;
@@ -26,6 +30,7 @@ public class LanguageLayout : MonoBehaviour {
         languageName = gameObject.GetLanguageComponent<LanguageNameContainer>(languageName, "LanguageName");
         years = gameObject.GetLanguageComponent<YearsContainer>(years, "Years");
         alphabet = gameObject.GetLanguageComponent<AlphabetContainer>(alphabet, "Alphabet");
+        description = gameObject.GetLanguageComponent<DescriptionContainer>(description, "Description");
         map = gameObject.GetLanguageComponent<MapContainer>(map, "Map");
     }
 
@@ -33,6 +38,7 @@ public class LanguageLayout : MonoBehaviour {
         RotateTowardsCamera();
         AlignYears();
         AlignMap();
+        AlignAlphabet();
     }
 
     public void ToNode() {
@@ -54,28 +60,26 @@ public class LanguageLayout : MonoBehaviour {
         // bring layout in front of lines
         gameObject.layer = LayerMask.NameToLayer("UI");
         languageName.ToItem();
-        // years
         years.ToItem();
-        AlignYears();
-        if (years.GetTextBoxSize().x > languageName.GetTextBoxSize().x) {
-            languageName.SetBGWidth(years.GetBGSize().x);
-        }
-        else {
-            years.SetBGWidth(languageName.GetBGSize().x);
-        }
-        
         map.ToItem();
+        alphabet.ToItem();
         
-        // not all languages have an alphabet
-        if (!alphabet.IsEmpty()) {
-            alphabet.ToItem();
-        }
-
-        // align boxes
-        // map
-        AlignMap();
-        // alphabet
+        // set BG sizes
+        var midWidth = Mathf.Max(
+            years.GetTextBoxSize().x, 
+            languageName.GetTextBoxSize().x, 
+            alphabet.GetTextBoxSize().x
+            );
+        
+        years.SetWidth(midWidth);
+        languageName.SetWidth(midWidth);
+        alphabet.SetWidth(midWidth);
+        description.SetWidth(midWidth);
+        
+        AlignYears();
         AlignAlphabet();
+        AlignDescription();
+        AlignMap();
     }
 
     public void ToItemRelative() {
@@ -106,10 +110,18 @@ public class LanguageLayout : MonoBehaviour {
     }
 
     private void AlignAlphabet() {
-        if (!alphabet.IsEmpty()) {
+        if (alphabet.IsEmpty()) {
             return;
         }
-        // todo align alphabet
+
+        var topBound = languageName.GetTopRight().y;
+        var currPosition = transform.position;
+        var newPosition = new Vector3(currPosition.x, topBound + alphabetSpacing, currPosition.z);
+        alphabet.SetPosition(newPosition);
+    }
+
+    private void AlignDescription() {
+        
     }
 
     private void RotateTowardsCamera() {
@@ -140,12 +152,16 @@ public class LanguageLayout : MonoBehaviour {
     public void SetYears(string newYears) {
         years.SetText(newYears);
     }
-    
+
     public void SetMap(string langName) {
         map.LoadMap(langName);
     }
-    
+
     public void SetAlphabet(string newAlphabet) {
         alphabet.SetText(newAlphabet);
+    }
+
+    public void SetDescription(string newDescription) {
+        description.SetText(newDescription);
     }
 }

@@ -10,7 +10,12 @@ public class AlphabetContainer : TextContainer {
     [SerializeField] [HideInInspector] private List<string> unicodeList;
     
     public override void ToItem() {
+        if (textElement.text.Length == 0) {
+            return;
+        }
         gameObject.SetActive(true);
+        textElement.rectTransform.sizeDelta = textElement.GetPreferredValues();
+        AdjustBGSize();
     }
     
     public override void ToItemRelative() {
@@ -21,7 +26,10 @@ public class AlphabetContainer : TextContainer {
         gameObject.SetActive(false);
     }
 
-    
+    public override Vector2 GetTextBoxSize() {
+        return textElement.text.Length > 0 ? base.GetTextBoxSize() : Vector2.zero;
+    }
+
     // might still need this
     private List<string> GetUnicodeList() {
         if (unicodeList.Count > 0) {

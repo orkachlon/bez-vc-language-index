@@ -61,8 +61,8 @@ public class CameraController : MonoBehaviour {
         while (time < translationDuration) {
             // lerp camera translation
             var t = time / translationDuration;
-            t = t * t * (3f - 2f * t); // ease animation
-            _mainCamera.transform.position = Vector3.Lerp(_mainCamera.transform.position, cameraEndPos, t);
+            // t = t * t * (3f - 2f * t); // ease animation
+            _mainCamera.transform.position = Vector3.Lerp(_mainCamera.transform.position, cameraEndPos, Mathf.SmoothStep(0, 1, t));
             // increment
             time += Time.deltaTime;
             if (t > .9f) { 

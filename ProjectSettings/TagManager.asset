@@ -6,9 +6,10 @@ TagManager:
   tags:
   - NodeContainer
   - LanguageName
-  - Influences
   - Years
   - Map
+  - Description
+  - Picture
   layers:
   - Default
   - TransparentFX
