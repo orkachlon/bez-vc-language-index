@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(LineRenderer))]
 [Serializable]
 [ExecuteAlways]
-public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
+public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
     public static event Action<LanguageNode> OnConnectionClicked; 
     
@@ -24,6 +24,9 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
     }
 
     private void Update() {
+        if (!parent || !child) {
+            return;
+        }
         UpdateLinePositions();
         SetLineTransform();
         SetCollider();
@@ -40,7 +43,7 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
         OnConnectionClicked?.Invoke(languageToFocus);
     }
 
-    private void OnMouseEnter() {
+    public void OnPointerEnter(PointerEventData eventData) {
         if (SelectionManager.GetSelectedLanguage() == null) {
             return;
         }
@@ -49,7 +52,7 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
             : child.GetName());
     }
 
-    private void OnMouseExit() {
+    public void OnPointerExit(PointerEventData eventData) {
         LanguageNameTooltip.HideTooltipStatic();
     }
 
@@ -112,7 +115,7 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler {
     public LanguageNode GetChild() {
         return child;
     }
-    
+
     public LanguageNode GetParent() {
         return parent;
     }
