@@ -12,6 +12,7 @@ public class LanguageLayout : MonoBehaviour {
     [SerializeField] private MapContainer map;
     [SerializeField] private AlphabetContainer alphabet;
     [SerializeField] private DescriptionContainer description;
+    [SerializeField] private ImageContainer picture;
 
     [Header("Spacing")]
     [SerializeField] [Range(0, 1)] private float yearsSpacing;
@@ -22,7 +23,7 @@ public class LanguageLayout : MonoBehaviour {
     [SerializeField] [HideInInspector] private Camera mainCamera;
 
 
-    private void Start() {
+    private void Awake() {
         mainCamera = Camera.main;
         uiCanvas = GetComponent<Canvas>();
         BindCameraToCanvas();
@@ -34,6 +35,7 @@ public class LanguageLayout : MonoBehaviour {
         alphabet = gameObject.GetLanguageComponent<AlphabetContainer>(alphabet, "Alphabet");
         description = gameObject.GetLanguageComponent<DescriptionContainer>(description, "Description");
         map = gameObject.GetLanguageComponent<MapContainer>(map, "Map");
+        picture = gameObject.GetLanguageComponent<ImageContainer>(picture, "Picture");
     }
 
     private void Update() {
@@ -71,6 +73,7 @@ public class LanguageLayout : MonoBehaviour {
         // erase phonetic from name
         languageName.ToNode();
         description.ToNode();
+        picture.ToNode();
     }
 
     public void ToItem() {
@@ -81,6 +84,7 @@ public class LanguageLayout : MonoBehaviour {
         map.ToItem();
         alphabet.ToItem();
         description.ToItem();
+        picture.ToItem();
         
         // set BG sizes
         var midWidth = Mathf.Max(
@@ -94,7 +98,6 @@ public class LanguageLayout : MonoBehaviour {
             // alphabet.SetWidth(midWidth);
         }
 
-        
         AlignYears();
         AlignAlphabet();
         AlignMap();
@@ -112,18 +115,19 @@ public class LanguageLayout : MonoBehaviour {
             alphabet.ToItemRelative();
         }
         description.ToItemRelative();
+        picture.ToItemRelative();
     }
 
     private void AlignYears() {
-        var bottomBound = languageName.GetBotLeft().y;
+        var topBound = languageName.GetTopRight().y;
         var currPosition = transform.position;
-        var newPosition = new Vector3(currPosition.x, bottomBound - yearsSpacing, currPosition.z);
+        var newPosition = new Vector3(currPosition.x, topBound + yearsSpacing, currPosition.z);
         years.SetPosition(newPosition);
     }
 
     private void AlignMap() {
-        var yearsBotLeft = years.GetBotLeft();
-        var newPosition = new Vector3(yearsBotLeft.x - mapSpacing, yearsBotLeft.y, transform.position.z);
+        var nameBotLeft = languageName.GetBotLeft();
+        var newPosition = new Vector3(nameBotLeft.x - mapSpacing, nameBotLeft.y, transform.position.z);
         map.SetPosition(newPosition);
     }
 
@@ -131,8 +135,8 @@ public class LanguageLayout : MonoBehaviour {
         if (alphabet.IsEmpty()) {
             return;
         }
-        var yearsTopRight = years.GetTopRight();
-        var newPosition = new Vector3(yearsTopRight.x + alphabetSpacing, yearsTopRight.y, transform.position.z);
+        var nameTopRight = languageName.GetTopRight();
+        var newPosition = new Vector3(nameTopRight.x + alphabetSpacing, nameTopRight.y, transform.position.z);
         alphabet.SetPosition(newPosition);
     }
 
@@ -174,7 +178,7 @@ public class LanguageLayout : MonoBehaviour {
     }
 
     public void SetMap(string langName) {
-        map.LoadMap(langName);
+        map.LoadImage(langName);
     }
 
     public void SetAlphabet(string newAlphabet) {

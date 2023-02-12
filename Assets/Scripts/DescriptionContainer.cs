@@ -12,7 +12,6 @@ public class DescriptionContainer : TextContainer {
         textElement.margin = new Vector4(textPadding * 0.5f, textPadding * 0.5f, textPadding, textPadding);
         var initialSize = textElement.GetPreferredValues(minWidth - textPadding * 1.5f, 0);
         SetSize(initialSize);
-        print($"{initialSize}");
     }
     
     private void OnDrawGizmos() {

@@ -50,8 +50,11 @@ MonoBehaviour:
   child: {fileID: 0}
   lineRenderer: {fileID: 8027858789281602328}
   boxCollider: {fileID: 5243010917836964450}
-  parentOffset: 0.105
-  childOffset: 0.115
+  parentOffset: 1
+  childOffset: 1
+  lineWide: 0.31
+  lineNarrow: 0
+  childType: 0
 --- !u!120 &8027858789281602328
 LineRenderer:
   m_ObjectHideFlags: 0

@@ -51,12 +51,17 @@ public class LanguageNameTooltip : MonoBehaviour {
         if (Interlocked.CompareExchange(ref _instance._disablers, 0, 0) > 0) {
             return;
         }
-        gameObject.SetActive(true);
-
+        // position
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(),
+            Input.mousePosition + _offsetFromMouse, uiCamera, out var localPoint);
+        transform.localPosition = localPoint;
+        // set text
         tooltipText.text = tooltipString;
         // adjust background size to fit text
         var bgSize = new Vector2(tooltipText.preferredWidth + textPadding * 2f, tooltipText.preferredHeight + textPadding * 2f);
         _bgRectTransform.sizeDelta = bgSize;
+        
+        gameObject.SetActive(true);
     }
     private void HideTooltip() {
         gameObject.SetActive(false);

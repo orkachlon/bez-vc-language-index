@@ -7,20 +7,37 @@ using UnityEngine.EventSystems;
 [Serializable]
 [ExecuteAlways]
 public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
-
+    
     public static event Action<LanguageNode> OnConnectionClicked; 
     
+    [Header("Nodes")]
     [SerializeField] private LanguageNode parent;
     [SerializeField] private LanguageNode child;
+    
+    [Header("Components")]
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private BoxCollider boxCollider;
     
+    [Header("Parameters")]
     [SerializeField] [Range(0, 1)] private float parentOffset;
     [SerializeField] [Range(0, 1)] private float childOffset;
+    [SerializeField] [Range(0, 1)] private float lineWide = 0.2f;
+    [SerializeField] [Range(0, 1)] private float lineNarrow = 0.1f;
 
-    private void Start() {
+    [SerializeField] [HideInInspector] private EChildType childType;
+    [SerializeField] [HideInInspector] private bool itemMode;
+    
+    private void Awake() {
         GetLineRenderer();
         GetCollider();
+
+        GraphRotator.OnGraphFinishedRotating += ToItem;
+        BackClickReceiver.OnBackArrowClicked += ToNode;
+    }
+
+    private void OnDestroy() {
+        GraphRotator.OnGraphFinishedRotating -= ToItem;
+        BackClickReceiver.OnBackArrowClicked -= ToNode;
     }
 
     private void Update() {
@@ -28,6 +45,7 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerE
             return;
         }
         UpdateLinePositions();
+        SetLineWidth();
         SetLineTransform();
         SetCollider();
     }
@@ -36,6 +54,7 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerE
         if (!LanguageNode.IsClickEnabled()) {
             return;
         }
+        LanguageNameTooltip.HideTooltipStatic();
         var languageToFocus = child == SelectionManager.GetSelectedLanguage() ? parent : child;
         languageToFocus.SetEndPosition();
         GraphRotator.SetEndRotation(languageToFocus);
@@ -44,16 +63,47 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerE
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        if (SelectionManager.GetSelectedLanguage() == null) {
+        if (!SelectionManager.GetSelectedLanguage()) {
             return;
         }
-        LanguageNameTooltip.ShowTooltipStatic(SelectionManager.GetSelectedLanguage() == child
-            ? parent.GetName()
-            : child.GetName());
+
+        var tooltipString = GetTooltipString();
+        LanguageNameTooltip.ShowTooltipStatic(tooltipString);
     }
 
     public void OnPointerExit(PointerEventData eventData) {
         LanguageNameTooltip.HideTooltipStatic();
+    }
+
+    private string GetTooltipString() {
+        var tooltipString = "unrecognized connection type!";
+
+        if (SelectionManager.GetSelectedLanguage() == child) {
+            tooltipString = childType switch {
+                EChildType.Add => $"{child.GetName()} was born from {parent.GetName()}",
+                EChildType.Replace => $"{child.GetName()} replaced {parent.GetName()}",
+                EChildType.Revive => $"{child.GetName()} revived {parent.GetName()}",
+                _ => tooltipString
+            };
+        }
+        else {
+            tooltipString = childType switch {
+                EChildType.Add => $"{parent.GetName()} gave birth to {child.GetName()}",
+                EChildType.Replace => $"{parent.GetName()} was replaced by {child.GetName()}",
+                EChildType.Revive => $"{parent.GetName()} was revived by {child.GetName()}",
+                _ => tooltipString
+            };
+        }
+
+        return tooltipString;
+    }
+
+    private void ToItem(LanguageNode langNode) {
+        itemMode = true;
+    }
+
+    private void ToNode() {
+        itemMode = false;
     }
 
     private void GetLineRenderer() {
@@ -87,6 +137,9 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerE
     }
 
     private (Vector3 parentLinePos, Vector3 childLinePos) GetOffsetPositions() {
+        if (itemMode) {
+            return (parent.transform.position, child.transform.position);
+        }
         var parentPos = parent.transform.position;
         var childPos = child.transform.position;
         var parentLinePos = parentPos + (childPos - parentPos).normalized * parentOffset;
@@ -94,19 +147,20 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerE
         return (parentLinePos, childLinePos);
     }
 
-    public void Connect(LanguageNode parentConnect, LanguageNode childConnect, EChildType childType) {
+    public void Connect(LanguageNode parentConnect, LanguageNode childConnect, EChildType childTypeConnect) {
         // update fields
         name = $"{parentConnect.GetName()} -> {childConnect.GetName()}";
         transform.parent = parentConnect.transform;
         parent = parentConnect;
         child = childConnect;
+        childType = childTypeConnect;
 
         // draw line
         if (!lineRenderer) {
             print($"LineRenderer is null on {name}!");
             return;
         }
-        SetLineRenderer(childType);
+        SetLineRenderer();
         SetLineTransform();
         SetCollider();
     }
@@ -119,9 +173,9 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerE
         return parent;
     }
 
-    private void SetLineRenderer(EChildType childType) {
+    private void SetLineRenderer() {
         // looks
-        childType.SetLineType(lineRenderer);
+        SetLineType();
 
         // line position
         var (parentLinePos, childLinePos) = GetOffsetPositions();
@@ -140,12 +194,42 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerE
     private void SetCollider() {
         var (parentLinePos, childLinePos) = GetOffsetPositions();
         var lineDirection = childLinePos - parentLinePos;
-        var width = ChildTypeExtensions.LineWide;
+        var width = lineWide;
         var height = lineDirection.magnitude;
         var colliderTransform = boxCollider.transform;
         
         boxCollider.size = new Vector3(width, height, .1f);
         boxCollider.center = Vector3.zero;
         colliderTransform.SetPositionAndRotation(transform.position, transform.rotation);
+    }
+    
+    public void SetLineType() {
+        // lineRenderer.widthMultiplier = LineWide;
+        lineRenderer.material = childType.GetMaterial();
+        // was used to scale dotted/ dashed line properly
+        // lineRenderer.sharedMaterial.mainTextureScale = EChildType.Revive.Equals(childType)
+        //     ? new Vector2(1f / lineRenderer.widthMultiplier, 1f)
+        //     : new Vector2(1f, 1f);
+        // lineRenderer.textureMode = LineTextureMode.Tile;
+        lineRenderer.sortingLayerName = "Lines";
+        SetLineWidth();
+    }
+
+    private void SetLineWidth() {
+        switch (childType) {
+            case EChildType.Replace:
+                lineRenderer.startWidth = lineNarrow;
+                lineRenderer.endWidth = lineWide;
+                break;
+            case EChildType.Add:
+                lineRenderer.widthMultiplier = lineWide;
+                break;
+            case EChildType.Revive:
+                lineRenderer.endWidth = lineNarrow;
+                lineRenderer.startWidth = lineWide;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(childType), childType, null);
+        }
     }
 }

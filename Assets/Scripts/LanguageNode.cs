@@ -89,7 +89,7 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
             .ToList();
         var i = parents.IndexOf(this);
         var cp = langChild.GetEndPosition();
-        var screenWidth = 15f;
+        var screenWidth = 10f;
         var cellSize = screenWidth / parents.Count;
         var p = new Vector3((i * cellSize) - cp.x - screenWidth * 0.5f + cellSize * 0.5f, cp.y + 4, cp.z);
         StartCoroutine(LerpLanguageNodeTranslation(p, TranslationDuration));
@@ -162,6 +162,10 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
 
     public string GetName() {
         return langData.name;
+    }
+
+    public string GetAlphabet() {
+        return langData.alphabet;
     }
 
     public ChildNameToNodeDictionary GetChildren() {
