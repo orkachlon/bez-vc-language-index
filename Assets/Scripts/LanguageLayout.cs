@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Canvas))]
 [ExecuteAlways]
-public class LanguageLayout : MonoBehaviour {
+public class LanguageLayout : MonoBehaviour, IFadable {
 
     [SerializeField] private Canvas uiCanvas;
     [Header("Containers")]
@@ -40,12 +42,15 @@ public class LanguageLayout : MonoBehaviour {
 
     private void Update() {
         RotateTowardsCamera();
-        AlignYears();
-        AlignMap();
-        AlignAlphabet();
-        AlignDescription();
+        if (!Application.isPlaying) {
+            AlignYears();
+            AlignMap();
+            AlignAlphabet();
+            AlignDescription();
+        }
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos() {
         Gizmos.color = Color.blue;
         Gizmos.DrawSphere(languageName.transform.position, 0.1f);
@@ -58,10 +63,14 @@ public class LanguageLayout : MonoBehaviour {
         Gizmos.color = Color.cyan;
         Gizmos.DrawSphere(description.transform.position, 0.1f);
     }
+#endif
 
     public void ToNode() {
         // move layout to same layer as lines
         gameObject.layer = LayerMask.NameToLayer("Default");
+        if (!gameObject.activeInHierarchy) {
+            StartCoroutine(((IFadable) this).FadeIn(0.5f));
+        }
         // hide all fields but name
         years.ToNode();
         map.ToNode();
@@ -69,7 +78,6 @@ public class LanguageLayout : MonoBehaviour {
         if (!alphabet.IsEmpty()) {
             alphabet.ToNode();
         }
-
         // erase phonetic from name
         languageName.ToNode();
         description.ToNode();
@@ -79,6 +87,9 @@ public class LanguageLayout : MonoBehaviour {
     public void ToItem() {
         // bring layout in front of lines
         gameObject.layer = LayerMask.NameToLayer("UI");
+        if (!gameObject.activeInHierarchy) {
+            StartCoroutine(((IFadable) this).FadeIn(0.5f));
+        }
         languageName.ToItem();
         years.ToItem();
         map.ToItem();
@@ -107,7 +118,9 @@ public class LanguageLayout : MonoBehaviour {
     public void ToItemRelative() {
         // bring layout in front of lines
         gameObject.layer = LayerMask.NameToLayer("UI");
-        
+        if (!gameObject.activeInHierarchy) {
+            StartCoroutine(((IFadable) this).FadeIn(0.5f));
+        }
         languageName.ToItemRelative();
         years.ToItemRelative();
         map.ToItemRelative();
@@ -148,11 +161,20 @@ public class LanguageLayout : MonoBehaviour {
         description.SetWidth(descWidth);
     }
 
+    public float GetOpacity() {
+        return languageName.GetOpacity();
+    }
+
+    public void SetOpacity(float percent) {
+        languageName.SetOpacity(percent);
+    }
+    
     private void RotateTowardsCamera() {
         if (!mainCamera) {
             return;
         }
         uiCanvas.transform.forward = mainCamera.transform.forward;
+        // languageName.RotateTowardsCamera();
     }
     
     private void BindCameraToCanvas() {

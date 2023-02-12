@@ -7,13 +7,17 @@ using Image = UnityEngine.UI.Image;
 [Serializable]
 public class TextContainer : MonoBehaviour, IItemContainer {
 
+    // [SerializeField] private Canvas uiCanvas;
     [SerializeField] protected TextMeshProUGUI textElement;
     [SerializeField] protected Image bgImage;
     [SerializeField] protected float textPadding;
 
     [SerializeField] [HideInInspector] protected RectTransform rectTransform;
-
+    
+    // [SerializeField] [HideInInspector] private Camera mainCam;
+    
     protected virtual void Awake() {
+        // mainCam = Camera.main;
         rectTransform = GetComponent<RectTransform>();
         if (rectTransform == null) {
             print($"no rect transform on {name}");
@@ -38,14 +42,17 @@ public class TextContainer : MonoBehaviour, IItemContainer {
     }
 
     public virtual void ToItem() {
+        SetOpacity(1f);
         MoveToLayer("UI");
     }
 
     public virtual void ToItemRelative() {
+        SetOpacity(1f);
         MoveToLayer("Default");
     }
 
     public virtual void ToNode() {
+        SetOpacity(1f);
         MoveToLayer("Default");
     }
 
@@ -109,4 +116,20 @@ public class TextContainer : MonoBehaviour, IItemContainer {
     public Vector4 GetItemRelativeMargins() {
         return new(textPadding * 0.5f, 0, textPadding * 0.5f, 0);
     }
+
+    public float GetOpacity() {
+        return bgImage.color.a;
+    }
+
+    public void SetOpacity(float percent) {
+        var bgColor = bgImage.color;
+        bgImage.color = new Color(bgColor.r, bgColor.g, bgColor.b, percent);
+        var textColor = textElement.color;
+        textElement.color = new Color(textColor.r, textColor.g, textColor.b, percent);
+    }
+    
+    // public void RotateTowardsCamera() {
+    //     var canvasPos = uiCanvas.transform.position;
+    //     uiCanvas.transform.LookAt(new Vector3(canvasPos.x, canvasPos.y, mainCam.transform.position.z));
+    // }
 }

@@ -32,7 +32,7 @@ public class LanguageNameContainer : TextContainer {
         textElement.text = languageName;
         textElement.ForceMeshUpdate();
         SetSize(textElement.GetPreferredValues());
-        MoveToLayer("UI");
+        base.ToItemRelative();
     }
     
     public override void ToItem() {
@@ -42,7 +42,7 @@ public class LanguageNameContainer : TextContainer {
         textElement.text = $"{languageName}<size=60%>\n<font=NotoSerif-Italic SDF>/{phonetic}/</font></size>";
         textElement.ForceMeshUpdate();
         SetSize(textElement.GetPreferredValues() + Vector2.right * (2 * textPadding));
-        MoveToLayer("UI");
+        base.ToItem();
     }
 
     public override void ToNode() {
@@ -52,6 +52,6 @@ public class LanguageNameContainer : TextContainer {
         textElement.text = languageName;
         textElement.ForceMeshUpdate();
         SetSize(textElement.GetPreferredValues());
-        MoveToLayer("Default");
+        base.ToNode();
     }
 }

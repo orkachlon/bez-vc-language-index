@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,7 +7,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(LineRenderer))]
 [Serializable]
 [ExecuteAlways]
-public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
+public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IFadable {
     
     public static event Action<LanguageNode> OnConnectionClicked; 
     
@@ -231,5 +232,16 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerE
             default:
                 throw new ArgumentOutOfRangeException(nameof(childType), childType, null);
         }
+    }
+
+    public float GetOpacity() {
+        return lineRenderer.material.color.a;
+    }
+    
+    public void SetOpacity(float percent) {
+        var lineMaterial = lineRenderer.material;
+        var currColor = lineMaterial.color;
+        var newColor = new Color(currColor.r, currColor.g, currColor.b, percent);
+        lineMaterial.color = newColor;
     }
 }

@@ -117,7 +117,16 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
 
     private void ToggleAncestryConnections(Func<AncestryConnection, bool> comparison) {
         foreach (var connection in ancestryChildConnections) {
-            connection.gameObject.SetActive(comparison.Invoke(connection));
+            if (comparison.Invoke(connection)) {
+                if (!connection.gameObject.activeInHierarchy) {
+                    StartCoroutine(((IFadable) connection).FadeIn(0.5f, () => connection.gameObject.SetActive(true)));
+                }
+            }
+            else {
+                if (connection.gameObject.activeInHierarchy) {
+                    StartCoroutine(((IFadable) connection).FadeOut(0.5f, () => connection.gameObject.SetActive(false)));
+                }
+            }
         }
     }
 
@@ -198,14 +207,17 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
     }
     
     private void OnLangNodeClickedActions(LanguageNode langNode) {
-        if (langNode.GetName() == GetName()) {                  // if it's us
+        if (langNode.GetName() == GetName()) { // if it's us
             ToItem();
         } else if (children.Values.Contains(langNode)) {        // if we are a parent
             ToItemParent(langNode);
         } else if (langNode.children.ContainsKey(GetName())) {  // if we are a child
             ToItemChild(langNode);
         } else {                                                // otherwise, we are unrelated
-            gameObject.SetActive(false);
+            ToggleAncestryConnections(false);
+            if (gameObject.activeInHierarchy) {
+                StartCoroutine(((IFadable) langLayout).FadeOut(0.5f, () => gameObject.SetActive(false)));
+            }
         }
     }
 
