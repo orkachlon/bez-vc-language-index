@@ -11,8 +11,9 @@ public class LanguageNameTooltip : MonoBehaviour {
     [SerializeField] private Camera uiCamera;
 
     private static LanguageNameTooltip _instance;
-    private int _disableQueue;
+    private int _disablers;
     private RectTransform _bgRectTransform;
+    private Vector3 _offsetFromMouse = Vector2.one * 10;
     
     private void Awake() {
         _instance = this;
@@ -26,28 +27,28 @@ public class LanguageNameTooltip : MonoBehaviour {
     /// The tooltip causes lag if activated while animating the graph
     /// </summary>
     public static void RegisterDisable() {
-        Interlocked.Increment(ref _instance._disableQueue);
+        Interlocked.Increment(ref _instance._disablers);
     }
 
     public static void UnregisterDisable() {
-        if (Interlocked.CompareExchange(ref _instance._disableQueue, 0, 0) == 0) {
+        if (Interlocked.CompareExchange(ref _instance._disablers, 0, 0) == 0) {
             return;
         }
-        Interlocked.Decrement(ref _instance._disableQueue);
+        Interlocked.Decrement(ref _instance._disablers);
     }
 
     private void Update() {
-        if (Interlocked.CompareExchange(ref _instance._disableQueue, 0, 0) > 0) {
+        if (Interlocked.CompareExchange(ref _instance._disablers, 0, 0) > 0) {
             HideTooltip();
             return;
         }
         RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(),
-            Input.mousePosition, uiCamera, out var localPoint);
+            Input.mousePosition + _offsetFromMouse, uiCamera, out var localPoint);
         transform.localPosition = localPoint;
     }
 
     private void ShowTooltip(string tooltipString) {
-        if (Interlocked.CompareExchange(ref _instance._disableQueue, 0, 0) > 0) {
+        if (Interlocked.CompareExchange(ref _instance._disablers, 0, 0) > 0) {
             return;
         }
         gameObject.SetActive(true);
