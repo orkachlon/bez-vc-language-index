@@ -21,6 +21,7 @@ public class LanguageLayout : MonoBehaviour, IFadable {
     [SerializeField] [Range(0, 1)] private float alphabetSpacing;
     [SerializeField] [Range(0, 1)] private float mapSpacing;
     [SerializeField] [Range(0, 1)] private float descriptionSpacing;
+    [SerializeField] [Range(0, 1)] private float pictureSpacing;
     
     [SerializeField] [HideInInspector] private Camera mainCamera;
 
@@ -46,6 +47,7 @@ public class LanguageLayout : MonoBehaviour, IFadable {
             AlignYears();
             AlignMap();
             AlignAlphabet();
+            AlignPicture();
             AlignDescription();
         }
     }
@@ -62,6 +64,8 @@ public class LanguageLayout : MonoBehaviour, IFadable {
         Gizmos.DrawSphere(alphabet.transform.position, 0.1f);
         Gizmos.color = Color.cyan;
         Gizmos.DrawSphere(description.transform.position, 0.1f);
+        Gizmos.color = new Color(1, 0.6f, 0, 1);
+        Gizmos.DrawSphere(picture.transform.position, 0.1f);
     }
 #endif
 
@@ -110,9 +114,10 @@ public class LanguageLayout : MonoBehaviour, IFadable {
         }
 
         AlignYears();
-        AlignAlphabet();
         AlignMap();
         AlignDescription();
+        AlignAlphabet();
+        AlignPicture();
     }
 
     public void ToItemRelative() {
@@ -148,9 +153,31 @@ public class LanguageLayout : MonoBehaviour, IFadable {
         if (alphabet.IsEmpty()) {
             return;
         }
-        var nameTopRight = languageName.GetTopRight();
-        var newPosition = new Vector3(nameTopRight.x + alphabetSpacing, nameTopRight.y, transform.position.z);
+        Vector3 newPosition;
+        if (Mathf.Abs(alphabet.GetTopRight().y - alphabet.GetBotLeft().y) >= Mathf.Abs(picture.GetTopRight().y - picture.GetBotLeft().y)) {
+            var nameTopRight = languageName.GetTopRight();
+            newPosition = new Vector3(nameTopRight.x + alphabetSpacing, nameTopRight.y, transform.position.z);
+        }
+        else {
+            var descTopRight = description.GetTopRight();
+            newPosition = new Vector3(descTopRight.x + alphabetSpacing, descTopRight.y, transform.position.z);
+        }
         alphabet.SetPosition(newPosition);
+    }
+
+    private void AlignPicture() {
+        Vector3 newPosition;
+        if (alphabet.IsEmpty()) {
+            var descriptionTopRight = description.GetTopRight();
+            var descriptionBotLeft = description.GetBotLeft();
+            newPosition = new Vector3(descriptionTopRight.x + pictureSpacing, descriptionBotLeft.y, transform.position.z);
+        }
+        else {
+            var alphabetTopRight = alphabet.GetTopRight();
+            var alphabetBotLeft = alphabet.GetBotLeft();
+            newPosition = new Vector3(alphabetBotLeft.x, alphabetTopRight.y + pictureSpacing, transform.position.z);
+        }
+        picture.SetPosition(newPosition);
     }
 
     private void AlignDescription() {
@@ -209,5 +236,9 @@ public class LanguageLayout : MonoBehaviour, IFadable {
 
     public void SetDescription(string newDescription) {
         description.SetText(newDescription);
+    }
+
+    public void SetPicture(string langName, string newPicTooltip) {
+        picture.LoadImage(langName, newPicTooltip);
     }
 }

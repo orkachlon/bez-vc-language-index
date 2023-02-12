@@ -77,7 +77,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _CameraPosition: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.6208615, g: 0.9056604, b: 0.6873142, a: 1}
+    - _Color: {r: 0.9056604, g: 0.7599214, b: 0.29619074, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FrontOfGraph: {r: 0, g: 0, b: -16.63553, a: 1}
   m_BuildTextureStacks: []

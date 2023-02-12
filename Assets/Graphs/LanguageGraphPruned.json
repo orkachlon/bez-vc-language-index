@@ -10,7 +10,8 @@
       },
       "influences": [],
       "alphabet": "",
-      "description": "Proto-Semitic is the hypothetical reconstructed proto-language ancestral to the Semitic languages. There is no consensus regarding the location of the Proto-Semitic Urheimat; scholars hypothesize that it may have originated in the Levant, the Sahara or the Horn of Africa, and the view that it arose in the Arabian Peninsula has also been common historically, nowadays the likeliest place is North Africa.\n\nThe Semitic language family is considered part of the broader macro-family of Afroasiatic languages."
+      "description": "Proto-Semitic is the hypothetical reconstructed proto-language ancestral to the Semitic languages. There is no consensus regarding the location of the Proto-Semitic Urheimat; scholars hypothesize that it may have originated in the Levant, the Sahara or the Horn of Africa, and the view that it arose in the Arabian Peninsula has also been common historically, nowadays the likeliest place is North Africa.\n\nThe Semitic language family is considered part of the broader macro-family of Afroasiatic languages.",
+      "picTooltip": ""
     }
   },
   {
@@ -27,7 +28,8 @@
         "East Semitic"
       ],
       "alphabet": "",
-      "description": "The West Semitic languages are a proposed major sub-grouping of ancient Semitic languages. The term was first coined in 1883 by Fritz Hommel.\n\nThe grouping, supported by Semiticists like Robert Hetzron and John Huehnergard, divides the Semitic language family into two branches: Eastern and Western."
+      "description": "The West Semitic languages are a proposed major sub-grouping of ancient Semitic languages. The term was first coined in 1883 by Fritz Hommel.\n\nThe grouping, supported by Semiticists like Robert Hetzron and John Huehnergard, divides the Semitic language family into two branches: Eastern and Western.",
+      "picTooltip": ""
     },
     "East Semitic": {
       "name": "East Semitic",
@@ -42,7 +44,8 @@
         "North Central Semitic"
       ],
       "alphabet": "",
-      "description": "The East Semitic languages are one of three divisions of the Semitic languages. The East Semitic group is attested by three distinct languages, Akkadian, Eblaite and possibly Kishite, all of which have been long extinct. They were influenced by the non-Semitic Sumerian language and adopted cuneiform writing."
+      "description": "The East Semitic languages are one of three divisions of the Semitic languages. The East Semitic group is attested by three distinct languages, Akkadian, Eblaite and possibly Kishite, all of which have been long extinct. They were influenced by the non-Semitic Sumerian language and adopted cuneiform writing.",
+      "picTooltip": ""
     }
   },
   {
@@ -59,7 +62,8 @@
         "Central Semitic"
       ],
       "alphabet": "",
-      "description": "Northwest Semitic is a division of the Semitic languages comprising the indigenous languages of the Levant. It emerged from Proto-Semitic in the Early Bronze Age. It is first attested in proper names identified as Amorite in the Middle Bronze Age. The oldest coherent texts are in Ugaritic, dating to the Late Bronze Age, which by the time of the Bronze Age collapse are joined by Old Aramaic, and by the Iron Age by Sutean and the Canaanite languages."
+      "description": "Northwest Semitic is a division of the Semitic languages comprising the indigenous languages of the Levant. It emerged from Proto-Semitic in the Early Bronze Age. It is first attested in proper names identified as Amorite in the Middle Bronze Age. The oldest coherent texts are in Ugaritic, dating to the Late Bronze Age, which by the time of the Bronze Age collapse are joined by Old Aramaic, and by the Iron Age by Sutean and the Canaanite languages.",
+      "picTooltip": ""
     },
     "Central Semitic": {
       "name": "Central Semitic",
@@ -80,7 +84,8 @@
         "Proto-Aramaic"
       ],
       "alphabet": "",
-      "description": "Central Semitic languages are one of the three groups of West Semitic languages, alongside Modern South Arabian languages and Ethiopian Semitic languages.\n\nCentral Semitic can itself be further divided into two groups: Arabic and Northwest Semitic. Northwest Semitic languages largely fall into either Aramaic or Canaanite languages."
+      "description": "Central Semitic languages are one of the three groups of West Semitic languages, alongside Modern South Arabian languages and Ethiopian Semitic languages.\n\nCentral Semitic can itself be further divided into two groups: Arabic and Northwest Semitic. Northwest Semitic languages largely fall into either Aramaic or Canaanite languages.",
+      "picTooltip": ""
     },
     "South Semitic": {
       "name": "South Semitic",
@@ -97,7 +102,8 @@
         "Central Semitic"
       ],
       "alphabet": "",
-      "description": "South Semitic is a putative branch of the Semitic languages, which form a branch of the larger Afro-Asiatic language family, found in (North and East) Africa and Western Asia."
+      "description": "South Semitic is a putative branch of the Semitic languages, which form a branch of the larger Afro-Asiatic language family, found in (North and East) Africa and Western Asia.",
+      "picTooltip": ""
     },
     "Akkadian": {
       "name": "Akkadian",
@@ -111,7 +117,8 @@
         "Old Aramaic"
       ],
       "alphabet": "\uD808\uDC1D\uD808\uDD57\uD808\uDC7A\uD808\uDF11",
-      "description": "Akkadian is an extinct East Semitic language that was spoken in ancient Mesopotamia (Akkad, Assyria, Isin, Larsa and Babylonia) from the third millennium BC until its gradual replacement by Akkadian-influenced Old Aramaic among Mesopotamians by the 8th century BC."
+      "description": "Akkadian is an extinct East Semitic language that was spoken in ancient Mesopotamia (Akkad, Assyria, Isin, Larsa and Babylonia) from the third millennium BC until its gradual replacement by Akkadian-influenced Old Aramaic among Mesopotamians by the 8th century BC.",
+      "picTooltip": ""
     },
     "Eblaite": {
       "name": "Eblaite",
@@ -125,7 +132,8 @@
         "Amorite"
       ],
       "alphabet": "\uD808\uDF08\uD808\uDDB7",
-      "description": "Eblaite, or Palaeo-Syrian, is an extinct East Semitic language used during the 3rd millennium BC by the populations of Northern Syria. It was named after the ancient city of Ebla, in modern western Syria. Variants of the language were also spoken in Mari and Nagar."
+      "description": "Eblaite, or Palaeo-Syrian, is an extinct East Semitic language used during the 3rd millennium BC by the populations of Northern Syria. It was named after the ancient city of Ebla, in modern western Syria. Variants of the language were also spoken in Mari and Nagar.",
+      "picTooltip": ""
     }
   },
   {
@@ -147,7 +155,8 @@
         "Central Semitic"
       ],
       "alphabet": "",
-      "description": "The Canaanite languages, or Canaanite dialects, are one of the three subgroups of the Northwest Semitic languages, the others being Aramaic and Ugaritic, all originating in the Levant and Mesopotamia.\n\nProto-Canaanite is a name used for a version of the Proto-Sinaitic script as used in Canaan, an area encompassing modern Lebannon, Israel, Palestine and western parts of Syria. It is also used to refer to an early version of the Phoenican script as used before 1050 BC, or an ancestor of the Phoenician script."
+      "description": "The Canaanite languages, or Canaanite dialects, are one of the three subgroups of the Northwest Semitic languages, the others being Aramaic and Ugaritic, all originating in the Levant and Mesopotamia.\n\nProto-Canaanite is a name used for a version of the Proto-Sinaitic script as used in Canaan, an area encompassing modern Lebannon, Israel, Palestine and western parts of Syria. It is also used to refer to an early version of the Phoenican script as used before 1050 BC, or an ancestor of the Phoenician script.",
+      "picTooltip": ""
     },
     "Old Arabic": {
       "name": "Old Arabic",
@@ -171,7 +180,8 @@
         "Mishnaic Hebrew"
       ],
       "alphabet": "",
-      "description": "Old Arabic is the name for the pre-Islamic Arabic language or dialect continuum. Various forms of Old Arabic are attested in many scripts like Safaitic, Hismaic, Nabatean, and even Greek."
+      "description": "Old Arabic is the name for the pre-Islamic Arabic language or dialect continuum. Various forms of Old Arabic are attested in many scripts like Safaitic, Hismaic, Nabatean, and even Greek.",
+      "picTooltip": ""
     },
     "Old South Arabian": {
       "name": "Old South Arabian",
@@ -186,7 +196,8 @@
         "Central Semitic"
       ],
       "alphabet": "\uD802\uDE63\uD802\uDE6F\uD802\uDE6C\uD802\uDE75",
-      "description": "Old South Arabian (or Ṣayhadic or Yemenite) is a group of four closely related extinct languages spoken in the far southern portion of the Arabian Peninsula. They were written in the Ancient South Arabian script."
+      "description": "Old South Arabian (or Ṣayhadic or Yemenite) is a group of four closely related extinct languages spoken in the far southern portion of the Arabian Peninsula. They were written in the Ancient South Arabian script.",
+      "picTooltip": ""
     },
     "Eastern South Semitic": {
       "name": "Eastern South Semitic",
@@ -204,7 +215,8 @@
         "Sabaean"
       ],
       "alphabet": "",
-      "description": "The Modern South Arabian languages, also known as Eastern South Semitic languages, are a group of endangered languages spoken by small populations inhabiting the Arabian Peninsula, in Yemen and Oman, and Socotra Island."
+      "description": "The Modern South Arabian languages, also known as Eastern South Semitic languages, are a group of endangered languages spoken by small populations inhabiting the Arabian Peninsula, in Yemen and Oman, and Socotra Island.",
+      "picTooltip": ""
     },
     "Ethiopic": {
       "name": "Ethiopic",
@@ -219,7 +231,8 @@
         "Old South Arabian"
       ],
       "alphabet": "",
-      "description": "Ethiopian Semitic (also Ethio-Semitic, Ethiosemitic, Ethiopic or Abyssinian) is a family of languages spoken in Ethiopia, Eritrea and Sudan. They form the western branch of the South Semitic languages, itself a sub-branch of Semitic, part of the Afroasiatic language family."
+      "description": "Ethiopian Semitic (also Ethio-Semitic, Ethiosemitic, Ethiopic or Abyssinian) is a family of languages spoken in Ethiopia, Eritrea and Sudan. They form the western branch of the South Semitic languages, itself a sub-branch of Semitic, part of the Afroasiatic language family.",
+      "picTooltip": ""
     },
     "Amorite": {
       "name": "Amorite",
@@ -232,7 +245,8 @@
         "Canaanite"
       ],
       "alphabet": "",
-      "description": "Amorite is an extinct early Semitic language, formerly spoken during the Bronze Age by the Amorite tribes prominent in ancient Near Eastern history. It is known from Ugaritic, classed by some as its westernmost dialect, and from non-Akkadian proper names recorded by Akkadian scribes during periods of Amorite rule in Babylonia."
+      "description": "Amorite is an extinct early Semitic language, formerly spoken during the Bronze Age by the Amorite tribes prominent in ancient Near Eastern history. It is known from Ugaritic, classed by some as its westernmost dialect, and from non-Akkadian proper names recorded by Akkadian scribes during periods of Amorite rule in Babylonia.",
+      "picTooltip": ""
     }
   },
   {
@@ -245,8 +259,9 @@
         "Old Arabic",
         "Biblical Hebrew"
       ],
-      "alphabet": "\uD802\uDD0F\uD802\uDD0C\uD802\uDD0D",
-      "description": "Ammonite is the extinct Canaanite language of the Ammonite people mentioned in the Bible, who used to live in modern-day Jordan, and after whom its capital Amman is named. Only fragments of their language survive—chiefly the 9th century BC Amman Citadel Inscription, the 7th–6th century BC Tel Siran bronze bottle, and a few ostraca. As far as can be determined from the small corpus, it was extremely similar to Biblical Hebrew, with some possible Aramaic influence."
+      "alphabet": "\uD802\uDD0D\uD802\uDD0C\uD802\uDD0F",
+      "description": "Ammonite is the extinct Canaanite language of the Ammonite people mentioned in the Bible, who used to live in modern-day Jordan, and after whom its capital Amman is named. Only fragments of their language survive—chiefly the 9th century BC Amman Citadel Inscription, the 7th–6th century BC Tel Siran bronze bottle, and a few ostraca. As far as can be determined from the small corpus, it was extremely similar to Biblical Hebrew, with some possible Aramaic influence.",
+      "picTooltip": ""
     },
     "Biblical Hebrew": {
       "name": "Biblical Hebrew",
@@ -264,7 +279,8 @@
         "Old Aramaic"
       ],
       "alphabet": "עִבְרִית מִקְרָאִית",
-      "description": "Biblical Hebrew, also called Classical Hebrew, is an archaic form of the Hebrew language, a language in the Canaanite branch of Semitic languages spoken by the Israelites in the area known as the Land of Israel, roughly west of the Jordan River and east of the Mediterranean Sea. The term \"Hebrew\" (ivrit) was not used for the language in the Bible, which was referred to as sefat kena'an (i.e. language of Canaan) or Yehudit (i.e. Judaean), but the name was used in Ancient Greek and Mishnaic Hebrew texts."
+      "description": "Biblical Hebrew, also called Classical Hebrew, is an archaic form of the Hebrew language, a language in the Canaanite branch of Semitic languages spoken by the Israelites in the area known as the Land of Israel, roughly west of the Jordan River and east of the Mediterranean Sea. The term \"Hebrew\" (ivrit) was not used for the language in the Bible, which was referred to as sefat kena'an (i.e. language of Canaan) or Yehudit (i.e. Judaean), but the name was used in Ancient Greek and Mishnaic Hebrew texts.",
+      "picTooltip": ""
     },
     "Phoenician": {
       "name": "Phoenician",
@@ -274,8 +290,9 @@
       "influences": [
         "Biblical Hebrew"
       ],
-      "alphabet": "\uD802\uDD03\uD802\uDD01\uD802\uDD13\uD802\uDD09\uD802\uDD0C \uD802\uDD0A\uD802\uDD0D\uD802\uDD0F\uD802\uDD0D\uD802\uDD09\uD802\uDD0C",
-      "description": "Phoenician is an extinct Canaanite Semitic language originally spoken in the region surrounding the cities of Tyre and Sidon. Extensive Tyro-Sidonian trade and commercial dominance led to Phoenician becoming a lingua franca of the maritime Mediterranean during the Iron Age. The Phoenician alphabet spread to Greece during this period, where it became the source of all modern European scripts."
+      "alphabet": "\uD802\uDD0C\uD802\uDD09\uD802\uDD0D\uD802\uDD0F\uD802\uDD0D\uD802\uDD0A \uD802\uDD0C\uD802\uDD09\uD802\uDD13\uD802\uDD01\uD802\uDD03",
+      "description": "Phoenician is an extinct Canaanite Semitic language originally spoken in the region surrounding the cities of Tyre and Sidon. Extensive Tyro-Sidonian trade and commercial dominance led to Phoenician becoming a lingua franca of the maritime Mediterranean during the Iron Age. The Phoenician alphabet spread to Greece during this period, where it became the source of all modern European scripts.",
+      "picTooltip": ""
     },
     "Arabic": {
       "name": "Arabic",
@@ -299,7 +316,8 @@
         "Modern Hebrew"
       ],
       "alphabet": "عربي",
-      "description": "Arabic is a Semitic language spoken primarily across the Arab world. Having emerged in the 1st century, it is named after the Arab people; the term \"Arab\" was initially used to describe those living in the Arabian Peninsula, as perceived by geographers from ancient Greece."
+      "description": "Arabic is a Semitic language spoken primarily across the Arab world. Having emerged in the 1st century, it is named after the Arab people; the term \"Arab\" was initially used to describe those living in the Arabian Peninsula, as perceived by geographers from ancient Greece.",
+      "picTooltip": ""
     },
     "Sabaean": {
       "name": "Sabaean",
@@ -324,7 +342,8 @@
         "Arabic"
       ],
       "alphabet": "\uD802\uDE6A\uD802\uDE68\uD802\uDE71",
-      "description": "Sabaean, also known as Sabaic, was an Old South Arabian language spoken between c. 1000 BC and the 6th century AD, by the Sabaeans. It was used as a written language by some other peoples of the ancient civilization of South Arabia, including the Ḥimyarites, Ḥashidites, Ṣirwāḥites, Humlanites, Ghaymānites, and Radmānites."
+      "description": "Sabaean, also known as Sabaic, was an Old South Arabian language spoken between c. 1000 BC and the 6th century AD, by the Sabaeans. It was used as a written language by some other peoples of the ancient civilization of South Arabia, including the Ḥimyarites, Ḥashidites, Ṣirwāḥites, Humlanites, Ghaymānites, and Radmānites.",
+      "picTooltip": ""
     },
     "Shehri": {
       "name": "Shehri",
@@ -337,7 +356,8 @@
         "Arabic"
       ],
       "alphabet": "شحرية",
-      "description": "Shehri, also known as Jibbali (\"mountain\" language in Omani Arabic), is a Modern South Arabian language. It is spoken by a small native population inhabiting the coastal towns and the mountains and wilderness areas upland from Salalah, located in the Dhofar Governorate in southwestern Oman."
+      "description": "Shehri, also known as Jibbali (\"mountain\" language in Omani Arabic), is a Modern South Arabian language. It is spoken by a small native population inhabiting the coastal towns and the mountains and wilderness areas upland from Salalah, located in the Dhofar Governorate in southwestern Oman.",
+      "picTooltip": ""
     },
     "Mehri": {
       "name": "Mehri",
@@ -353,7 +373,8 @@
         "Arabic"
       ],
       "alphabet": "مهريّت",
-      "description": "Mehri, or Mahri, is the most spoken of the Modern South Arabian languages (MSALs), a subgroup of the Semitic branch of the Afroasiatic family. It is spoken by the Mehri tribes, who inhabit isolated areas of the eastern part of Yemen, western Oman, particularly the Al Mahrah Governorate, with a small number in Saudi Arabia near the Yemeni and Omani borders."
+      "description": "Mehri, or Mahri, is the most spoken of the Modern South Arabian languages (MSALs), a subgroup of the Semitic branch of the Afroasiatic family. It is spoken by the Mehri tribes, who inhabit isolated areas of the eastern part of Yemen, western Oman, particularly the Al Mahrah Governorate, with a small number in Saudi Arabia near the Yemeni and Omani borders.",
+      "picTooltip": ""
     },
     "Soqotri": {
       "name": "Soqotri",
@@ -367,7 +388,8 @@
         "Arabic"
       ],
       "alphabet": "ماتڸ دسقطري",
-      "description": "Soqotri is a South Semitic language spoken by the Soqotri people on the island of Socotra and the two nearby islands of Abd al Kuri and Samhah, in the Socotra archipelago, in the Guardafui Channel."
+      "description": "Soqotri is a South Semitic language spoken by the Soqotri people on the island of Socotra and the two nearby islands of Abd al Kuri and Samhah, in the Socotra archipelago, in the Guardafui Channel.",
+      "picTooltip": "Soqotris, 1918"
     },
     "North Ethiopic": {
       "name": "North Ethiopic",
@@ -380,7 +402,8 @@
         "South Ethiopic"
       ],
       "alphabet": "",
-      "description": "A subgroup of Afro-Asiatic languages including Ge'ez, Tigrinya and Tigre."
+      "description": "A subgroup of Afro-Asiatic languages including Ge'ez, Tigrinya and Tigre.",
+      "picTooltip": ""
     },
     "South Ethiopic": {
       "name": "South Ethiopic",
@@ -395,7 +418,8 @@
         "North Ethiopic"
       ],
       "alphabet": "",
-      "description": "A subgroup of Afro-Asiatic languages including Amharic, Harari and Gurage."
+      "description": "A subgroup of Afro-Asiatic languages including Amharic, Harari and Gurage.",
+      "picTooltip": ""
     },
     "Moabite": {
       "name": "Moabite",
@@ -406,8 +430,9 @@
         "Old Arabic",
         "Biblical Hebrew"
       ],
-      "alphabet": "\uD802\uDD0C\uD802\uDD00\uD802\uDD01",
-      "description": "The Moabite language, also known as the Moabite dialect, is an extinct sub-language or dialect of the Canaanite languages, themselves a branch of Northwest Semitic languages, formerly spoken in the region described in the Bible as Moab (modern day central-western Jordan) in the early 1st millennium BC."
+      "alphabet": "\uD802\uDD01\uD802\uDD00\uD802\uDD0C",
+      "description": "The Moabite language, also known as the Moabite dialect, is an extinct sub-language or dialect of the Canaanite languages, themselves a branch of Northwest Semitic languages, formerly spoken in the region described in the Bible as Moab (modern day central-western Jordan) in the early 1st millennium BC.",
+      "picTooltip": ""
     },
     "Edomite": {
       "name": "Edomite",
@@ -418,8 +443,9 @@
         "Old Arabic",
         "Biblical Hebrew"
       ],
-      "alphabet": "\uD802\uDD00\uD802\uDD03\uD802\uDD0C",
-      "description": "Edomite was a Northwest Semitic Canaanite language, very similar to Biblical Hebrew, Ammonite, Phoenician and Amorite spoken by the Edomites in southwestern Jordan and parts of Israel in the 2nd and 1st millennium BCE. It is extinct and known only from a very small corpus. It is attested in a scant number of impression seals, ostraca, and a single late 7th or early 6th century BCE letter, discovered in Horvat Uza."
+      "alphabet": "\uD802\uDD0C\uD802\uDD03\uD802\uDD00",
+      "description": "Edomite was a Northwest Semitic Canaanite language, very similar to Biblical Hebrew, Ammonite, Phoenician and Amorite spoken by the Edomites in southwestern Jordan and parts of Israel in the 2nd and 1st millennium BCE. It is extinct and known only from a very small corpus. It is attested in a scant number of impression seals, ostraca, and a single late 7th or early 6th century BCE letter, discovered in Horvat Uza.",
+      "picTooltip": ""
     },
     "Old Aramaic": {
       "name": "Old Aramaic",
@@ -438,8 +464,9 @@
         "Moabite",
         "Mishnaic Hebrew"
       ],
-      "alphabet": "\uD802\uDD15\uD802\uDD09\uD802\uDD0C\uD802\uDD01\uD802\uDD15",
-      "description": "Old Aramaic refers to the earliest stage of the Aramaic language, known from the Aramaic inscriptions discovered since the 19th century.\n\nEmerging as the language of the city-states of the Arameans in the Levant in the Early Iron Age, Old Aramaic was adopted as a lingua franca, and in this role was inherited for official use by the Achaemenid Empire during classical antiquity."
+      "alphabet": "\uD802\uDD00\uD802\uDD09\uD802\uDD0C\uD802\uDD03\uD802\uDD00",
+      "description": "Old Aramaic refers to the earliest stage of the Aramaic language, known from the Aramaic inscriptions discovered since the 19th century.\n\nEmerging as the language of the city-states of the Arameans in the Levant in the Early Iron Age, Old Aramaic was adopted as a lingua franca, and in this role was inherited for official use by the Achaemenid Empire during classical antiquity.",
+      "picTooltip": ""
     }
   },
   {
@@ -455,7 +482,8 @@
         "Mandaic"
       ],
       "alphabet": "\uD802\uDC40\uD802\uDC49\uD802\uDC4C\uD802\uDC53\uD802\uDC40",
-      "description": "The 3rd century AD is taken as the threshold between Old and Middle Aramaic. During that century, the nature of the various Aramaic languages and dialects began to change. The descendants of Imperial Aramaic ceased to be living languages, and the eastern and western regional languages began to develop vital new literatures."
+      "description": "The 3rd century AD is taken as the threshold between Old and Middle Aramaic. During that century, the nature of the various Aramaic languages and dialects began to change. The descendants of Imperial Aramaic ceased to be living languages, and the eastern and western regional languages began to develop vital new literatures.",
+      "picTooltip": ""
     },
     "Maltese": {
       "name": "Maltese",
@@ -466,7 +494,8 @@
         "Arabic"
       ],
       "alphabet": "Malti",
-      "description": "Maltese is a Semitic language derived from late medieval Sicilian Arabic with Romance superstrata spoken by the Maltese people. It is the national language of Malta and the only official Semitic and Afro-Asiatic language of the European Union."
+      "description": "Maltese is a Semitic language derived from late medieval Sicilian Arabic with Romance superstrata spoken by the Maltese people. It is the national language of Malta and the only official Semitic and Afro-Asiatic language of the European Union.",
+      "picTooltip": ""
     },
     "Himyaritic": {
       "name": "Himyaritic",
@@ -478,7 +507,8 @@
         "Hadramatic"
       ],
       "alphabet": "\uD802\uDE62\uD802\uDE63\uD802\uDE7A\uD802\uDE67",
-      "description": "Himyaritic is an unattested or sparsely attested Semitic language that was spoken in ancient Yemen, by the Himyarite tribal confederacy. It was a Semitic language but either did not belong to the Old South Arabian (Sayhadic) languages according to Christian Robin or was, as more widely accepted, not a distinct language from Sabaic. The precise position inside Semitic is unknown because of the limited knowledge of the language if it is indeed a distinct language from Sabaic."
+      "description": "Himyaritic is an unattested or sparsely attested Semitic language that was spoken in ancient Yemen, by the Himyarite tribal confederacy. It was a Semitic language but either did not belong to the Old South Arabian (Sayhadic) languages according to Christian Robin or was, as more widely accepted, not a distinct language from Sabaic. The precise position inside Semitic is unknown because of the limited knowledge of the language if it is indeed a distinct language from Sabaic.",
+      "picTooltip": ""
     },
     "Hadramatic": {
       "name": "Hadramatic",
@@ -493,7 +523,8 @@
         "Mehri"
       ],
       "alphabet": "\uD802\uDE69\uD802\uDE65\uD802\uDE63\uD802\uDE67\uD802\uDE6E\uD802\uDE62",
-      "description": "Ḥaḑramautic or Ḥaḑramitic was the easternmost of the four known languages of the Old South Arabian subgroup of the Semitic languages. It was used in the Kingdom of Hadhramaut and also the area round the Hadhramite capital of Shabwa, in what is now Yemen. The Hadramites also controlled the trade in frankincense through their important trading post of Sumhuram, now Khor Rori in the Dhofar Governorate, Oman."
+      "description": "Ḥaḑramautic or Ḥaḑramitic was the easternmost of the four known languages of the Old South Arabian subgroup of the Semitic languages. It was used in the Kingdom of Hadhramaut and also the area round the Hadhramite capital of Shabwa, in what is now Yemen. The Hadramites also controlled the trade in frankincense through their important trading post of Sumhuram, now Khor Rori in the Dhofar Governorate, Oman.",
+      "picTooltip": ""
     },
     "Minaean": {
       "name": "Minaean",
@@ -506,7 +537,8 @@
         "Old Arabic"
       ],
       "alphabet": "\uD802\uDE63\uD802\uDE72\uD802\uDE7A\uD802\uDE6C\uD802\uDE7A\uD802\uDE69",
-      "description": "The Minaean language was an Old South Arabian or Ṣayhadic language spoken in Yemen in the times of the Old South Arabian civilisation. The main area of its use may be located in the al-Jawf region of North-East Yemen, primarily in the Wādī Madhāb. Most of texts in this language were composed by the Minaeans, but the other civil-temple communities of the Wādī Madhāb also used it as a literary medium."
+      "description": "The Minaean language was an Old South Arabian or Ṣayhadic language spoken in Yemen in the times of the Old South Arabian civilisation. The main area of its use may be located in the al-Jawf region of North-East Yemen, primarily in the Wādī Madhāb. Most of texts in this language were composed by the Minaeans, but the other civil-temple communities of the Wādī Madhāb also used it as a literary medium.",
+      "picTooltip": ""
     },
     "Qatabanic": {
       "name": "Qatabanic",
@@ -518,7 +550,8 @@
         "Hadramatic"
       ],
       "alphabet": "\uD802\uDE64\uD802\uDE69\uD802\uDE68\uD802\uDE6C",
-      "description": "Qatabānian (or Qatabānic), one of the four better-documented languages of the Old South Arabian (or \"Ṣayhadic\") sub-group of South Semitic, was spoken mainly but not exclusively in the kingdom of Qatabān, located in central Yemen. Qatabanian inscriptions increase after the beginning of the 4th century BC when the Sabaeans ceased to dominate the area, and Qatabān became an independent kingdom.\n\nAt the end of the 2nd century AD, Saba' and Ḥaḑramawt finally defeated Qatabān, and the inscriptions ended."
+      "description": "Qatabānian (or Qatabānic), one of the four better-documented languages of the Old South Arabian (or \"Ṣayhadic\") sub-group of South Semitic, was spoken mainly but not exclusively in the kingdom of Qatabān, located in central Yemen. Qatabanian inscriptions increase after the beginning of the 4th century BC when the Sabaeans ceased to dominate the area, and Qatabān became an independent kingdom.\n\nAt the end of the 2nd century AD, Saba' and Ḥaḑramawt finally defeated Qatabān, and the inscriptions ended.",
+      "picTooltip": ""
     },
     "Ge'ez": {
       "name": "Ge'ez",
@@ -531,7 +564,8 @@
         "Amharic"
       ],
       "alphabet": "ግዕዝ",
-      "description": "Geʽez (sometimes referred to in scholarly literature as Classical Ethiopic) is an ancient Ethiopian Semitic language. The language originates from what is now northern Ethiopia and Eritrea.\n\nToday, Geʽez is used as the main liturgical language of the Ethiopian Orthodox Tewahedo Church and Eritrean Orthodox Tewahedo Church, the Ethiopian Catholic Church and Eritrean Catholic Church, and the Beta Israel Jewish community."
+      "description": "Geʽez (sometimes referred to in scholarly literature as Classical Ethiopic) is an ancient Ethiopian Semitic language. The language originates from what is now northern Ethiopia and Eritrea.\n\nToday, Geʽez is used as the main liturgical language of the Ethiopian Orthodox Tewahedo Church and Eritrean Orthodox Tewahedo Church, the Ethiopian Catholic Church and Eritrean Catholic Church, and the Beta Israel Jewish community.",
+      "picTooltip": ""
     },
     "Amharic": {
       "name": "Amharic",
@@ -546,7 +580,8 @@
         "Harari"
       ],
       "alphabet": "አማርኛ",
-      "description": "Amharic is an Ethiopian Semitic language, which is a subgrouping within the Semitic branch of the Afroasiatic languages. It is spoken as a first language by the Amharas, and also serves as a lingua franca for all other populations residing in major cities and towns of Ethiopia."
+      "description": "Amharic is an Ethiopian Semitic language, which is a subgrouping within the Semitic branch of the Afroasiatic languages. It is spoken as a first language by the Amharas, and also serves as a lingua franca for all other populations residing in major cities and towns of Ethiopia.",
+      "picTooltip": ""
     },
     "Harari": {
       "name": "Harari",
@@ -559,7 +594,8 @@
         "Gurage"
       ],
       "alphabet": "ሃራሪ",
-      "description": "Harari is an Ethiopian Semitic language spoken by the Harari people of Ethiopia. According to the 2007 Ethiopian census, it is spoken by 25,810 people. Most of its speakers are multilingual in Amharic and/or Eastern Oromo.\n\nHarari was originally written with a version of the Arabic script, then the Ethiopic script was adopted to write the language. Some Harari speakers in diaspora write their language with the Latin alphabet."
+      "description": "Harari is an Ethiopian Semitic language spoken by the Harari people of Ethiopia. According to the 2007 Ethiopian census, it is spoken by 25,810 people. Most of its speakers are multilingual in Amharic and/or Eastern Oromo.\n\nHarari was originally written with a version of the Arabic script, then the Ethiopic script was adopted to write the language. Some Harari speakers in diaspora write their language with the Latin alphabet.",
+      "picTooltip": ""
     },
     "Gurage": {
       "name": "Gurage",
@@ -571,7 +607,8 @@
         "Harari"
       ],
       "alphabet": "ጉራጌ",
-      "description": "The Gurage languages, also known as Guragie, is a dialect-continuum language, which belong to the Semitic branch of the Afroasiatic language family. They are spoken by the Gurage people, who inhabit the Gurage Zone within the larger multi-ethnic Southern Nations, Nationalities, and Peoples' Region in central Ethiopia."
+      "description": "The Gurage languages, also known as Guragie, is a dialect-continuum language, which belong to the Semitic branch of the Afroasiatic language family. They are spoken by the Gurage people, who inhabit the Gurage Zone within the larger multi-ethnic Southern Nations, Nationalities, and Peoples' Region in central Ethiopia.",
+      "picTooltip": ""
     },
     "Mandaic": {
       "name": "Mandaic",
@@ -584,7 +621,8 @@
         "Neo Aramaic"
       ],
       "alphabet": "\u08b2\u0860\u0883\u089c\u0860",
-      "description": "Mandaic is a southeastern Aramaic variety in use by the Mandaean community, traditionally based in southern parts of Iraq and southwest Iran, for their religious books. Classical Mandaic is still employed by Mandaean priests in liturgical rites. The modern descendant of Classical Mandaic, known as Neo-Mandaic or Modern Mandaic, is spoken by a small section of Mandaeans around Ahvaz and Khorramshahr in the southern Iranian Khuzestan province."
+      "description": "Mandaic is a southeastern Aramaic variety in use by the Mandaean community, traditionally based in southern parts of Iraq and southwest Iran, for their religious books. Classical Mandaic is still employed by Mandaean priests in liturgical rites. The modern descendant of Classical Mandaic, known as Neo-Mandaic or Modern Mandaic, is spoken by a small section of Mandaeans around Ahvaz and Khorramshahr in the southern Iranian Khuzestan province.",
+      "picTooltip": ""
     }
   },
   {
@@ -601,7 +639,8 @@
         "Modern Hebrew"
       ],
       "alphabet": "אַרָמִית לׅשָנַא\nܐܪܡܝܐ\nܟܠܕܝܐ\nࠀࠓࠌࠉࠕ\n",
-      "description": "The Neo-Aramaic or Modern Aramaic languages are varieties of Aramaic that evolved during the late medieval and early modern periods, and continue to the present day as vernacular (spoken) languages of modern Aramaic-speaking communities."
+      "description": "The Neo-Aramaic or Modern Aramaic languages are varieties of Aramaic that evolved during the late medieval and early modern periods, and continue to the present day as vernacular (spoken) languages of modern Aramaic-speaking communities.",
+      "picTooltip": ""
     },
     "Mishnaic Hebrew": {
       "name": "Mishnaic Hebrew",
@@ -615,7 +654,9 @@
         "Old Aramaic"
       ],
       "alphabet": "לשון חז\"ל",
-      "description": "Mishnaic Hebrew is the Hebrew of Talmudic texts. Mishnaic Hebrew can be sub-divided into Mishnaic Hebrew proper, which was a spoken language, and Amoraic Hebrew, which was a literary language only."
+      "description": "Mishnaic Hebrew is the Hebrew of Talmudic texts. Mishnaic Hebrew can be sub-divided into Mishnaic Hebrew proper, which was a spoken language, and Amoraic Hebrew, which was a literary language only.",
+      "picTooltip": "",
+      "picTooltip": ""
     },
     "Tigrinya": {
       "name": "Tigrinya",
@@ -629,7 +670,8 @@
         "Arabic"
       ],
       "alphabet": "ትግርኛ",
-      "description": "Tigrinya is an Ethio-Semitic language commonly spoken in Eritrea and in northern Ethiopia's Tigray Region by the Tigrinya and Tigrayan peoples. It is also spoken by the global diaspora of these regions."
+      "description": "Tigrinya is an Ethio-Semitic language commonly spoken in Eritrea and in northern Ethiopia's Tigray Region by the Tigrinya and Tigrayan peoples. It is also spoken by the global diaspora of these regions.",
+      "picTooltip": ""
     }
   },
   {
@@ -644,7 +686,8 @@
         "Yiddish"
       ],
       "alphabet": "עברית חדשה",
-      "description": "Modern Hebrew, is the standard form of the Hebrew language spoken today. Spoken in ancient times, Ancient Hebrew, a member of the Canaanite branch of the Semitic language family, was supplanted as the Jewish vernacular by the western dialect of Aramaic beginning in the third century BCE, though it continued to be used as a liturgical and literary language. It was revived as a spoken language in the 19th and 20th centuries and is the official language of Israel.\n\nOf the Canaanite languages, Modern Hebrew is the only language spoken today."
+      "description": "Modern Hebrew, is the standard form of the Hebrew language spoken today. Spoken in ancient times, Ancient Hebrew, a member of the Canaanite branch of the Semitic language family, was supplanted as the Jewish vernacular by the western dialect of Aramaic beginning in the third century BCE, though it continued to be used as a liturgical and literary language. It was revived as a spoken language in the 19th and 20th centuries and is the official language of Israel.\n\nOf the Canaanite languages, Modern Hebrew is the only language spoken today.",
+      "picTooltip": ""
     },
     "Tigre": {
       "name": "Tigre",
@@ -656,7 +699,8 @@
         "Arabic"
       ],
       "alphabet": "ትግራይት",
-      "description": "Tigre, better known in Eritrea by its autonym Tigrayit, is an Eritrean Semitic language spoken in the Horn of Africa. It belongs to the Semitic branch and is primarily spoken by the Tigre people in Eritrea."
+      "description": "Tigre, better known in Eritrea by its autonym Tigrayit, is an Eritrean Semitic language spoken in the Horn of Africa. It belongs to the Semitic branch and is primarily spoken by the Tigre people in Eritrea.",
+      "picTooltip": ""
     }
   }
 ]

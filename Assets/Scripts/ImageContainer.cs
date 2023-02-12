@@ -1,12 +1,14 @@
 ﻿using System;
 using System.IO;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [Serializable]
-public class ImageContainer : MonoBehaviour, IItemContainer {
+public class ImageContainer : MonoBehaviour, IItemContainer, IPointerEnterHandler, IPointerExitHandler {
     
     [SerializeField] protected Image image;
+    [SerializeField] [HideInInspector] private string picTooltip;
     
     protected virtual void Awake() {
         if (image) 
@@ -18,11 +20,12 @@ public class ImageContainer : MonoBehaviour, IItemContainer {
         }
     }
     
-    public virtual void LoadImage(string languageName) {
-        if (!File.Exists(Directory.GetCurrentDirectory() + $"/Assets/Resources/Images/{languageName}.png")) {
+    public virtual void LoadImage(string languageName, string newPicTooltip = "") {
+        if (!File.Exists(Directory.GetCurrentDirectory() + $"/Assets/Resources/Pictures/{languageName}.jpg")) {
             return;
         }
-        image.sprite = Resources.Load<Sprite>($"Images/{languageName}");
+        image.sprite = Resources.Load<Sprite>($"Pictures/{languageName}");
+        picTooltip = newPicTooltip;
     }
     
     public Vector2 GetSize() {
@@ -67,5 +70,19 @@ public class ImageContainer : MonoBehaviour, IItemContainer {
         var corners = new Vector3[4];
         image.rectTransform.GetWorldCorners(corners);
         return corners[0];
+    }
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        if (picTooltip.Length == 0) {
+            return;
+        }
+        LanguageNameTooltip.ShowTooltipStatic(picTooltip);
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        if (picTooltip.Length == 0) {
+            return;
+        }
+        LanguageNameTooltip.HideTooltipStatic();
     }
 }

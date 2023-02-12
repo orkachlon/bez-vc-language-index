@@ -77,25 +77,13 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerE
     }
 
     private string GetTooltipString() {
-        var tooltipString = "unrecognized connection type!";
 
-        if (SelectionManager.GetSelectedLanguage() == child) {
-            tooltipString = childType switch {
-                EChildType.Add => $"{child.GetName()} was born from {parent.GetName()}",
-                EChildType.Replace => $"{child.GetName()} replaced {parent.GetName()}",
-                EChildType.Revive => $"{child.GetName()} revived {parent.GetName()}",
-                _ => tooltipString
-            };
+        var otherNode = SelectionManager.GetSelectedLanguage() == child ? parent : child;
+        var tooltipString = $"<font=NotoSerif-Italic SDF>{otherNode.GetYears()}</font>";
+        
+        if (otherNode.GetAlphabet().Length > 0) {
+            tooltipString = $"{otherNode.GetAlphabet()}\n" + tooltipString;
         }
-        else {
-            tooltipString = childType switch {
-                EChildType.Add => $"{parent.GetName()} gave birth to {child.GetName()}",
-                EChildType.Replace => $"{parent.GetName()} was replaced by {child.GetName()}",
-                EChildType.Revive => $"{parent.GetName()} was revived by {child.GetName()}",
-                _ => tooltipString
-            };
-        }
-
         return tooltipString;
     }
 

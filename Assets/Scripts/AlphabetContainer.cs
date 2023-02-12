@@ -8,6 +8,8 @@ using UnityEngine;
 public class AlphabetContainer : TextContainer {
 
     [SerializeField] [HideInInspector] private List<string> unicodeList;
+
+    [SerializeField] [Range(0, 2)] private float minWidth = 0;
     
     protected override void Awake() {
         base.Awake();
@@ -21,7 +23,7 @@ public class AlphabetContainer : TextContainer {
         gameObject.SetActive(true);
 
         var pref = textElement.GetPreferredValues() + Vector2.right * textPadding;
-        SetSize(pref);
+        SetSize(new Vector2(Mathf.Max(minWidth, pref.x), pref.y));
     }
     
     public override void ToItemRelative() {

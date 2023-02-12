@@ -140,6 +140,7 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         langLayout.SetMap(langData.name);
         langLayout.SetAlphabet(langData.alphabet);
         langLayout.SetDescription(langData.description);
+        langLayout.SetPicture(langData.name, langData.picTooltip);
         langLayout.ToNode();
     }
 
@@ -175,6 +176,10 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
 
     public string GetAlphabet() {
         return langData.alphabet;
+    }
+
+    public string GetYears() {
+        return langData.years;
     }
 
     public ChildNameToNodeDictionary GetChildren() {

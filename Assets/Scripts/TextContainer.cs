@@ -23,8 +23,7 @@ public class TextContainer : MonoBehaviour, IItemContainer {
             print($"no rect transform on {name}");
         }
 
-        var nodeMargins = GetNodeMargins();
-        SetSize(textElement.GetPreferredValues() + new Vector2(nodeMargins.x + nodeMargins.z, nodeMargins.y + nodeMargins.w));
+        SetSize(textElement.GetPreferredValues());
     }
 
     public virtual Vector2 GetSize() {
