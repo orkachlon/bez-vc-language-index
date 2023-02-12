@@ -9,13 +9,19 @@ public class AlphabetContainer : TextContainer {
 
     [SerializeField] [HideInInspector] private List<string> unicodeList;
     
+    protected override void Awake() {
+        base.Awake();
+        textElement.margin = new Vector4(0, 0, textPadding, 0);
+    }
+
     public override void ToItem() {
         if (textElement.text.Length == 0) {
             return;
         }
         gameObject.SetActive(true);
-        textElement.rectTransform.sizeDelta = textElement.GetPreferredValues();
-        AdjustBGSize();
+
+        var pref = textElement.GetPreferredValues() + Vector2.right * textPadding;
+        SetSize(pref);
     }
     
     public override void ToItemRelative() {
@@ -26,8 +32,8 @@ public class AlphabetContainer : TextContainer {
         gameObject.SetActive(false);
     }
 
-    public override Vector2 GetTextBoxSize() {
-        return textElement.text.Length > 0 ? base.GetTextBoxSize() : Vector2.zero;
+    public override Vector2 GetSize() {
+        return textElement.text.Length > 0 ? base.GetSize() : Vector2.zero;
     }
 
     // might still need this

@@ -51,7 +51,8 @@ public class CameraController : MonoBehaviour {
 
     private void MoveCameraToLanguageNode(LanguageNode langNode) {
         // move camera
-        StartCoroutine(MoveCamera(langNode.GetEndPosition() + Vector3.back * cameraDistanceFromNode));
+        var newPos = langNode.GetEndPosition() + Vector3.back * cameraDistanceFromNode;
+        StartCoroutine(MoveCamera(newPos));
     }
 
     private IEnumerator MoveCamera(Vector3 cameraEndPos) {

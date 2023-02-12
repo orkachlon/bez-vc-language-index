@@ -107,8 +107,7 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerE
             return;
         }
         SetLineRenderer(childType);
-        
-        // create collider
+        SetLineTransform();
         SetCollider();
     }
 
@@ -128,16 +127,14 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerE
         var (parentLinePos, childLinePos) = GetOffsetPositions();
         lineRenderer.SetPosition(0, parentLinePos);
         lineRenderer.SetPosition(1, childLinePos);
-        
-        // object position
-        SetLineTransform();
     }
 
     private void SetLineTransform() {
         var lineDirection = child.transform.position - parent.transform.position;
-        transform.position = parent.transform.position + lineDirection / 2f;
         var tmp = Vector3.Cross(lineDirection, Vector3.forward);
-        transform.rotation = Quaternion.LookRotation(Vector3.Cross(tmp, lineDirection), -lineDirection);
+        transform.SetPositionAndRotation(
+            parent.transform.position + lineDirection * 0.5f,
+            Quaternion.LookRotation(Vector3.Cross(tmp, lineDirection), -lineDirection));
     }
 
     private void SetCollider() {
@@ -149,7 +146,6 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerE
         
         boxCollider.size = new Vector3(width, height, .1f);
         boxCollider.center = Vector3.zero;
-        colliderTransform.position = transform.position;
-        colliderTransform.rotation = transform.rotation;
+        colliderTransform.SetPositionAndRotation(transform.position, transform.rotation);
     }
 }

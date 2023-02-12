@@ -53,4 +53,16 @@ public class MapContainer : MonoBehaviour, IItemContainer {
 
         map.gameObject.layer = layerID;
     }
+
+    public Vector3 GetTopRight() {
+        var corners = new Vector3[4];
+        map.rectTransform.GetWorldCorners(corners);
+        return corners[2];
+    }
+
+    public Vector3 GetBotLeft() {
+        var corners = new Vector3[4];
+        map.rectTransform.GetWorldCorners(corners);
+        return corners[0];
+    }
 }

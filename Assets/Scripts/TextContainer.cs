@@ -11,44 +11,30 @@ public class TextContainer : MonoBehaviour, IItemContainer {
     [SerializeField] protected Image bgImage;
     [SerializeField] protected float textPadding;
 
-    // not actually in use
-    public static readonly Vector3 StartPos = new(0, 0, 21.5f);
+    [SerializeField] [HideInInspector] protected RectTransform rectTransform;
 
-    [SerializeField] [HideInInspector] protected float manualWidth;
-    [SerializeField] [HideInInspector] protected float fontStartSize;
-    [SerializeField] [HideInInspector] protected Vector2 textBoxStartSize;
-
-
-    protected virtual void Start() {
-        fontStartSize = textElement.fontSize;
-        
-        // AdjustTextBoxSize();
-
-        // adjust background size to fit text
-        AdjustBGSize();
-        textBoxStartSize = textElement.rectTransform.sizeDelta;
-    }
-    
-    // private void Update() {
-    //     textElement.rectTransform.sizeDelta = textElement.GetRenderedValues() + Vector2.right * (textPadding * 2);
-    //     // resize bg to text bounding box
-    //     AdjustBGSize();
-    // }
-
-    public virtual Vector2 GetTextBoxSize() {
-        return textElement.rectTransform.sizeDelta;
-    }
-
-    public Vector2 GetBGSize() {
-        if (manualWidth > 0) {
-            return new Vector2(manualWidth, textElement.rectTransform.sizeDelta.y);
+    protected virtual void Awake() {
+        rectTransform = GetComponent<RectTransform>();
+        if (rectTransform == null) {
+            print($"no rect transform on {name}");
         }
-        return textElement.rectTransform.sizeDelta;
+
+        var nodeMargins = GetNodeMargins();
+        SetSize(textElement.GetPreferredValues() + new Vector2(nodeMargins.x + nodeMargins.z, nodeMargins.y + nodeMargins.w));
+    }
+
+    public virtual Vector2 GetSize() {
+        return rectTransform.sizeDelta;
     }
 
     public virtual void SetWidth(float width) {
-        textElement.rectTransform.sizeDelta = new Vector2(width, textElement.rectTransform.sizeDelta.y);
-        AdjustBGSize();
+        SetSize(new Vector2(width, textElement.rectTransform.sizeDelta.y));
+    }
+
+    public virtual void SetSize(Vector2 newSize) {
+        textElement.rectTransform.sizeDelta = newSize;
+        // bgImage.rectTransform.sizeDelta = newSize;
+        rectTransform.sizeDelta = newSize;
     }
 
     public virtual void ToItem() {
@@ -90,16 +76,11 @@ public class TextContainer : MonoBehaviour, IItemContainer {
         AdjustTextBoxSize();
     }
 
-    public void ResetFontSize() {
-        textElement.rectTransform.sizeDelta = textBoxStartSize;
-        textElement.fontSize = fontStartSize;
-    }
-
     public RectTransform GetTextRectTransform() {
         return textElement.rectTransform;
     }
 
-    public Vector3 GetBottomLeft() {
+    public Vector3 GetBotLeft() {
         var corners = new Vector3[4];
         bgImage.rectTransform.GetWorldCorners(corners);
         return corners[0];
@@ -116,8 +97,16 @@ public class TextContainer : MonoBehaviour, IItemContainer {
         var textRect = textElement.GetRenderedValues(false);
         textElement.rectTransform.sizeDelta = textElement.GetPreferredValues();
     }
-
-    protected virtual void AdjustBGSize() {
-        bgImage.rectTransform.sizeDelta = GetBGSize();
+    
+    public Vector4 GetItemMargins() {
+        return new(textPadding * 0.5f, textPadding * 0.5f, 0, textPadding);
+    }
+    
+    public Vector4 GetNodeMargins() {
+        return new(textPadding, 0, textPadding * 0.5f, textPadding * 0.5f);
+    }
+    
+    public Vector4 GetItemRelativeMargins() {
+        return new(textPadding * 0.5f, 0, textPadding * 0.5f, 0);
     }
 }
