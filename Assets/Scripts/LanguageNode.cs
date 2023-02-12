@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -119,7 +118,8 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
         foreach (var connection in ancestryChildConnections) {
             if (comparison.Invoke(connection)) {
                 if (!connection.gameObject.activeInHierarchy) {
-                    StartCoroutine(((IFadable) connection).FadeIn(0.5f, () => connection.gameObject.SetActive(true)));
+                    connection.gameObject.SetActive(true);
+                    StartCoroutine(((IFadable) connection).FadeIn(0.5f));
                 }
             }
             else {
