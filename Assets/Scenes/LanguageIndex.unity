@@ -891,7 +891,7 @@ MonoBehaviour:
     _HashCodes: 441fd6450000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 21
+    _Version: 24
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -4119,7 +4119,7 @@ MonoBehaviour:
     _HashCodes: 441fd6450000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 21
+    _Version: 24
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -7658,7 +7658,7 @@ MonoBehaviour:
     _HashCodes: 31a23c3f6198b24500000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 42
+    _Version: 48
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -9973,7 +9973,7 @@ MonoBehaviour:
     _HashCodes: 29f14369441fd64500000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 42
+    _Version: 48
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -14014,7 +14014,7 @@ MonoBehaviour:
     _HashCodes: f88b105f0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 21
+    _Version: 24
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -14148,7 +14148,7 @@ RectTransform:
   - {fileID: 1570426612}
   - {fileID: 2003561634}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -19021,7 +19021,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &590485926
 MonoBehaviour:
@@ -21685,7 +21685,7 @@ MonoBehaviour:
     _HashCodes: d63b83404b5faf66850aef45
     _Next: ffffffff00000000ffffffff
     _Count: 3
-    _Version: 63
+    _Version: 72
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -23821,7 +23821,7 @@ RectTransform:
   m_Children:
   - {fileID: 221002075}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -29111,7 +29111,7 @@ MonoBehaviour:
     _HashCodes: 75e9326fb37f637e00000000
     _Next: ffffffffffffffff00000000
     _Count: 2
-    _Version: 42
+    _Version: 48
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -30633,6 +30633,50 @@ MonoBehaviour:
   maxHeight: 5.2788
   maxHeightWithAlphabet: 2.8088
   picTooltip: Tigre people
+--- !u!1 &813422355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 813422357}
+  - component: {fileID: 813422356}
+  m_Layer: 0
+  m_Name: LanguageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &813422356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813422355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4d6b01b3a54956bfe34ec2d49940db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &813422357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813422355}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &818640085
 GameObject:
   m_ObjectHideFlags: 0
@@ -32170,7 +32214,7 @@ MonoBehaviour:
     _HashCodes: 691715500fb7f353a4574a6a
     _Next: ffffffffffffffff01000000
     _Count: 3
-    _Version: 63
+    _Version: 72
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -37416,7 +37460,7 @@ MonoBehaviour:
     _HashCodes: 5b71a5310000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 21
+    _Version: 24
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -38533,7 +38577,7 @@ MonoBehaviour:
     _HashCodes: bd4e5e1a23b08f1c4de00d0c
     _Next: ffffffffffffffffffffffff
     _Count: 3
-    _Version: 63
+    _Version: 72
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -40166,7 +40210,7 @@ MonoBehaviour:
     _HashCodes: b1c68a5dfb9521506aca961fd4a9586ded8f6175078e062700000000
     _Next: ffffffffffffffff01000000ffffffffffffffffffffffff00000000
     _Count: 6
-    _Version: 126
+    _Version: 144
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -41892,7 +41936,7 @@ MonoBehaviour:
     _HashCodes: 69c6140d0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 21
+    _Version: 24
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -44092,7 +44136,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &1190259682
 MonoBehaviour:
@@ -46445,7 +46489,7 @@ MonoBehaviour:
     _HashCodes: d4c3f8610000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 21
+    _Version: 24
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -51163,7 +51207,7 @@ MonoBehaviour:
     _HashCodes: 532f4040441fd64500000000
     _Next: ffffffffffffffff00000000
     _Count: 2
-    _Version: 42
+    _Version: 48
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -54932,7 +54976,7 @@ MonoBehaviour:
     _HashCodes: 9168a748fc642a0dc9f3fd1a90ca7b18000000000000000000000000
     _Next: ffffffffffffffffffffffff02000000000000000000000000000000
     _Count: 4
-    _Version: 84
+    _Version: 96
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -55817,7 +55861,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
 --- !u!1 &1486690175
 GameObject:
@@ -55915,7 +55959,7 @@ RectTransform:
   - {fileID: 1154375642}
   - {fileID: 202511582}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -55989,7 +56033,7 @@ MonoBehaviour:
     _HashCodes: fdc193593b980b7689558267
     _Next: ffffffff00000000ffffffff
     _Count: 3
-    _Version: 63
+    _Version: 72
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -56105,7 +56149,7 @@ Transform:
   - {fileID: 1806560814}
   - {fileID: 432181257}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1491018321
 GameObject:
@@ -60855,7 +60899,7 @@ MonoBehaviour:
     _HashCodes: e023a52b2d9e707a00000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 42
+    _Version: 48
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -65824,7 +65868,7 @@ MonoBehaviour:
     _HashCodes: 7a84167e0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 21
+    _Version: 24
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -65989,7 +66033,7 @@ MonoBehaviour:
     _HashCodes: f3fbbf6d0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 21
+    _Version: 24
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -74715,7 +74759,7 @@ MonoBehaviour:
     _HashCodes: dad81b22b2e9ee4a00000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 42
+    _Version: 48
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -75561,7 +75605,7 @@ MonoBehaviour:
     _HashCodes: c99087010000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 21
+    _Version: 24
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -75655,7 +75699,7 @@ MonoBehaviour:
     _HashCodes: eae927103011252d00000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 42
+    _Version: 48
     _FreeList: -1
     _FreeCount: 0
     _Keys:

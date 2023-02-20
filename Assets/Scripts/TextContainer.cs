@@ -126,9 +126,4 @@ public class TextContainer : MonoBehaviour, IItemContainer {
         var textColor = textElement.color;
         textElement.color = new Color(textColor.r, textColor.g, textColor.b, percent);
     }
-    
-    // public void RotateTowardsCamera() {
-    //     var canvasPos = uiCanvas.transform.position;
-    //     uiCanvas.transform.LookAt(new Vector3(canvasPos.x, canvasPos.y, mainCam.transform.position.z));
-    // }
 }

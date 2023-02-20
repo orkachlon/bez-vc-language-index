@@ -7,7 +7,7 @@ public class BackClickReceiver : MonoBehaviour, IPointerClickHandler {
     public static event Action OnBackArrowClicked;
     
     public void OnPointerClick(PointerEventData eventData) {
-        if (!LanguageNode.IsClickEnabled()) {
+        if (LanguageManager.GetCurrentViewMode() == LanguageManager.ViewMode.Node || !LanguageNode.IsClickEnabled()) {
             return;
         }
         OnBackArrowClicked?.Invoke();
