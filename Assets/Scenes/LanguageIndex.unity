@@ -891,7 +891,7 @@ MonoBehaviour:
     _HashCodes: 441fd6450000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 21
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -4119,7 +4119,7 @@ MonoBehaviour:
     _HashCodes: 441fd6450000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 21
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -7658,7 +7658,7 @@ MonoBehaviour:
     _HashCodes: 31a23c3f6198b24500000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 8
+    _Version: 42
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -9973,7 +9973,7 @@ MonoBehaviour:
     _HashCodes: 29f14369441fd64500000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 8
+    _Version: 42
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -14014,7 +14014,7 @@ MonoBehaviour:
     _HashCodes: f88b105f0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 21
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -21685,7 +21685,7 @@ MonoBehaviour:
     _HashCodes: d63b83404b5faf66850aef45
     _Next: ffffffff00000000ffffffff
     _Count: 3
-    _Version: 12
+    _Version: 63
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -29111,7 +29111,7 @@ MonoBehaviour:
     _HashCodes: 75e9326fb37f637e00000000
     _Next: ffffffffffffffff00000000
     _Count: 2
-    _Version: 8
+    _Version: 42
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -32170,7 +32170,7 @@ MonoBehaviour:
     _HashCodes: 691715500fb7f353a4574a6a
     _Next: ffffffffffffffff01000000
     _Count: 3
-    _Version: 12
+    _Version: 63
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -36265,8 +36265,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99dd14e8003b814a90866ed4ef61724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedCameraType: 0
-  translationDuration: 0.75
+  durationByDistance:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2.9173746
+      outSlope: 2.9173746
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09606587
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 3.17932
+      outSlope: 2
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.011025131
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  distanceModifier: 0.5
   cameraDistanceFromNode: 9
 --- !u!114 &963194230
 MonoBehaviour:
@@ -37393,7 +37416,7 @@ MonoBehaviour:
     _HashCodes: 5b71a5310000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 21
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -38510,7 +38533,7 @@ MonoBehaviour:
     _HashCodes: bd4e5e1a23b08f1c4de00d0c
     _Next: ffffffffffffffffffffffff
     _Count: 3
-    _Version: 12
+    _Version: 63
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -40143,7 +40166,7 @@ MonoBehaviour:
     _HashCodes: b1c68a5dfb9521506aca961fd4a9586ded8f6175078e062700000000
     _Next: ffffffffffffffff01000000ffffffffffffffffffffffff00000000
     _Count: 6
-    _Version: 24
+    _Version: 126
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -41869,7 +41892,7 @@ MonoBehaviour:
     _HashCodes: 69c6140d0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 21
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -46422,7 +46445,7 @@ MonoBehaviour:
     _HashCodes: d4c3f8610000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 21
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -51140,7 +51163,7 @@ MonoBehaviour:
     _HashCodes: 532f4040441fd64500000000
     _Next: ffffffffffffffff00000000
     _Count: 2
-    _Version: 8
+    _Version: 42
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -54909,7 +54932,7 @@ MonoBehaviour:
     _HashCodes: 9168a748fc642a0dc9f3fd1a90ca7b18000000000000000000000000
     _Next: ffffffffffffffffffffffff02000000000000000000000000000000
     _Count: 4
-    _Version: 16
+    _Version: 84
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -55966,7 +55989,7 @@ MonoBehaviour:
     _HashCodes: fdc193593b980b7689558267
     _Next: ffffffff00000000ffffffff
     _Count: 3
-    _Version: 12
+    _Version: 63
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -56036,7 +56059,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 0
-  rotationDuration: 0.75
+  distanceModifier: 0.1
+  durationByDistance:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2.9203107
+      outSlope: 2.9203107
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.07048458
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 3.0789444
+      outSlope: 3.0789444
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.029331028
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1490554113
 Transform:
   m_ObjectHideFlags: 0
@@ -60808,7 +60855,7 @@ MonoBehaviour:
     _HashCodes: e023a52b2d9e707a00000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 8
+    _Version: 42
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -65777,7 +65824,7 @@ MonoBehaviour:
     _HashCodes: 7a84167e0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 21
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -65942,7 +65989,7 @@ MonoBehaviour:
     _HashCodes: f3fbbf6d0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 21
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -74668,7 +74715,7 @@ MonoBehaviour:
     _HashCodes: dad81b22b2e9ee4a00000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 8
+    _Version: 42
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -75514,7 +75561,7 @@ MonoBehaviour:
     _HashCodes: c99087010000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 4
+    _Version: 21
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -75608,7 +75655,7 @@ MonoBehaviour:
     _HashCodes: eae927103011252d00000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 8
+    _Version: 42
     _FreeList: -1
     _FreeCount: 0
     _Keys:

@@ -5,19 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraController : MonoBehaviour {
 
-    public enum ECameraType {
-        Perspective,
-        Orthographic
-    }
-    
-    
-    public ECameraType selectedCameraType;
-
     private static Vector3 _cameraStartPos;
 
     private static Camera _mainCamera;
+
     [SerializeField]
-    private float translationDuration = .75f;
+    private AnimationCurve durationByDistance;
+    [SerializeField] private float distanceModifier = 0.06f;
+    
     [SerializeField]
     private float cameraDistanceFromNode = 5f;
 
@@ -38,32 +33,33 @@ public class CameraController : MonoBehaviour {
         BackClickReceiver.OnBackArrowClicked -= ResetCamera;
     }
 
-    private void Update() {
-        if (_mainCamera != null) _mainCamera.orthographic = ECameraType.Orthographic.Equals(selectedCameraType);
-    }
-
     private void ResetCamera() {
         if (transform.position == _cameraStartPos) {
             return;
         }
-        StartCoroutine(MoveCamera(_cameraStartPos));
+        var distance = Vector3.Distance(transform.position, _cameraStartPos);
+        var duration = durationByDistance.Evaluate(distance * distanceModifier);
+        StartCoroutine(MoveCamera(_cameraStartPos, duration));
     }
 
     private void MoveCameraToLanguageNode(LanguageNode langNode) {
         // move camera
         var newPos = langNode.GetEndPosition() + Vector3.back * cameraDistanceFromNode;
-        StartCoroutine(MoveCamera(newPos));
+        var distance = Vector3.Distance(transform.position, newPos);
+        var duration = durationByDistance.Evaluate(distance * distanceModifier);
+        StartCoroutine(MoveCamera(newPos, duration));
     }
 
-    private IEnumerator MoveCamera(Vector3 cameraEndPos) {
+    private IEnumerator MoveCamera(Vector3 cameraEndPos, float duration) {
         LanguageNameTooltip.RegisterDisable();
         LanguageNode.RegisterClickDisabler();
-        var time = 0f; 
-        while (time < translationDuration) {
+        var time = 0f;
+        var startPosition = _mainCamera.transform.position;
+        while (time < duration) {
             // lerp camera translation
-            var t = time / translationDuration;
+            var t = time / duration;
             // t = t * t * (3f - 2f * t); // ease animation
-            _mainCamera.transform.position = Vector3.Lerp(_mainCamera.transform.position, cameraEndPos, Mathf.SmoothStep(0, 1, t));
+            _mainCamera.transform.position = Vector3.Lerp(startPosition, cameraEndPos, Mathf.SmoothStep(0, duration, time));
             // increment
             time += Time.deltaTime;
             if (t > .9f) { 

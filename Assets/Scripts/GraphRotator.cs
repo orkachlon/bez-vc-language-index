@@ -10,8 +10,9 @@ public class GraphRotator : MonoBehaviour {
     private Vector3 _rotation;
     private bool _isRotating;
     private bool _disableRotation = false;
-    [SerializeField]
-    private float rotationDuration = .75f;
+
+    [SerializeField] private float distanceModifier = 0.1f;
+    [SerializeField] private AnimationCurve durationByDistance;
 
     private static GraphRotator _instance;
     private static Quaternion _endRotation;
@@ -98,19 +99,21 @@ public class GraphRotator : MonoBehaviour {
 
     private void RotateTowards(LanguageNode langNode) {
         SetEndRotation(transform, langNode);
-        StartCoroutine(LerpGraphRotation(GetEndRotation(), langNode));
+        var angleDiff = Quaternion.Angle(transform.rotation, GetEndRotation());
+        var duration = durationByDistance.Evaluate(angleDiff * distanceModifier);
+        StartCoroutine(LerpGraphRotation(GetEndRotation(), duration, langNode));
     }
 
-    private IEnumerator LerpGraphRotation(Quaternion endRotation, LanguageNode langNode) {
+    private IEnumerator LerpGraphRotation(Quaternion endRotation, float duration, LanguageNode langNode) {
         LanguageNameTooltip.RegisterDisable();
         LanguageNode.RegisterClickDisabler();
         var time = 0f;
         var startRotation = transform.rotation;
-        while (time < rotationDuration) {
+        while (time < duration) {
             // lerp graph rotation
-            var t = time / rotationDuration;
-            t = t * t * (3f - 2f * t); // ease animation
-            transform.rotation = Quaternion.Lerp(startRotation, endRotation, t);
+            var t = time / duration;
+            // t = t * t * (3f - 2f * t); // ease animation
+            transform.rotation = Quaternion.Lerp(startRotation, endRotation, Mathf.SmoothStep(0, duration, time));
             // increment
             time += Time.deltaTime;
             if (t > .9f) { 
