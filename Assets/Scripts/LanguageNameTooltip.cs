@@ -58,11 +58,11 @@ public class LanguageNameTooltip : MonoBehaviour {
         // set text
         tooltipText.text = tooltipString;
         tooltipText.fontSize = fontSize;
-        tooltipText.margin = Vector4.one * textPadding;
+        tooltipText.margin = new Vector4(textPadding * 2, 0, textPadding, textPadding);
         tooltipText.ForceMeshUpdate();
         // adjust background size to fit text
         var pref = tooltipText.GetPreferredValues();
-        var bgSize = new Vector2(pref.x + textPadding * 2f, pref.y + textPadding * 2f);
+        var bgSize = new Vector2(pref.x + textPadding * 3f, pref.y + textPadding * 2f);
         // var bgSize = tooltipText.rectTransform.sizeDelta + Vector2.one * textPadding;
         _bgRectTransform.sizeDelta = bgSize;
         

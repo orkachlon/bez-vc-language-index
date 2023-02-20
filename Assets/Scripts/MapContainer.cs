@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public class MapContainer : ImageContainer {
     
-    public override void LoadImage(string languageName, string picToolTip = "") {
+    public override void LoadImage(string languageName, bool alphabetExists, string picToolTip = "") {
         if (!File.Exists(Directory.GetCurrentDirectory() + $"/Assets/Resources/Maps/{languageName}.png")) {
             return;
         }

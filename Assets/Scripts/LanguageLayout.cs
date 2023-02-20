@@ -154,7 +154,9 @@ public class LanguageLayout : MonoBehaviour, IFadable {
             return;
         }
         Vector3 newPosition;
-        if (Mathf.Abs(alphabet.GetTopRight().y - alphabet.GetBotLeft().y) >= Mathf.Abs(picture.GetTopRight().y - picture.GetBotLeft().y)) {
+        var alphabetHeight = Mathf.Abs(alphabet.GetTopRight().y - alphabet.GetBotLeft().y);
+        var pictureHeight = Mathf.Abs(picture.GetTopRight().y - picture.GetBotLeft().y);
+        if (picture.IsEmpty() || alphabetHeight >= pictureHeight) {
             var nameTopRight = languageName.GetTopRight();
             newPosition = new Vector3(nameTopRight.x + alphabetSpacing, nameTopRight.y, transform.position.z);
         }
@@ -227,7 +229,7 @@ public class LanguageLayout : MonoBehaviour, IFadable {
     }
 
     public void SetMap(string langName) {
-        map.LoadImage(langName);
+        map.LoadImage(langName, !alphabet.IsEmpty());
     }
 
     public void SetAlphabet(string newAlphabet) {
@@ -239,6 +241,6 @@ public class LanguageLayout : MonoBehaviour, IFadable {
     }
 
     public void SetPicture(string langName, string newPicTooltip) {
-        picture.LoadImage(langName, newPicTooltip);
+        picture.LoadImage(langName, !alphabet.IsEmpty(), newPicTooltip);
     }
 }

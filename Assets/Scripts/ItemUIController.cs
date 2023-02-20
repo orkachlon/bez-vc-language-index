@@ -6,20 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class UIController : MonoBehaviour {
+public class ItemUIController : MonoBehaviour {
 
-    [SerializeField]
-    private Image backArrow;
-    
-    // Start is called before the first frame update
     void Start() {
-        if (backArrow) 
-            return;
-        backArrow = GetComponentInChildren<Image>();
-        if (!backArrow) {
-            throw new MissingComponentException("UIController must have a child with TextMeshProUGUI component");
-        }
-
         BackClickReceiver.OnBackArrowClicked += HideUI;
         LanguageNode.OnLangNodeClicked += ShowUI;
         AncestryConnection.OnConnectionClicked += ShowUI;

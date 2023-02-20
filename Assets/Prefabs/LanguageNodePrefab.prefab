@@ -187,8 +187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 5028131608783526200}
-  maxWidth: 6.748
+  maxWidth: 5.6072
   maxHeight: 5.2788
+  maxHeightWithAlphabet: 2.8088
   picTooltip: 
 --- !u!1 &2474152271265681191
 GameObject:
@@ -997,7 +998,7 @@ MonoBehaviour:
   textPadding: 0.1
   rectTransform: {fileID: 1759639949691741612}
   unicodeList: []
-  minWidth: 2
+  minWidth: 0
 --- !u!1 &5591718440608185876
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,4 +1618,5 @@ MonoBehaviour:
   image: {fileID: 777821361742310971}
   maxWidth: 6.748
   maxHeight: 5.2788
+  maxHeightWithAlphabet: 2.8088
   picTooltip: 

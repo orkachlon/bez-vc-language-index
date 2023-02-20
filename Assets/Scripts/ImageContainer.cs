@@ -10,8 +10,9 @@ using UnityEngine.UI;
 public class ImageContainer : MonoBehaviour, IItemContainer, IPointerEnterHandler, IPointerExitHandler {
     
     [SerializeField] protected Image image;
-    [SerializeField] protected float maxWidth = 6.748f;
+    [SerializeField] protected float maxWidth = 5.6072f;
     [SerializeField] protected float maxHeight = 5.2788f;
+    [SerializeField] protected float maxHeightWithAlphabet = 2.8088f;
     [SerializeField] [HideInInspector] private string picTooltip;
     
     protected virtual void Awake() {
@@ -24,15 +25,27 @@ public class ImageContainer : MonoBehaviour, IItemContainer, IPointerEnterHandle
         }
     }
     
-    public virtual void LoadImage(string languageName, string newPicTooltip = "") {
-        var fileNamePattern = $"{languageName}\\.[a-zA-Z]+";
+    public virtual void LoadImage(string languageName, bool alphabetExists, string newPicTooltip = "") {
         if (!Directory.GetFiles(Directory.GetCurrentDirectory() + "/Assets/Resources/Pictures/")
-            .Any(file => Regex.IsMatch(file, fileNamePattern))) {
+            .Where(file => !file.EndsWith(".meta"))
+            .Select(Path.GetFileName)
+            .Any(file => Regex.IsMatch(file, $"^{languageName}\\.(jpg|jpeg|png)"))) {
             image.enabled = false;
             return;
         }
         image.sprite = Resources.Load<Sprite>($"Pictures/{languageName}"); 
         picTooltip = newPicTooltip;
+        var imageBounds = image.sprite.bounds;
+        float w, h, maxH = alphabetExists ? maxHeightWithAlphabet : maxHeight;
+        if (imageBounds.size.x / imageBounds.size.y < maxWidth / maxH) {
+            h = maxH;
+            w = h * (imageBounds.size.x / imageBounds.size.y);
+        }
+        else {
+            w = maxWidth;
+            h = w * (imageBounds.size.y / imageBounds.size.x);
+        }
+        image.rectTransform.sizeDelta = new Vector2(w, h);
     }
     
     public Vector2 GetSize() {
@@ -91,5 +104,9 @@ public class ImageContainer : MonoBehaviour, IItemContainer, IPointerEnterHandle
             return;
         }
         LanguageNameTooltip.HideTooltipStatic();
+    }
+
+    public bool IsEmpty() {
+        return !image.enabled;
     }
 }
