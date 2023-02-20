@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 
 public class GraphRotator : MonoBehaviour {
-    [SerializeField] private float sensitivity;
+    [SerializeField] private float sensitivity = 0.1f;
     private Vector3 _mouseReference;
     private Vector3 _mouseOffset;
     private Vector3 _rotation;

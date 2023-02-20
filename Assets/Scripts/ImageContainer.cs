@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+[ExecuteAlways]
 [Serializable]
 public class ImageContainer : MonoBehaviour, IItemContainer, IPointerEnterHandler, IPointerExitHandler {
     
@@ -14,6 +15,7 @@ public class ImageContainer : MonoBehaviour, IItemContainer, IPointerEnterHandle
     [SerializeField] protected float maxHeight = 5.2788f;
     [SerializeField] protected float maxHeightWithAlphabet = 2.8088f;
     [SerializeField] [HideInInspector] private string picTooltip;
+    [SerializeField] [HideInInspector] protected RectTransform rectTransform;
     
     protected virtual void Awake() {
         if (image) 
@@ -22,6 +24,11 @@ public class ImageContainer : MonoBehaviour, IItemContainer, IPointerEnterHandle
         image = gameObject.GetComponentInChildren<Image>();
         if (!image) {
             throw new Exception("Image container isn't linked to an image component");
+        }
+
+        rectTransform = GetComponent<RectTransform>();
+        if (!rectTransform) {
+            throw new MissingComponentException("Missing rectTransform on image container!");
         }
     }
     
@@ -45,11 +52,11 @@ public class ImageContainer : MonoBehaviour, IItemContainer, IPointerEnterHandle
             w = maxWidth;
             h = w * (imageBounds.size.y / imageBounds.size.x);
         }
-        image.rectTransform.sizeDelta = new Vector2(w, h);
+        rectTransform.sizeDelta = new Vector2(w, h);
     }
     
     public Vector2 GetSize() {
-        return image.rectTransform.sizeDelta;
+        return rectTransform.sizeDelta;
     }
     
     public void ToNode() {
@@ -77,18 +84,28 @@ public class ImageContainer : MonoBehaviour, IItemContainer, IPointerEnterHandle
     }
 
     public void SetPosition(Vector3 newPos) {
-        transform.position = newPos;
+        rectTransform.position = newPos;
+    }
+
+    public void SetLocalPosition(Vector3 newPos) {
+        rectTransform.localPosition = newPos;
     }
 
     public Vector3 GetTopRight() {
         var corners = new Vector3[4];
-        image.rectTransform.GetWorldCorners(corners);
+        rectTransform.GetLocalCorners(corners);
+        for (var i = 0; i < corners.Length; i++) {
+            corners[i] += rectTransform.localPosition;
+        }
         return corners[2];
     }
 
     public Vector3 GetBotLeft() {
         var corners = new Vector3[4];
-        image.rectTransform.GetWorldCorners(corners);
+        rectTransform.GetLocalCorners(corners);
+        for (var i = 0; i < corners.Length; i++) {
+            corners[i] += rectTransform.localPosition;
+        }
         return corners[0];
     }
 

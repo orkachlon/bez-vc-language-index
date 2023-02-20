@@ -109,9 +109,6 @@ public class LanguageLayout : MonoBehaviour, IFadable {
         
         years.SetWidth(midWidth);
         languageName.SetWidth(midWidth);
-        if (!alphabet.IsEmpty()) {
-            // alphabet.SetWidth(midWidth);
-        }
 
         AlignYears();
         AlignMap();
@@ -136,19 +133,39 @@ public class LanguageLayout : MonoBehaviour, IFadable {
         picture.ToItemRelative();
     }
 
+    /// <summary>
+    /// DEPENDENCIES: LanguageName (position)
+    /// </summary>
     private void AlignYears() {
         var topBound = languageName.GetTopRight().y;
         var currPosition = transform.position;
-        var newPosition = new Vector3(currPosition.x, topBound + yearsSpacing, currPosition.z);
-        years.SetPosition(newPosition);
+        var newPosition = new Vector3(currPosition.x, topBound + yearsSpacing, 0);
+        years.SetLocalPosition(newPosition);
     }
 
+    /// <summary>
+    /// DEPENDENCIES: LanguageName (position)
+    /// </summary>
     private void AlignMap() {
         var nameBotLeft = languageName.GetBotLeft();
-        var newPosition = new Vector3(nameBotLeft.x - mapSpacing, nameBotLeft.y, transform.position.z);
-        map.SetPosition(newPosition);
+        var newPosition = new Vector3(nameBotLeft.x - mapSpacing, nameBotLeft.y, 0);
+        map.SetLocalPosition(newPosition);
     }
 
+    /// <summary>
+    /// DEPENDENCIES: LanguageName (size), Map (position)
+    /// </summary>
+    private void AlignDescription() {
+        var mapBotLeft = map.GetBotLeft();
+        var newPosition = new Vector3(mapBotLeft.x, mapBotLeft.y - descriptionSpacing, 0);
+        description.SetLocalPosition(newPosition);
+        var descWidth = Mathf.Abs(languageName.GetTopRight().x - map.GetBotLeft().x);
+        description.SetWidth(descWidth);
+    }
+
+    /// <summary>
+    /// DEPENDENCIES: LanguageName (position), Description (position), Picture (size)
+    /// </summary>
     private void AlignAlphabet() {
         if (alphabet.IsEmpty()) {
             return;
@@ -158,36 +175,31 @@ public class LanguageLayout : MonoBehaviour, IFadable {
         var pictureHeight = Mathf.Abs(picture.GetTopRight().y - picture.GetBotLeft().y);
         if (picture.IsEmpty() || alphabetHeight >= pictureHeight) {
             var nameTopRight = languageName.GetTopRight();
-            newPosition = new Vector3(nameTopRight.x + alphabetSpacing, nameTopRight.y, transform.position.z);
+            newPosition = new Vector3(nameTopRight.x + alphabetSpacing, nameTopRight.y, 0);
         }
         else {
             var descTopRight = description.GetTopRight();
-            newPosition = new Vector3(descTopRight.x + alphabetSpacing, descTopRight.y, transform.position.z);
+            newPosition = new Vector3(descTopRight.x + alphabetSpacing, descTopRight.y, 0);
         }
-        alphabet.SetPosition(newPosition);
+        alphabet.SetLocalPosition(newPosition);
     }
 
+    /// <summary>
+    /// DEPENDENCIES: Description (position & size), Alphabet (position)
+    /// </summary>
     private void AlignPicture() {
         Vector3 newPosition;
         if (alphabet.IsEmpty()) {
             var descriptionTopRight = description.GetTopRight();
             var descriptionBotLeft = description.GetBotLeft();
-            newPosition = new Vector3(descriptionTopRight.x + pictureSpacing, descriptionBotLeft.y, transform.position.z);
+            newPosition = new Vector3(descriptionTopRight.x + pictureSpacing, descriptionBotLeft.y, 0);
         }
         else {
             var alphabetTopRight = alphabet.GetTopRight();
             var alphabetBotLeft = alphabet.GetBotLeft();
-            newPosition = new Vector3(alphabetBotLeft.x, alphabetTopRight.y + pictureSpacing, transform.position.z);
+            newPosition = new Vector3(alphabetBotLeft.x, alphabetTopRight.y + pictureSpacing, 0);
         }
-        picture.SetPosition(newPosition);
-    }
-
-    private void AlignDescription() {
-        var mapBotLeft = map.GetBotLeft();
-        var newPosition = new Vector3(mapBotLeft.x, mapBotLeft.y - descriptionSpacing, transform.position.z);
-        description.SetPosition(newPosition);
-        var descWidth = Mathf.Abs(languageName.GetTopRight().x - map.GetBotLeft().x);
-        description.SetWidth(descWidth);
+        picture.SetLocalPosition(newPosition);
     }
 
     public float GetOpacity() {

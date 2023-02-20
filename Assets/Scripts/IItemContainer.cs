@@ -9,6 +9,8 @@ public interface IItemContainer {
         void MoveToLayer(string layerName);
 
         void SetPosition(Vector3 newPos);
+
+        void SetLocalPosition(Vector3 newPos);
         
         Vector3 GetTopRight();
         Vector3 GetBotLeft();

@@ -60,13 +60,16 @@ public class TextContainer : MonoBehaviour, IItemContainer {
         if (layerID == -1) {
             throw new ArgumentOutOfRangeException($"Couldn't find Layer {layerName}!");
         }
-
         textElement.gameObject.layer = layerID;
         bgImage.gameObject.layer = layerID;
     }
 
     public void SetPosition(Vector3 newPos) {
-        transform.position = newPos;
+        rectTransform.position = newPos;
+    }
+    
+    public void SetLocalPosition(Vector3 newPos) {
+        rectTransform.localPosition = newPos;
     }
 
     public virtual void SetText(string text) {
@@ -88,13 +91,21 @@ public class TextContainer : MonoBehaviour, IItemContainer {
 
     public Vector3 GetBotLeft() {
         var corners = new Vector3[4];
-        bgImage.rectTransform.GetWorldCorners(corners);
+        // rectTransform.GetWorldCorners(corners);
+        rectTransform.GetLocalCorners(corners);
+        for (var i = 0; i < corners.Length; i++) {
+            corners[i] += rectTransform.localPosition;
+        }
         return corners[0];
     }
     
     public Vector3 GetTopRight() {
         var corners = new Vector3[4];
-        bgImage.rectTransform.GetWorldCorners(corners);
+        // bgImage.rectTransform.GetWorldCorners(corners);
+        rectTransform.GetLocalCorners(corners);
+        for (var i = 0; i < corners.Length; i++) {
+            corners[i] += rectTransform.localPosition;
+        }
         return corners[2];
     }
     

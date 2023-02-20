@@ -33,21 +33,9 @@ public class DescriptionContainer : TextContainer {
         gameObject.SetActive(false);
     }
 
-    // public override void SetWidth(float width) {
-    //     base.SetWidth(Mathf.Max(width, minWidth));
-    // }
-
     public override void SetSize(Vector2 newSize) {
         var newWidth = newSize.x; // Mathf.Max(newSize.x, minWidth);
         var prefHeight = textElement.GetPreferredValues(newWidth - textPadding * 1.5f, 0).y;
         base.SetSize(new Vector2(newWidth, prefHeight));
-        
-        // var currWidth = newWidth;
-        // while (prefHeight > maxHeight && currWidth <= maxWidth) {
-        //     currWidth += 0.2f;
-        //     var currWidthPoint = currWidth / maxWidth;
-        //     prefHeight = textElement.GetPreferredValues(Mathf.Lerp(minWidth, maxWidth, currWidthPoint), 0).y + textPadding * 2;
-        // }
-        // base.SetSize(new Vector2(currWidth, prefHeight));
     }
 }
