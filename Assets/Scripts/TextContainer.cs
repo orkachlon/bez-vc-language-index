@@ -131,7 +131,7 @@ public class TextContainer : MonoBehaviour, IItemContainer {
         return bgImage.color.a;
     }
 
-    public void SetOpacity(float percent) {
+    public virtual void SetOpacity(float percent) {
         var bgColor = bgImage.color;
         bgImage.color = new Color(bgColor.r, bgColor.g, bgColor.b, percent);
         var textColor = textElement.color;

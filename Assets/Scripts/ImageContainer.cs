@@ -126,4 +126,8 @@ public class ImageContainer : MonoBehaviour, IItemContainer, IPointerEnterHandle
     public bool IsEmpty() {
         return !image.enabled;
     }
+
+    public void SetOpacity(float percent) {
+        image.color = new Color(image.color.r, image.color.g, image.color.b, percent);
+    }
 }

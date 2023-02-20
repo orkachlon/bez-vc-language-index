@@ -76,7 +76,7 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
             .ToList();
         var i = childs.IndexOf(this);
         var pp = parent.GetEndPosition();
-        var screenWidth = 18f;
+        var screenWidth = 18f;  // arbitrary width cause had no time to actually fit by screen
         var cellSize = screenWidth / childs.Count;
         var p = new Vector3((i * cellSize) - pp.x - screenWidth * 0.5f + cellSize * 0.5f, pp.y - 4, pp.z);
         StartCoroutine(LerpLanguageNodeTranslation(p, TranslationDuration));
@@ -88,25 +88,38 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
             .ToList();
         var i = parents.IndexOf(this);
         var cp = langChild.GetEndPosition();
-        var screenWidth = 10f;
+        var screenWidth = 10f; // arbitrary width cause had no time to actually fit by screen
         var cellSize = screenWidth / parents.Count;
         var p = new Vector3((i * cellSize) - cp.x - screenWidth * 0.5f + cellSize * 0.5f, cp.y + 4, cp.z);
         StartCoroutine(LerpLanguageNodeTranslation(p, TranslationDuration));
     }
 
-    private IEnumerator LerpLanguageNodeTranslation(Vector3 nodeEndPosition, float translationDuration) {
+    private IEnumerator LerpLanguageNodeTranslation(Vector3 nodeEndPosition, float translationDuration, bool local = false) {
         RegisterClickDisabler();
         var time = 0f; 
+        var startPosition = local ? transform.localPosition : transform.position;
         while (time < translationDuration) {
             // lerp node translation
             var t = time / translationDuration;
             t = t * t * (3f - 2f * t); // ease animation
-            transform.position = Vector3.Lerp(transform.position, nodeEndPosition, t);
+            var position = Vector3.Lerp(startPosition, nodeEndPosition, t);
+            if (local) {
+                transform.localPosition = position;
+            }
+            else {
+                transform.position = position;
+            }
             // increment
             time += Time.deltaTime;
             yield return null;
         }
-        transform.position = nodeEndPosition;
+
+        if (local) {
+            transform.localPosition = nodeEndPosition;
+        }
+        else {
+            transform.position = nodeEndPosition;
+        }
         UnregisterClickDisabler();
     }
 
@@ -155,7 +168,7 @@ public class LanguageNode : MonoBehaviour, IPointerClickHandler  {
     }
 
     public void SetEndPosition() {
-        transform.localPosition = positionInGraph;
+        StartCoroutine(LerpLanguageNodeTranslation(positionInGraph, TranslationDuration, true));
     }
 
     public Vector3 GetEndPosition() {

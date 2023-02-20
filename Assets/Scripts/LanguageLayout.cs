@@ -73,25 +73,35 @@ public class LanguageLayout : MonoBehaviour, IFadable {
         // move layout to same layer as lines
         gameObject.layer = LayerMask.NameToLayer("Default");
         if (!gameObject.activeInHierarchy) {
-            StartCoroutine(((IFadable) this).FadeIn(0.5f));
+            StartCoroutine(((IFadable) languageName).FadeIn(0.5f));
         }
-        // hide all fields but name
-        years.ToNode();
-        map.ToNode();
-        // not all languages have an alphabet
-        if (!alphabet.IsEmpty()) {
-            alphabet.ToNode();
+
+        if (years.gameObject.activeInHierarchy) {
+            StartCoroutine(((IFadable) this).FadeOut(0.2f, () => {
+                years.ToNode();
+                map.ToNode();
+                if (!alphabet.IsEmpty()) {
+                    alphabet.ToNode();
+                }
+                description.ToNode();
+                picture.ToNode();
+                languageName.ToNode();
+            }));
         }
-        // erase phonetic from name
-        languageName.ToNode();
-        description.ToNode();
-        picture.ToNode();
+        else {
+            languageName.ToNode();
+        }
     }
 
     public void ToItem() {
         // bring layout in front of lines
         gameObject.layer = LayerMask.NameToLayer("UI");
         if (!gameObject.activeInHierarchy) {
+            StartCoroutine(((IFadable) languageName).FadeIn(0.5f));
+        }
+
+        // years is just a representative!
+        if (!years.gameObject.activeInHierarchy) {
             StartCoroutine(((IFadable) this).FadeIn(0.5f));
         }
         languageName.ToItem();
@@ -121,16 +131,23 @@ public class LanguageLayout : MonoBehaviour, IFadable {
         // bring layout in front of lines
         gameObject.layer = LayerMask.NameToLayer("UI");
         if (!gameObject.activeInHierarchy) {
-            StartCoroutine(((IFadable) this).FadeIn(0.5f));
+            StartCoroutine(((IFadable) languageName).FadeIn(0.5f));
         }
-        languageName.ToItemRelative();
-        years.ToItemRelative();
-        map.ToItemRelative();
-        if (!alphabet.IsEmpty()) {
-            alphabet.ToItemRelative();
+        if (years.gameObject.activeInHierarchy) {
+            StartCoroutine(((IFadable) this).FadeOut(0.2f, () => {
+                languageName.ToItemRelative();
+                years.ToItemRelative();
+                map.ToItemRelative();
+                if (!alphabet.IsEmpty()) {
+                    alphabet.ToItemRelative();
+                }
+                description.ToItemRelative();
+                picture.ToItemRelative();
+            }));
         }
-        description.ToItemRelative();
-        picture.ToItemRelative();
+        else {
+            languageName.ToItemRelative();
+        }
     }
 
     /// <summary>
@@ -138,8 +155,7 @@ public class LanguageLayout : MonoBehaviour, IFadable {
     /// </summary>
     private void AlignYears() {
         var topBound = languageName.GetTopRight().y;
-        var currPosition = transform.position;
-        var newPosition = new Vector3(currPosition.x, topBound + yearsSpacing, 0);
+        var newPosition = new Vector3(0, topBound + yearsSpacing, 0);
         years.SetLocalPosition(newPosition);
     }
 
@@ -207,7 +223,12 @@ public class LanguageLayout : MonoBehaviour, IFadable {
     }
 
     public void SetOpacity(float percent) {
-        languageName.SetOpacity(percent);
+        // languageName.SetOpacity(percent);
+        years.SetOpacity(percent);
+        map.SetOpacity(percent);
+        description.SetOpacity(percent);
+        alphabet.SetOpacity(percent);
+        picture.SetOpacity(percent);
     }
     
     private void RotateTowardsCamera() {

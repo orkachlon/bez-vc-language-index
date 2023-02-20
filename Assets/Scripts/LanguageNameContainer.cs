@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.U2D;
 
-public class LanguageNameContainer : TextContainer {
+public class LanguageNameContainer : TextContainer, IFadable {
 
     [SerializeField] private float nodeFontSize = 0.8f;
     [SerializeField] private float itemFontSize = 0.5f;
