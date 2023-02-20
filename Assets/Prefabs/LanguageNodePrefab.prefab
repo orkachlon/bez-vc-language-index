@@ -187,6 +187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 5028131608783526200}
+  maxWidth: 6.748
+  maxHeight: 5.2788
+  picTooltip: 
 --- !u!1 &2474152271265681191
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,12 +353,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.75
-  m_fontSizeBase: 0.75
+  m_fontSize: 0.6
+  m_fontSizeBase: 0.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
-  m_fontSizeMax: 0
+  m_fontSizeMax: 0.75
   m_fontStyle: 0
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
@@ -708,6 +711,7 @@ MonoBehaviour:
     influences: []
     alphabet: 
     description: 
+    picTooltip: 
   ancestryChildConnections: []
   positionInGraph: {x: 0, y: 0, z: 0}
   endPosition: {x: 0, y: 0, z: 0}
@@ -1611,3 +1615,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 777821361742310971}
+  maxWidth: 6.748
+  maxHeight: 5.2788
+  picTooltip: 

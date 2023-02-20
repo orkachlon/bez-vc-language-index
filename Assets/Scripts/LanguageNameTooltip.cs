@@ -47,7 +47,7 @@ public class LanguageNameTooltip : MonoBehaviour {
         transform.localPosition = localPoint;
     }
 
-    private void ShowTooltip(string tooltipString) {
+    private void ShowTooltip(string tooltipString, int fontSize = 40) {
         if (Interlocked.CompareExchange(ref _instance._disablers, 0, 0) > 0) {
             return;
         }
@@ -57,6 +57,8 @@ public class LanguageNameTooltip : MonoBehaviour {
         transform.localPosition = localPoint;
         // set text
         tooltipText.text = tooltipString;
+        tooltipText.fontSize = fontSize;
+        tooltipText.margin = Vector4.one * textPadding;
         tooltipText.ForceMeshUpdate();
         // adjust background size to fit text
         var pref = tooltipText.GetPreferredValues();
@@ -70,8 +72,8 @@ public class LanguageNameTooltip : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    public static void ShowTooltipStatic(string tooltipString) {
-        _instance.ShowTooltip(tooltipString);
+    public static void ShowTooltipStatic(string tooltipString, int fontSize = 40) {
+        _instance.ShowTooltip(tooltipString, fontSize);
     }
     
     public static void HideTooltipStatic() {

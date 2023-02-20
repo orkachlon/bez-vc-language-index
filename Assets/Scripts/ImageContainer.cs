@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,6 +10,8 @@ using UnityEngine.UI;
 public class ImageContainer : MonoBehaviour, IItemContainer, IPointerEnterHandler, IPointerExitHandler {
     
     [SerializeField] protected Image image;
+    [SerializeField] protected float maxWidth = 6.748f;
+    [SerializeField] protected float maxHeight = 5.2788f;
     [SerializeField] [HideInInspector] private string picTooltip;
     
     protected virtual void Awake() {
@@ -21,10 +25,13 @@ public class ImageContainer : MonoBehaviour, IItemContainer, IPointerEnterHandle
     }
     
     public virtual void LoadImage(string languageName, string newPicTooltip = "") {
-        if (!File.Exists(Directory.GetCurrentDirectory() + $"/Assets/Resources/Pictures/{languageName}.jpg")) {
+        var fileNamePattern = $"{languageName}\\.[a-zA-Z]+";
+        if (!Directory.GetFiles(Directory.GetCurrentDirectory() + "/Assets/Resources/Pictures/")
+            .Any(file => Regex.IsMatch(file, fileNamePattern))) {
+            image.enabled = false;
             return;
         }
-        image.sprite = Resources.Load<Sprite>($"Pictures/{languageName}");
+        image.sprite = Resources.Load<Sprite>($"Pictures/{languageName}"); 
         picTooltip = newPicTooltip;
     }
     
@@ -76,7 +83,7 @@ public class ImageContainer : MonoBehaviour, IItemContainer, IPointerEnterHandle
         if (picTooltip.Length == 0) {
             return;
         }
-        LanguageNameTooltip.ShowTooltipStatic(picTooltip);
+        LanguageNameTooltip.ShowTooltipStatic(picTooltip, 25);
     }
 
     public void OnPointerExit(PointerEventData eventData) {

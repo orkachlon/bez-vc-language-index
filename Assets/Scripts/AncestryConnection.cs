@@ -79,10 +79,10 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerE
     private string GetTooltipString() {
 
         var otherNode = SelectionManager.GetSelectedLanguage() == child ? parent : child;
-        var tooltipString = $"<font=NotoSerif-Italic SDF>{otherNode.GetYears()}</font>";
+        var tooltipString = $"<align=\"left\"><font=NotoSerif-Italic SDF>{otherNode.GetYears()}</font>";
         
         if (otherNode.GetAlphabet().Length > 0) {
-            tooltipString = $"{otherNode.GetAlphabet()}\n" + tooltipString;
+            tooltipString = $"<align=\"right\">{otherNode.GetAlphabet()}\n" + tooltipString;
         }
         return tooltipString;
     }
