@@ -169,11 +169,9 @@
         "Akkadian",
         "Eastern South Semitic",
         "Sabaean",
-        "Mehri-Soqotri",
         "Old Aramaic",
         "Minaean",
         "Mehri",
-        "Soqotri",
         "Moabite",
         "Edomite",
         "Ammonite",
@@ -197,7 +195,7 @@
       ],
       "alphabet": "\uD802\uDE63\uD802\uDE6F\uD802\uDE6C\uD802\uDE75",
       "description": "Old South Arabian (or Ṣayhadic or Yemenite) is a group of four closely related extinct languages spoken in the far southern portion of the Arabian Peninsula. They were written in the Ancient South Arabian script.",
-      "picTooltip": "Inscription adressed to the moon-god Almaqah\n700 BCE"
+      "picTooltip": "Inscription addressed to the moon-god Almaqah\n700 BCE"
     },
     "Eastern South Semitic": {
       "name": "Eastern South Semitic",

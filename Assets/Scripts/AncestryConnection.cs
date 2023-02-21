@@ -207,15 +207,15 @@ public class AncestryConnection : MonoBehaviour, IPointerClickHandler, IPointerE
     private void SetLineWidth() {
         switch (childType) {
             case EChildType.Replace:
-                lineRenderer.startWidth = lineNarrow;
-                lineRenderer.endWidth = lineWide;
+                lineRenderer.endWidth = lineNarrow;
+                lineRenderer.startWidth = lineWide;
                 break;
             case EChildType.Add:
                 lineRenderer.widthMultiplier = lineWide;
                 break;
             case EChildType.Revive:
-                lineRenderer.endWidth = lineNarrow;
-                lineRenderer.startWidth = lineWide;
+                lineRenderer.startWidth = lineNarrow;
+                lineRenderer.endWidth = lineWide;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(childType), childType, null);
