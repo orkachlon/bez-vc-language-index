@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class LanguageManager: MonoBehaviour {
 
-    public enum ViewMode {
+    public enum EViewMode {
         Node,
         Item
     }
-    
-     private static List<LanguageDataInLevel> _langDataByLevels;
-     private static List<LanguageNodesInLevel> _langNodesByLevels;
 
-     private static ViewMode _currentViewMode = ViewMode.Node;
+    private static List<LanguageNodesInLevel> _langNodesByLevels;
+
+     private static EViewMode _currentViewMode = EViewMode.Node;
 
      private void Start() {
          LanguageNode.OnLangNodeClicked += ToItem;
@@ -27,18 +26,14 @@ public class LanguageManager: MonoBehaviour {
      }
 
      private static void ToItem(LanguageNode langNode) {
-         _currentViewMode = ViewMode.Item;
+         _currentViewMode = EViewMode.Item;
      }
      
      private static void ToNode() {
-         _currentViewMode = ViewMode.Node;
+         _currentViewMode = EViewMode.Node;
      }
 
-     public static void PopulateData(List<LanguageDataInLevel> newLangDataByLevels) {
-         _langDataByLevels = newLangDataByLevels;
-     }
-     
-     public static void PopulateNodes(List<LanguageNodesInLevel> newLangNodesByLevels) {
+    public static void PopulateNodes(List<LanguageNodesInLevel> newLangNodesByLevels) {
          _langNodesByLevels = newLangNodesByLevels;
      }
      
@@ -54,7 +49,7 @@ public class LanguageManager: MonoBehaviour {
          return parentList;
      }
 
-     public static ViewMode GetCurrentViewMode() {
+     public static EViewMode GetCurrentViewMode() {
          return _currentViewMode;
      }
 }

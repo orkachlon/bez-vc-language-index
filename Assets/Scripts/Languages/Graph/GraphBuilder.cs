@@ -25,7 +25,6 @@ public class GraphBuilder : MonoBehaviour {
     private void Awake() {
         BuildGraph();
         LanguageManager.PopulateNodes(langNodesByLevels);
-        LanguageManager.PopulateData(langDataByLevels);
     }
 
     public void BuildGraph() {

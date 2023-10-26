@@ -1,8 +1,8 @@
 using System;
 using System.Runtime.CompilerServices;
-using System.Collections.Generic;
 using System.Text;
-namespace RTLTMPro {
+namespace RTLTMPro
+{
     public class FastStringBuilder {
         // Using fields to be as efficient as possible
         private int length;
