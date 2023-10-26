@@ -252,7 +252,7 @@ MonoBehaviour:
     _HashCodes: 7a84167e0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 3
+    _Version: 6
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -2749,7 +2749,7 @@ MonoBehaviour:
     _HashCodes: d4c3f8610000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 3
+    _Version: 6
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -6209,7 +6209,7 @@ MonoBehaviour:
     _HashCodes: 532f4040441fd64500000000
     _Next: ffffffffffffffff00000000
     _Count: 2
-    _Version: 6
+    _Version: 12
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -9936,7 +9936,7 @@ MonoBehaviour:
     _HashCodes: d63b83404b5faf66850aef45
     _Next: ffffffff00000000ffffffff
     _Count: 3
-    _Version: 9
+    _Version: 18
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -12393,7 +12393,7 @@ MonoBehaviour:
     _HashCodes: b1c68a5dfb9521506aca961fd4a9586ded8f6175078e062700000000
     _Next: ffffffffffffffff01000000ffffffffffffffffffffffff00000000
     _Count: 6
-    _Version: 18
+    _Version: 36
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -18241,7 +18241,7 @@ MonoBehaviour:
     _HashCodes: f3fbbf6d0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 3
+    _Version: 6
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -25676,7 +25676,7 @@ MonoBehaviour:
     _HashCodes: 5b71a5310000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 3
+    _Version: 6
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -27679,7 +27679,7 @@ MonoBehaviour:
     _HashCodes: 31a23c3f6198b24500000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 6
+    _Version: 12
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -32297,7 +32297,7 @@ MonoBehaviour:
     _HashCodes: f88b105f0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 3
+    _Version: 6
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -33475,7 +33475,7 @@ MonoBehaviour:
     _HashCodes: e023a52b2d9e707a00000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 6
+    _Version: 12
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -35429,7 +35429,25 @@ MonoBehaviour:
   distanceModifier: 0.1
   durationByDistance:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -39540,7 +39558,7 @@ MonoBehaviour:
     _HashCodes: 75e9326fb37f637e00000000
     _Next: ffffffffffffffff00000000
     _Count: 2
-    _Version: 6
+    _Version: 12
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -46666,7 +46684,7 @@ MonoBehaviour:
     _HashCodes: fdc193593b980b7689558267
     _Next: ffffffff00000000ffffffff
     _Count: 3
-    _Version: 9
+    _Version: 18
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -49830,7 +49848,7 @@ MonoBehaviour:
     _HashCodes: 9168a748fc642a0dc9f3fd1a90ca7b18000000000000000000000000
     _Next: ffffffffffffffffffffffff02000000000000000000000000000000
     _Count: 4
-    _Version: 12
+    _Version: 24
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -52918,7 +52936,7 @@ MonoBehaviour:
     _HashCodes: dad81b22b2e9ee4a00000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 6
+    _Version: 12
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -53963,7 +53981,7 @@ MonoBehaviour:
     _HashCodes: 441fd6450000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 3
+    _Version: 6
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -70168,7 +70186,7 @@ MonoBehaviour:
     _HashCodes: eae927103011252d00000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 6
+    _Version: 12
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -72159,7 +72177,7 @@ MonoBehaviour:
     _HashCodes: 691715500fb7f353a4574a6a
     _Next: ffffffffffffffff01000000
     _Count: 3
-    _Version: 9
+    _Version: 18
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -75611,7 +75629,7 @@ MonoBehaviour:
     _HashCodes: 69c6140d0000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 3
+    _Version: 6
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -75718,7 +75736,7 @@ MonoBehaviour:
     _HashCodes: bd4e5e1a23b08f1c4de00d0c
     _Next: ffffffffffffffffffffffff
     _Count: 3
-    _Version: 9
+    _Version: 18
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -78228,7 +78246,7 @@ MonoBehaviour:
     _HashCodes: c99087010000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 3
+    _Version: 6
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -80772,7 +80790,7 @@ MonoBehaviour:
     _HashCodes: 441fd6450000000000000000
     _Next: ffffffff0000000000000000
     _Count: 1
-    _Version: 3
+    _Version: 6
     _FreeList: -1
     _FreeCount: 0
     _Keys:
@@ -82088,7 +82106,7 @@ MonoBehaviour:
     _HashCodes: 29f14369441fd64500000000
     _Next: ffffffff0000000000000000
     _Count: 2
-    _Version: 6
+    _Version: 12
     _FreeList: -1
     _FreeCount: 0
     _Keys:

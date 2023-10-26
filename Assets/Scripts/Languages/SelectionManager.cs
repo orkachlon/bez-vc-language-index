@@ -1,34 +1,37 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
+using Languages.Graph.Elements;
+using Languages.LanguageItem;
 using UnityEngine;
 
-public class SelectionManager : MonoBehaviour {
+namespace Languages {
+    public class SelectionManager : MonoBehaviour {
 
-    private static LanguageNode _selectedLanguage = null;
-    
-    private void Start() {
-        _selectedLanguage = null;
-        LanguageNode.OnLangNodeClicked += SetSelectedLanguage;
-        AncestryConnection.OnConnectionClicked += SetSelectedLanguage;
-        BackClickReceiver.OnBackArrowClicked += ResetSelectedLanguage;
-    }
+        private static LanguageNode _selectedLanguage = null;
 
-    private void OnDestroy() {
-        LanguageNode.OnLangNodeClicked -= SetSelectedLanguage;
-        AncestryConnection.OnConnectionClicked -= SetSelectedLanguage;
-        BackClickReceiver.OnBackArrowClicked -= ResetSelectedLanguage;
-    }
+        private void Start() {
+            _selectedLanguage = null;
+            LanguageNode.OnLangNodeClicked += SetSelectedLanguage;
+            AncestryConnection.OnConnectionClicked += SetSelectedLanguage;
+            BackClickReceiver.OnBackArrowClicked += ResetSelectedLanguage;
+        }
 
-    [CanBeNull]
-    public static LanguageNode GetSelectedLanguage() {
-        return _selectedLanguage;
-    }
+        private void OnDestroy() {
+            LanguageNode.OnLangNodeClicked -= SetSelectedLanguage;
+            AncestryConnection.OnConnectionClicked -= SetSelectedLanguage;
+            BackClickReceiver.OnBackArrowClicked -= ResetSelectedLanguage;
+        }
 
-    private static void SetSelectedLanguage(LanguageNode langNode) {
-        _selectedLanguage = langNode;
-    }
+        [CanBeNull]
+        public static LanguageNode GetSelectedLanguage() {
+            return _selectedLanguage;
+        }
 
-    private static void ResetSelectedLanguage() {
-        SetSelectedLanguage(null);
+        private static void SetSelectedLanguage(LanguageNode langNode) {
+            _selectedLanguage = langNode;
+        }
+
+        private static void ResetSelectedLanguage() {
+            SetSelectedLanguage(null);
+        }
     }
 }

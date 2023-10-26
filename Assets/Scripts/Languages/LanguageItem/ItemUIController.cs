@@ -1,32 +1,29 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+using Languages.Graph.Elements;
 using UnityEngine;
-using UnityEngine.UI;
 
+namespace Languages.LanguageItem {
+    public class ItemUIController : MonoBehaviour {
 
-public class ItemUIController : MonoBehaviour {
+        void Start() {
+            BackClickReceiver.OnBackArrowClicked += HideUI;
+            LanguageNode.OnLangNodeClicked += ShowUI;
+            AncestryConnection.OnConnectionClicked += ShowUI;
 
-    void Start() {
-        BackClickReceiver.OnBackArrowClicked += HideUI;
-        LanguageNode.OnLangNodeClicked += ShowUI;
-        AncestryConnection.OnConnectionClicked += ShowUI;
-        
-        HideUI();
-    }
+            HideUI();
+        }
 
-    private void OnDestroy() {
-        BackClickReceiver.OnBackArrowClicked -= HideUI;
-        LanguageNode.OnLangNodeClicked -= ShowUI;
-        AncestryConnection.OnConnectionClicked -= ShowUI;
-    }
+        private void OnDestroy() {
+            BackClickReceiver.OnBackArrowClicked -= HideUI;
+            LanguageNode.OnLangNodeClicked -= ShowUI;
+            AncestryConnection.OnConnectionClicked -= ShowUI;
+        }
 
-    private void ShowUI(LanguageNode langNode) {
-        gameObject.SetActive(true);
-    }
+        private void ShowUI(LanguageNode langNode) {
+            gameObject.SetActive(true);
+        }
 
-    private void HideUI() {
-        gameObject.SetActive(false);
+        private void HideUI() {
+            gameObject.SetActive(false);
+        }
     }
 }

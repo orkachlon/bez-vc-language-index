@@ -2,20 +2,22 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ConnectionLegendButton : MonoBehaviour, IPointerClickHandler {
+namespace Languages.Graph.UI {
+    public class ConnectionLegendButton : MonoBehaviour, IPointerClickHandler {
 
-    [SerializeField] private Image connectionLegend;
+        [SerializeField] private Image connectionLegend;
 
-    private void Awake() {
-        if (!connectionLegend) {
-            throw new MissingComponentException("Legend button must have link to legend");
+        private void Awake() {
+            if (!connectionLegend) {
+                throw new MissingComponentException("Legend button must have link to legend");
+            }
+
+            connectionLegend.gameObject.SetActive(false);
         }
-        
-        connectionLegend.gameObject.SetActive(false);
-    }
 
-    public void OnPointerClick(PointerEventData eventData) {
-        // toggle the legend
-        connectionLegend.gameObject.SetActive(!connectionLegend.gameObject.activeInHierarchy);
+        public void OnPointerClick(PointerEventData eventData) {
+            // toggle the legend
+            connectionLegend.gameObject.SetActive(!connectionLegend.gameObject.activeInHierarchy);
+        }
     }
 }
